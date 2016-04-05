@@ -1,3 +1,3 @@
 # My reveal talks:
 
-- test talk
+- Introduction to reveal talks
