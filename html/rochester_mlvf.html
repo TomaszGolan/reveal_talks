@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Update on MLVF</title>
+
+  <meta name="description" content="Update on MLVF">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Update on MLVF</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4>Rochester meeting, 04.18.2016</h4>
+        </p>
+      </section>
+
+       <section id="outline" class="level1">
+<h1>Outline</h1>
+<ul>
+<li><a href="#linear-regression">Introduction</a>
+<ul>
+<li><a href="#linear-regression">Linear Regression</a></li>
+<li><a href="#logistic-regression">Logistic Regression</a></li>
+<li><a href="#neural-networks">Neural Networks</a></li>
+<li><a href="#convolutional-neural-networks">Convolutional Neural Networks</a></li>
+</ul></li>
+<li><a href="#mlvf-progress">MLVF (Machine Learning Vertex Finding) progress</a></li>
+<li><a href="#oak-ridge-national-laboratory">Oak Ridge National Laboratory</a></li>
+</ul>
+</section>
+<section id="section" class="level1">
+<h1></h1>
+<section id="linear-regression" class="level2">
+<h2>Linear Regression</h2>
+</section>
+<section id="notation" class="level2">
+<h2>Notation</h2>
+<hr />
+<ul>
+<li>Hypothesis (for convenience <span class="math">\(x_0 = 1\)</span>): <span class="math">\[h(x) = w_0 + w_1x_1 + ... + w_nx_n = \sum\limits_{i=0}^n w_i x_i = w^T x\]</span></li>
+<li>Cost function: <span class="math">\[f(w) = \frac{1}{2}\sum\limits_{i=0}^n\left(h (x^{(i)}) - y^{(i)}\right)^2\]</span></li>
+<li>Learning step (gradient descent, <span class="math">\(\alpha\)</span> - training rate): <span class="math">\[w_j = w_j - \alpha\frac{\partial f(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></li>
+</ul>
+</section>
+<section id="example" class="level2">
+<h2>Example</h2>
+<hr />
+<img src="../img/ml/linear_regression_learning.gif" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li><p><strong>epoch</strong> = one loop over the whole training sample</p></li>
+<li><p>for each feature vector weights are updated using <strong>gradient descent</strong> method</p></li>
+</ul>
+</div>
+</section>
+<section id="classification" class="level2">
+<h2>Classification</h2>
+<hr />
+<img src="../img/ml/linear_classification_learning.gif" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li><p>target: <span class="math">\(y = 0, 1\)</span></p></li>
+<li><p>not really efficient for classification</p></li>
+<li><p>imagine having some data ~ 100</p></li>
+<li>logistic function does better job</li>
+</ul>
+</div>
+</section>
+<section id="classification-1" class="level2">
+<h2>Classification</h2>
+<hr />
+<p><img src="../img/ml/linear_classification_learning.gif"  class="left"> <img src="../img/ml/linear_classification_learning_far_data.gif" class="right"></p>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="logistic-regression" class="level2">
+<h2>Logistic Regression</h2>
+</section>
+<section id="logistic-function" class="level2">
+<h2>Logistic function</h2>
+<hr />
+<img src="../img/ml/sigmoid_function.png" class='right'>
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>Logistic function: <span class="math">\[g(z) = \frac{1}{1 + e^{-z}}\]</span></p></li>
+<li>Hypothesis: <span class="math">\[h(x) = g(w^Tx) = \frac{1}{1 + e^{-w^Tx}}\]</span></li>
+</ul>
+</div>
+</section>
+<section id="classification-2" class="level2">
+<h2>Classification</h2>
+<hr />
+<ul>
+<li><p>Probability of 1: <span class="math">\[P (y = 1 | x, w) = h(x)\]</span></p></li>
+<li><p>Probability of 0: <span class="math">\[P (y = 0 | x, w) = 1 - h(x)\]</span></p></li>
+<li><p>Probability: <span class="math">\[p (y | x, w) = (h(x))^y\cdot(1 - h(x))^{1 - y}\]</span></p></li>
+</ul>
+</section>
+<section id="section-2" class="level2">
+<h2></h2>
+<ul>
+<li><p>Likelihood: <span class="math">\[L(w) = \prod\limits_{i=0}^n p(y^{(i)} | x^{(i)}, w) = \prod\limits_{i=0}^n (h(x^{(i)}))^{y^{(i)}}\cdot(1 - h(x^{(i)}))^{1 - y^{(i)}}\]</span></p></li>
+<li><p>Log-likelihood: <span class="math">\[l(w) = \log L(w) = \sum\limits_{i=0}^n y^{(i)}\log h(x^{(i)}) + (1 - y^{(i)})\log (1-h(x^{(i)}))\]</span></p></li>
+<li><p>Learning step (maximize <span class="math">\(l(w)\)</span>): <span class="math">\[w_j = w_j + \alpha\frac{\partial l(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></p></li>
+</ul>
+</section>
+<section id="results" class="level2">
+<h2>Results</h2>
+<hr />
+<p><img src="../img/ml/logistic_classification.gif"  class="left"> <img src="../img/ml/logistic_classification_far_data.gif" class="right"></p>
+</section>
+<section id="why-do-we-need-neural-networks" class="level2">
+<h2>Why do we need neural networks?</h2>
+<hr />
+<ul>
+<li><p>We can do classification</p></li>
+<li><p>We can do regression</p></li>
+<li><p>But real problems are nonlinear</p></li>
+</ul>
+</section>
+<section id="non-linear-problem" class="level2">
+<h2>Non-linear problem</h2>
+<hr />
+<p><img src="../img/ml/point_in_out_circle.png" width=100% style="background-color: white;"></p>
+</section>
+<section id="cheat" class="level2">
+<h2>Cheat</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>Feature vector: <span class="math">\[(x,y) \rightarrow (x,y,x^2,y^2)\]</span></p></li>
+<li><p>Hypothesis: <span class="math">\[h (x) = \frac{1}{1 + e^{-w_0 - w_1x - w_2y - w_3x^2 - w_4y^2}}\]</span></p></li>
+</ul>
+<em>In general, adding extra dimension by hand would be hard / impossible. Neural networks do that for us.</em>
+</div>
+<p><img src="../img/ml/point_in_out_circle_sigmoid.png" width=40%></p>
+</section>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="neural-networks" class="level2">
+<h2>Neural Networks</h2>
+</section>
+<section id="neuron" class="level2">
+<h2>Neuron</h2>
+<hr />
+<img src="../img/ml/single_neuron.png" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li>neuron = activation function:
+<ul>
+<li>linear</li>
+<li>binary step</li>
+<li>logistic</li>
+<li>tanh</li>
+<li>relu</li>
+<li>...</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="and-gate" class="level2">
+<h2>AND gate</h2>
+<hr />
+<div class="left">
+<p><img src="../img/ml/single_neuron.png" width=60%></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math">\(x_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math">\(x_2\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">AND</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="right">
+<p><br></p>
+<ul>
+<li>Hypothesis = logistic function:</li>
+</ul>
+<p><span class="math">\[h(x) = \frac{1}{1 + e^{-w^Tx}}\]</span></p>
+<hr />
+<p>Intuition:</p>
+<ul>
+<li><span class="math">\(w_0 &lt; 0\)</span></li>
+<li><span class="math">\(w_0 + w_1 &lt; 0\)</span></li>
+<li><span class="math">\(w_0 + w_2 &lt; 0\)</span></li>
+<li><span class="math">\(w_0 + w_1 + w_2 &gt; 0\)</span></li>
+</ul>
+</div>
+</section>
+<section id="and-gate---learning" class="level2">
+<h2>AND gate - learning</h2>
+<hr />
+<p><img src="../img/ml/and_gate_weights.png" width=60% style="background-color: white"></p>
+</section>
+<section id="non-linear-problem-xor-gate" class="level2">
+<h2>Non-linear problem: XOR gate</h2>
+<hr />
+<p><img src="../img/ml/xor_vs_and_gates.png" width=100%></p>
+</section>
+<section id="neural-network-for-xor" class="level2">
+<h2>Neural network for XOR</h2>
+<hr />
+<p><img src="../img/ml/nn_two_neurons.png" width=60%></p>
+<blockquote>
+<p>x XOR y = (x AND NOT y) OR (y AND NOT x)</p>
+</blockquote>
+</section>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<section id="convolutional-neural-networks" class="level2">
+<h2>Convolutional Neural Networks</h2>
+</section>
+<section id="idea" class="level2">
+<h2>Idea</h2>
+<hr />
+<p><img src="../img/ml/cnn_idea_sketch.png" width=50%></p>
+</section>
+<section id="convolution" class="level2">
+<h2>Convolution</h2>
+<hr />
+<p><img src="../img/ml/convolution_example.gif" width=50%></p>
+<p>src: <a href="http://deeplearning.stanford.edu/wiki/images/6/6c/Convolution_schematic.gif">deeplearning.net</a></p>
+</section>
+<section id="clones-of-a-neuron-looking-at-different-part-of-an-image" class="level2">
+<h2>&quot;Clones&quot; of a neuron looking at different part of an image</h2>
+<hr />
+<p><img src="../img/ml/minerva_filter.png" width = "100%"></p>
+</section>
+<section id="convolution-layer" class="level2">
+<h2>Convolution Layer</h2>
+<hr />
+<center>
+<em>No. of convolved feature vectors / matrices = No. of filters</em>
+</center>
+
+<p><img src="../img/ml/minerva_filter_layer.png" width = "50%"></p>
+</section>
+<section id="pooling" class="level2">
+<h2>Pooling</h2>
+<hr />
+<p><img src="../img/ml/pool_example.png" width = "75%"></p>
+<p>src: <a href="http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/">wildml.com</a></p>
+</section>
+<section id="pooling---example" class="level2">
+<h2>Pooling - example</h2>
+<hr />
+<p><img src="../img/ml/max_pooling_example.png" width = "100%"></p>
+<p>src: <a href="http://arxiv.org/abs/1506.03767">arxiv</a></p>
+</section>
+<section id="cnn-example" class="level2">
+<h2>CNN example</h2>
+<hr />
+<p><img src="../img/ml/cnn_example.png" width = "100%"></p>
+<p>src: <a href="http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/">wildml.com</a></p>
+</section>
+</section>
+<section id="section-5" class="level1">
+<h1></h1>
+<section id="mlvf-progress" class="level2">
+<h2>MLVF Progress</h2>
+</section>
+<section id="what-are-we-looking-for" class="level2">
+<h2>What are we looking for?</h2>
+<hr />
+<ul>
+<li><p>The first goal is to use CNN to find vertex in nuclear target region</p>
+<ul>
+<li><p><strong>Classification</strong>: upstream of target 1, target 1, plastic between target 1 and target 2, target 2...</p></li>
+<li><p><strong>Regression</strong>: in progress, no luck so far</p></li>
+</ul></li>
+<li><p>Apply this for Marianette's DIS measurement</p></li>
+<li><p>Next steps: NC<span class="math">\(\pi^0\)</span>? <span class="math">\(\pi\)</span> momentum? hadron multiplicities?</p></li>
+</ul>
+</section>
+<section id="what-are-we-looking-at" class="level2">
+<h2>What are we looking at?</h2>
+<hr />
+<img src="../img/ml/mlvf_view.png" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li><p>started with smaller samples to save GPU time and memory usage</p></li>
+<li><p>working on &quot;z-extension&quot;</p></li>
+</ul>
+</div>
+</section>
+<section id="classification-regions" class="level2">
+<h2>Classification regions</h2>
+<hr />
+<p><img src="../img/ml/mlvf_detector_regions.png" width=60%></p>
+</section>
+<section id="learning-and-testing-samples" class="level2">
+<h2>Learning and testing samples</h2>
+<hr />
+<ul>
+<li><p>At this point we use <strong>me1B</strong> to <strong>train</strong> the net</p></li>
+<li><p>and <strong>me1A</strong> to <strong>test</strong> the net</p></li>
+</ul>
+<hr />
+<h2> 
+Frameworks in use
+</h2>
+
+<hr />
+<ul>
+<li><a href="http://deeplearning.net/software/theano/"><strong>Theano</strong></a> - Python library for numerical computation</li>
+<li><a href="https://github.com/Lasagne/Lasagne"><strong>Lasagne</strong></a> - Python library to build and train neural networks in Theano</li>
+<li><a href="https://github.com/mila-udem/fuel"><strong>Fuel</strong></a> - data management</li>
+</ul>
+</section>
+<section id="most-promising-cnn-so-far" class="level2">
+<h2>Most promising CNN so far</h2>
+<hr />
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Convolution layer</strong></td>
+<td style="text-align: center;"><strong>No. of filters</strong></td>
+<td style="text-align: center;"><strong>Filter size</strong></td>
+<td style="text-align: center;"><strong>Pool size</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">(8,3)</td>
+<td style="text-align: center;">(2,1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">(7,3)</td>
+<td style="text-align: center;">(2,1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">(6,3)</td>
+<td style="text-align: center;">(2,1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">(6,3)</td>
+<td style="text-align: center;">(2,1)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>and fully connected layers at the end of net</li>
+</ul>
+</section>
+<section id="section-6" class="level2">
+<h2></h2>
+<p><img src="../img/ml/mlvf_cnn_vs_track.png" width=50%></p>
+</section>
+<section id="cnn-in-analysis...-coming-soon" class="level2">
+<h2>CNN in analysis... coming soon</h2>
+</section>
+</section>
+<section id="section-7" class="level1">
+<h1></h1>
+<section id="oak-ridge-national-laboratory" class="level2">
+<h2>Oak Ridge National Laboratory</h2>
+</section>
+<section id="titan" class="level2">
+<h2>Titan</h2>
+<hr />
+<ul>
+<li>We have been working on Wilson Cluster, which has... 2 GPUs</li>
+<li>Recently, we got <span class="math">\(10^6\)</span> GPU hours on Titan</li>
+</ul>
+<hr />
+<p><img src="../img/ml/ornl_titan.png" width = 75%></p>
+<p>src: <a href="https://www.olcf.ornl.gov/media-center/image-gallery/">olcf.ornl.gov</a></p>
+</section>
+<section id="nd-on-top500-list" class="level2">
+<h2>2nd on TOP500 list</h2>
+<hr />
+<p><img src="../img/ml/wiki_top500.png" width=100%></p>
+<p>src: <a href="https://en.wikipedia.org/wiki/TOP500">wikpedia</a></p>
+</section>
+<section id="yes-it-has-more-than-2-gpus" class="level2">
+<h2>Yes, it has more than 2 GPUs</h2>
+<hr />
+<blockquote>
+<p><em>it has <strong>18,668</strong> NVIDIA Kepler GPUs</em></p>
+</blockquote>
+<hr />
+<p><img src="../img/andy.gif" width=50%></p>
+</section>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<hr />
+<ul>
+<li>when presentation is done</li>
+</ul>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+</body>
+
+</html>
