@@ -1,6 +1,6 @@
 % Update on MLVF
-% Tomasz Golan
-% Rochester meeting, 04.18.2016
+% T. Golan
+% *On behalf of J. Miller, G. Perdue, D. Rimal, M. Wospakrik, B. Yaeggi* <br> <br> Rochester meeting, 04.18.2016
 
 # Outline
 
@@ -299,9 +299,9 @@ src: [wildml.com](http://www.wildml.com/2015/11/understanding-convolutional-neur
 <img src="../img/ml/mlvf_view.png" class="left">
 <div class="right"><br>
 
-- started with smaller samples to save GPU time and memory usage
+- started with smaller "pictures" to save GPU time and memory usage ("compress" 127 strips to 50)
 
-- working on "z-extension"
+- now all 127 strips are used
 
 </div>
 
@@ -329,7 +329,9 @@ src: [wildml.com](http://www.wildml.com/2015/11/understanding-convolutional-neur
 - [**Lasagne**](https://github.com/Lasagne/Lasagne) - Python library to build and train neural networks in Theano
 - [**Fuel**](https://github.com/mila-udem/fuel) - data management
 
-## Most promising CNN so far
+## The previous best CNN
+
+> *Working on "compressed" samples*
 
 ---
 
@@ -347,9 +349,91 @@ src: [wildml.com](http://www.wildml.com/2015/11/understanding-convolutional-neur
 
 ##
 
-<img src="../img/ml/mlvf_cnn_vs_track.png" width=50%>
+<img src="../img/ml/mlvf_cnn_vs_track.png" class='left'>
+<div class='right'><br><br>
 
-## CNN in analysis... coming soon
+## ML accuracy
+
+---
+
+```
+test accuracy:    89.63 %
+
+    target 1 accuracy:     94.166 %
+    target 2 accuracy:     91.993 %
+    target 3 accuracy:     93.637 %
+    target 4 accuracy:     87.773 %
+    target 5 accuracy:     85.937 %
+```
+
+</div>
+
+## Purity *(preliminary)*
+
+---
+
+<img src="../img/ml/targetid_pur_inc.png" class='left'>
+<img src="../img/ml/targetid_pur_dis.png" class='right'>
+
+## Efficiency *(preliminary)*
+
+---
+
+<img src="../img/ml/targetid_eff_inc.png" class='left'>
+<img src="../img/ml/targetid_eff_dis.png" class='right'>
+
+## Purity * Efficiency *(preliminary)*
+
+---
+
+<img src="../img/ml/targetid_pur_eff_inc.png" class='left'>
+<img src="../img/ml/targetid_pur_eff_dis.png" class='right'>
+
+##
+
+<img src="../img/ml/mlvf_cnn_vs_track_127.png" class='left'>
+<div class='right'><br>
+
+## The current best
+
+---
+
+```
+test accuracy:        92.67 %
+
+    target 0 accuracy:            75.861 %
+    target 1 accuracy:            94.878 %
+    target 2 accuracy:            94.733 %
+    target 3 accuracy:            93.596 %
+    target 4 accuracy:            90.404 %
+    target 5 accuracy:            94.011 %
+    target 6 accuracy:            87.775 %
+    target 7 accuracy:            85.225 %
+    target 8 accuracy:            94.109 %
+    target 9 accuracy:            53.077 %
+    target 10 accuracy:           96.608 %
+```
+
+</div>
+
+## How did we get here?
+
+---
+
+<font size=6>
+
+> In order to attain the impossible, one must attempt the absurd.
+>
+<div style="text-align:right;">Miguel de Cervante</div>
+
+</font>
+
+---
+
+* Some educated guesses
+* A little bit of intuition
+* And many, many attempts
+* ... on 2 GPU's (shared with other groups)
 
 #
 
@@ -386,8 +470,48 @@ src: [wikpedia](https://en.wikipedia.org/wiki/TOP500)
 
 <img src="../img/andy.gif" width=50%>
 
+## MENNDL Group
+
+---
+
+<font size=6>
+
+> *Multi-node Evolutionary Neural Networks for Deep Learning*
+
+</font>
+
+---
+
+* Looking for optimal hyper-parameters values
+* Determine an optimal network structure
+
+##
+
+<div class='left'>
+
 ## Summary
 
 ---
 
-- when presentation is done
+* ML approach outperforms track-based reconstruction
+* Statistics, efficiency and purity is improved for inclusive and DIS samples
+* It will be even better with the current best network
+* Access to Titan will help a lot, but...
+
+</div>
+<div class='right'>
+
+## Done / in progress
+
+---
+
+* Install software we need at Titan
+* Move to [**Caffe**](http://caffe.berkeleyvision.org/) and [**LMDB**](https://lmdb.readthedocs.org/en/release/)
+* Adapt our workflow to Titan's requirements
+
+---
+
+* How simulations-dependent are we?
+* Next physics goals for ML?
+
+</div>

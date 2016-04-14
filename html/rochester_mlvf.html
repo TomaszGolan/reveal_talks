@@ -9,7 +9,7 @@
 
   <meta name="description" content="Update on MLVF">
 
-   <meta name="author" content="Tomasz Golan" /> 
+   <meta name="author" content="T. Golan" /> 
 
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -48,9 +48,9 @@
 
       <section>
         <h1>Update on MLVF</h1>
-         <h3>Tomasz Golan</h3> 
+         <h3>T. Golan</h3> 
         <p>
-          <h4>Rochester meeting, 04.18.2016</h4>
+          <h4><em>On behalf of J. Miller, G. Perdue, D. Rimal, M. Wospakrik, B. Yaeggi</em> <br> <br> Rochester meeting, 04.18.2016</h4>
         </p>
       </section>
 
@@ -344,8 +344,8 @@
 <div class="right">
 <p><br></p>
 <ul>
-<li><p>started with smaller samples to save GPU time and memory usage</p></li>
-<li><p>working on &quot;z-extension&quot;</p></li>
+<li><p>started with smaller &quot;pictures&quot; to save GPU time and memory usage (&quot;compress&quot; 127 strips to 50)</p></li>
+<li><p>now all 127 strips are used</p></li>
 </ul>
 </div>
 </section>
@@ -373,8 +373,11 @@ Frameworks in use
 <li><a href="https://github.com/mila-udem/fuel"><strong>Fuel</strong></a> - data management</li>
 </ul>
 </section>
-<section id="most-promising-cnn-so-far" class="level2">
-<h2>Most promising CNN so far</h2>
+<section id="the-previous-best-cnn" class="level2">
+<h2>The previous best CNN</h2>
+<blockquote>
+<p><em>Working on &quot;compressed&quot; samples</em></p>
+</blockquote>
 <hr />
 <table>
 <tbody>
@@ -417,13 +420,78 @@ Frameworks in use
 </section>
 <section id="section-6" class="level2">
 <h2></h2>
-<p><img src="../img/ml/mlvf_cnn_vs_track.png" width=50%></p>
+<img src="../img/ml/mlvf_cnn_vs_track.png" class='left'>
+<div class="right">
+<p><br><br></p>
+<h2>ML accuracy</h2>
+<hr />
+<pre><code>test accuracy:    89.63 %
+
+    target 1 accuracy:     94.166 %
+    target 2 accuracy:     91.993 %
+    target 3 accuracy:     93.637 %
+    target 4 accuracy:     87.773 %
+    target 5 accuracy:     85.937 %</code></pre>
+</div>
 </section>
-<section id="cnn-in-analysis...-coming-soon" class="level2">
-<h2>CNN in analysis... coming soon</h2>
+<section id="purity-preliminary" class="level2">
+<h2>Purity <em>(preliminary)</em></h2>
+<hr />
+<p><img src="../img/ml/targetid_pur_inc.png" class='left'> <img src="../img/ml/targetid_pur_dis.png" class='right'></p>
+</section>
+<section id="efficiency-preliminary" class="level2">
+<h2>Efficiency <em>(preliminary)</em></h2>
+<hr />
+<p><img src="../img/ml/targetid_eff_inc.png" class='left'> <img src="../img/ml/targetid_eff_dis.png" class='right'></p>
+</section>
+<section id="purity-efficiency-preliminary" class="level2">
+<h2>Purity * Efficiency <em>(preliminary)</em></h2>
+<hr />
+<p><img src="../img/ml/targetid_pur_eff_inc.png" class='left'> <img src="../img/ml/targetid_pur_eff_dis.png" class='right'></p>
+</section>
+<section id="section-7" class="level2">
+<h2></h2>
+<img src="../img/ml/mlvf_cnn_vs_track_127.png" class='left'>
+<div class="right">
+<p><br></p>
+<h2>The current best</h2>
+<hr />
+<pre><code>test accuracy:        92.67 %
+
+    target 0 accuracy:            75.861 %
+    target 1 accuracy:            94.878 %
+    target 2 accuracy:            94.733 %
+    target 3 accuracy:            93.596 %
+    target 4 accuracy:            90.404 %
+    target 5 accuracy:            94.011 %
+    target 6 accuracy:            87.775 %
+    target 7 accuracy:            85.225 %
+    target 8 accuracy:            94.109 %
+    target 9 accuracy:            53.077 %
+    target 10 accuracy:           96.608 %</code></pre>
+</div>
+</section>
+<section id="how-did-we-get-here" class="level2">
+<h2>How did we get here?</h2>
+<hr />
+<p><font size=6></p>
+<blockquote>
+<p>In order to attain the impossible, one must attempt the absurd.</p>
+<div style="text-align:right;">
+Miguel de Cervante
+</div>
+</blockquote>
+<p></font></p>
+<hr />
+<ul>
+<li>Some educated guesses</li>
+<li>A little bit of intuition</li>
+<li>And many, many attempts</li>
+<li>... on 2 GPU's (shared with other groups)</li>
+</ul>
 </section>
 </section>
-<section id="section-7" class="level1">
+<section id="section-8" class="level1">
 <h1></h1>
 <section id="oak-ridge-national-laboratory" class="level2">
 <h2>Oak Ridge National Laboratory</h2>
@@ -454,12 +522,46 @@ Frameworks in use
 <hr />
 <p><img src="../img/andy.gif" width=50%></p>
 </section>
-<section id="summary" class="level2">
+<section id="menndl-group" class="level2">
+<h2>MENNDL Group</h2>
+<hr />
+<p><font size=6></p>
+<blockquote>
+<p><em>Multi-node Evolutionary Neural Networks for Deep Learning</em></p>
+</blockquote>
+<p></font></p>
+<hr />
+<ul>
+<li>Looking for optimal hyper-parameters values</li>
+<li>Determine an optimal network structure</li>
+</ul>
+</section>
+<section id="section-9" class="level2">
+<h2></h2>
+<div class="left">
 <h2>Summary</h2>
 <hr />
 <ul>
-<li>when presentation is done</li>
+<li>ML approach outperforms track-based reconstruction</li>
+<li>Statistics, efficiency and purity is improved for inclusive and DIS samples</li>
+<li>It will be even better with the current best network</li>
+<li>Access to Titan will help a lot, but...</li>
 </ul>
+</div>
+<div class="right">
+<h2>Done / in progress</h2>
+<hr />
+<ul>
+<li>Install software we need at Titan</li>
+<li>Move to <a href="http://caffe.berkeleyvision.org/"><strong>Caffe</strong></a> and <a href="https://lmdb.readthedocs.org/en/release/"><strong>LMDB</strong></a></li>
+<li>Adapt our workflow to Titan's requirements</li>
+</ul>
+<hr />
+<ul>
+<li>How simulations-dependent are we?</li>
+<li>Next physics goals for ML?</li>
+</ul>
+</div>
 </section>
 </section>
     </div>
