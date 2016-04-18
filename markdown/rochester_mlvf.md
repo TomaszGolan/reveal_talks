@@ -368,6 +368,8 @@ test accuracy:    89.63 %
 
 </div>
 
+<br>
+
 ## Purity *(preliminary)*
 
 ---
@@ -415,6 +417,8 @@ test accuracy:        92.67 %
 ```
 
 </div>
+
+<br>
 
 ## How did we get here?
 

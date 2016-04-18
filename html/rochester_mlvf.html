@@ -77,9 +77,9 @@
 <h2>Notation</h2>
 <hr />
 <ul>
-<li>Hypothesis (for convenience <span class="math">\(x_0 = 1\)</span>): <span class="math">\[h(x) = w_0 + w_1x_1 + ... + w_nx_n = \sum\limits_{i=0}^n w_i x_i = w^T x\]</span></li>
-<li>Cost function: <span class="math">\[f(w) = \frac{1}{2}\sum\limits_{i=0}^n\left(h (x^{(i)}) - y^{(i)}\right)^2\]</span></li>
-<li>Learning step (gradient descent, <span class="math">\(\alpha\)</span> - training rate): <span class="math">\[w_j = w_j - \alpha\frac{\partial f(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></li>
+<li>Hypothesis (for convenience <span class="math inline">\(x_0 = 1\)</span>): <span class="math display">\[h(x) = w_0 + w_1x_1 + ... + w_nx_n = \sum\limits_{i=0}^n w_i x_i = w^T x\]</span></li>
+<li>Cost function: <span class="math display">\[f(w) = \frac{1}{2}\sum\limits_{i=0}^n\left(h (x^{(i)}) - y^{(i)}\right)^2\]</span></li>
+<li>Learning step (gradient descent, <span class="math inline">\(\alpha\)</span> - training rate): <span class="math display">\[w_j = w_j - \alpha\frac{\partial f(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></li>
 </ul>
 </section>
 <section id="example" class="level2">
@@ -101,7 +101,7 @@
 <div class="right">
 <p><br></p>
 <ul>
-<li><p>target: <span class="math">\(y = 0, 1\)</span></p></li>
+<li><p>target: <span class="math inline">\(y = 0, 1\)</span></p></li>
 <li><p>not really efficient for classification</p></li>
 <li><p>imagine having some data ~ 100</p></li>
 <li>logistic function does better job</li>
@@ -126,8 +126,8 @@
 <div class="left">
 <p><br></p>
 <ul>
-<li><p>Logistic function: <span class="math">\[g(z) = \frac{1}{1 + e^{-z}}\]</span></p></li>
-<li>Hypothesis: <span class="math">\[h(x) = g(w^Tx) = \frac{1}{1 + e^{-w^Tx}}\]</span></li>
+<li><p>Logistic function: <span class="math display">\[g(z) = \frac{1}{1 + e^{-z}}\]</span></p></li>
+<li>Hypothesis: <span class="math display">\[h(x) = g(w^Tx) = \frac{1}{1 + e^{-w^Tx}}\]</span></li>
 </ul>
 </div>
 </section>
@@ -135,17 +135,17 @@
 <h2>Classification</h2>
 <hr />
 <ul>
-<li><p>Probability of 1: <span class="math">\[P (y = 1 | x, w) = h(x)\]</span></p></li>
-<li><p>Probability of 0: <span class="math">\[P (y = 0 | x, w) = 1 - h(x)\]</span></p></li>
-<li><p>Probability: <span class="math">\[p (y | x, w) = (h(x))^y\cdot(1 - h(x))^{1 - y}\]</span></p></li>
+<li><p>Probability of 1: <span class="math display">\[P (y = 1 | x, w) = h(x)\]</span></p></li>
+<li><p>Probability of 0: <span class="math display">\[P (y = 0 | x, w) = 1 - h(x)\]</span></p></li>
+<li><p>Probability: <span class="math display">\[p (y | x, w) = (h(x))^y\cdot(1 - h(x))^{1 - y}\]</span></p></li>
 </ul>
 </section>
 <section id="section-2" class="level2">
 <h2></h2>
 <ul>
-<li><p>Likelihood: <span class="math">\[L(w) = \prod\limits_{i=0}^n p(y^{(i)} | x^{(i)}, w) = \prod\limits_{i=0}^n (h(x^{(i)}))^{y^{(i)}}\cdot(1 - h(x^{(i)}))^{1 - y^{(i)}}\]</span></p></li>
-<li><p>Log-likelihood: <span class="math">\[l(w) = \log L(w) = \sum\limits_{i=0}^n y^{(i)}\log h(x^{(i)}) + (1 - y^{(i)})\log (1-h(x^{(i)}))\]</span></p></li>
-<li><p>Learning step (maximize <span class="math">\(l(w)\)</span>): <span class="math">\[w_j = w_j + \alpha\frac{\partial l(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></p></li>
+<li><p>Likelihood: <span class="math display">\[L(w) = \prod\limits_{i=0}^n p(y^{(i)} | x^{(i)}, w) = \prod\limits_{i=0}^n (h(x^{(i)}))^{y^{(i)}}\cdot(1 - h(x^{(i)}))^{1 - y^{(i)}}\]</span></p></li>
+<li><p>Log-likelihood: <span class="math display">\[l(w) = \log L(w) = \sum\limits_{i=0}^n y^{(i)}\log h(x^{(i)}) + (1 - y^{(i)})\log (1-h(x^{(i)}))\]</span></p></li>
+<li><p>Learning step (maximize <span class="math inline">\(l(w)\)</span>): <span class="math display">\[w_j = w_j + \alpha\frac{\partial l(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></p></li>
 </ul>
 </section>
 <section id="results" class="level2">
@@ -172,10 +172,10 @@
 <hr />
 <div class="left">
 <ul>
-<li><p>Feature vector: <span class="math">\[(x,y) \rightarrow (x,y,x^2,y^2)\]</span></p></li>
-<li><p>Hypothesis: <span class="math">\[h (x) = \frac{1}{1 + e^{-w_0 - w_1x - w_2y - w_3x^2 - w_4y^2}}\]</span></p></li>
+<li><p>Feature vector: <span class="math display">\[(x,y) \rightarrow (x,y,x^2,y^2)\]</span></p></li>
+<li><p>Hypothesis: <span class="math display">\[h (x) = \frac{1}{1 + e^{-w_0 - w_1x - w_2y - w_3x^2 - w_4y^2}}\]</span></p></li>
 </ul>
-<em>In general, adding extra dimension by hand would be hard / impossible. Neural networks do that for us.</em>
+<p><em>In general, adding extra dimension by hand would be hard / impossible. Neural networks do that for us.</em></p>
 </div>
 <p><img src="../img/ml/point_in_out_circle_sigmoid.png" width=40%></p>
 </section>
@@ -212,14 +212,14 @@
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math">\(x_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(x_1\)</span></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math">\(x_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(x_2\)</span></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">1</td>
@@ -240,14 +240,14 @@
 <ul>
 <li>Hypothesis = logistic function:</li>
 </ul>
-<p><span class="math">\[h(x) = \frac{1}{1 + e^{-w^Tx}}\]</span></p>
+<p><span class="math display">\[h(x) = \frac{1}{1 + e^{-w^Tx}}\]</span></p>
 <hr />
 <p>Intuition:</p>
 <ul>
-<li><span class="math">\(w_0 &lt; 0\)</span></li>
-<li><span class="math">\(w_0 + w_1 &lt; 0\)</span></li>
-<li><span class="math">\(w_0 + w_2 &lt; 0\)</span></li>
-<li><span class="math">\(w_0 + w_1 + w_2 &gt; 0\)</span></li>
+<li><span class="math inline">\(w_0 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_1 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_2 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_1 + w_2 &gt; 0\)</span></li>
 </ul>
 </div>
 </section>
@@ -297,7 +297,6 @@
 <center>
 <em>No. of convolved feature vectors / matrices = No. of filters</em>
 </center>
-
 <p><img src="../img/ml/minerva_filter_layer.png" width = "50%"></p>
 </section>
 <section id="pooling" class="level2">
@@ -334,7 +333,7 @@
 <li><p><strong>Regression</strong>: in progress, no luck so far</p></li>
 </ul></li>
 <li><p>Apply this for Marianette's DIS measurement</p></li>
-<li><p>Next steps: NC<span class="math">\(\pi^0\)</span>? <span class="math">\(\pi\)</span> momentum? hadron multiplicities?</p></li>
+<li><p>Next steps: NC<span class="math inline">\(\pi^0\)</span>? <span class="math inline">\(\pi\)</span> momentum? hadron multiplicities?</p></li>
 </ul>
 </section>
 <section id="what-are-we-looking-at" class="level2">
@@ -362,10 +361,9 @@
 <li><p>and <strong>me1A</strong> to <strong>test</strong> the net</p></li>
 </ul>
 <hr />
-<h2> 
+<h2>
 Frameworks in use
 </h2>
-
 <hr />
 <ul>
 <li><a href="http://deeplearning.net/software/theano/"><strong>Theano</strong></a> - Python library for numerical computation</li>
@@ -423,7 +421,7 @@ Frameworks in use
 <img src="../img/ml/mlvf_cnn_vs_track.png" class='left'>
 <div class="right">
 <p><br><br></p>
-<h2>ML accuracy</h2>
+<h2 id="ml-accuracy">ML accuracy</h2>
 <hr />
 <pre><code>test accuracy:    89.63 %
 
@@ -433,6 +431,7 @@ Frameworks in use
     target 4 accuracy:     87.773 %
     target 5 accuracy:     85.937 %</code></pre>
 </div>
+<p><br></p>
 </section>
 <section id="purity-preliminary" class="level2">
 <h2>Purity <em>(preliminary)</em></h2>
@@ -454,7 +453,7 @@ Frameworks in use
 <img src="../img/ml/mlvf_cnn_vs_track_127.png" class='left'>
 <div class="right">
 <p><br></p>
-<h2>The current best</h2>
+<h2 id="the-current-best">The current best</h2>
 <hr />
 <pre><code>test accuracy:        92.67 %
 
@@ -470,6 +469,7 @@ Frameworks in use
     target 9 accuracy:            53.077 %
     target 10 accuracy:           96.608 %</code></pre>
 </div>
+<p><br></p>
 </section>
 <section id="how-did-we-get-here" class="level2">
 <h2>How did we get here?</h2>
@@ -501,7 +501,7 @@ Miguel de Cervante
 <hr />
 <ul>
 <li>We have been working on Wilson Cluster, which has... 2 GPUs</li>
-<li>Recently, we got <span class="math">\(10^6\)</span> GPU hours on Titan</li>
+<li>Recently, we got <span class="math inline">\(10^6\)</span> GPU hours on Titan</li>
 </ul>
 <hr />
 <p><img src="../img/ml/ornl_titan.png" width = 75%></p>
@@ -539,7 +539,7 @@ Miguel de Cervante
 <section id="section-9" class="level2">
 <h2></h2>
 <div class="left">
-<h2>Summary</h2>
+<h2 id="summary">Summary</h2>
 <hr />
 <ul>
 <li>ML approach outperforms track-based reconstruction</li>
@@ -549,7 +549,7 @@ Miguel de Cervante
 </ul>
 </div>
 <div class="right">
-<h2>Done / in progress</h2>
+<h2 id="done-in-progress">Done / in progress</h2>
 <hr />
 <ul>
 <li>Install software we need at Titan</li>
