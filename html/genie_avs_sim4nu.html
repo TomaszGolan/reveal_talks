@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>GENIE: Automated Validation System [draft]</title>
+
+  <meta name="description" content="GENIE: Automated Validation System [draft]">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>GENIE: Automated Validation System [draft]</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4><em>On behalf of Fermilab GENIE Group</em> <br> <br> Simulations for Neutrino Meeting, XX.XX.XXXX</h4>
+        </p>
+      </section>
+
+       <section id="what-is-avs" class="level2">
+<h2>What is AVS?</h2>
+<div class="left">
+<p><br></p>
+<ul>
+<li>The project focused on running GENIE validation apps</li>
+<li>In the most possible automated way</li>
+<li>Using all Fermilab resources: Fermigrid, Open Science Grid</li>
+<li>Current workflow:</li>
+</ul>
+<p>Jenkins <span class="math inline">\(\Rightarrow\)</span> CVMFS <span class="math inline">\(\Rightarrow\)</span> Jobsub</p>
+</div>
+<p><img src="../img/genie/genie_auto.png" width=30%></p>
+</section>
+<section id="why-do-we-need-avs" class="level2">
+<h2>Why do we need AVS?</h2>
+<div class="left">
+<p><br><br></p>
+<ul>
+<li>Because we are lazy...</li>
+<li>Because we want to control changes and new physics models:
+<ul>
+<li>by comparing releases</li>
+<li>by comparing with data</li>
+</ul></li>
+</ul>
+</div>
+<p><img src="../img/genie/genie_validation.png" class="right"></p>
+</section>
+<section id="legacy-validation" class="level2">
+<h2>Legacy Validation</h2>
+<div class="left">
+<p><br><br></p>
+<ul>
+<li>The full set of <em>legacy</em> validation apps is ready:
+<ul>
+<li>about 50 plots with cross sections</li>
+<li>about 20 plots with hadronization</li>
+</ul></li>
+<li>Comparing with data</li>
+<li>Including reference realease</li>
+</ul>
+</div>
+<p><img src="../img/genie/genie_bottle.png" class="right"></p>
+</section>
+<section id="genie-database" class="level2">
+<h2>GENIE Database</h2>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+</body>
+
+</html>
