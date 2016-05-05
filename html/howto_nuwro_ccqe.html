@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>How to use NuWro CCQE samples</title>
+
+  <meta name="description" content="How to use NuWro CCQE samples">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>How to use NuWro CCQE samples</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4>CCQE meeting, 05.10.2016</h4>
+        </p>
+      </section>
+
+       <section id="why-this-talk" class="level2">
+<h2>Why this talk?</h2>
+<hr />
+<ul>
+<li>Some NuWro samples were produced.</li>
+<li>More NuWro samples will be produced.</li>
+<li>Where do they live?</li>
+<li>How to use them?</li>
+</ul>
+<hr />
+</section>
+<section id="section" class="level1">
+<h1></h1>
+<section id="location" class="level2">
+<h2>Location</h2>
+<hr />
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">/minerva/data/users/goran/nuwro_ccqe_samples/
+├── dist                                                            | extracted histograms
+│   ├── minerva_fhcnue_cc_ch_lfg_norpa_tem_ma099_histograms.root
+│   ├── minerva_fhcnue_cc_ch_rfg_norpa_nieves_ma099_histograms.root
+│   ├── ...
+│   ├── minerva_fhcnue_cc_ch_rfg_rpa_tem_ma099_histograms.root
+│   └── minerva_fhcnue_cc_ch_sf_norpa_nomec_ma099_histograms.root
+├── nuwro_ccqe_extractor.c                                          | ROOT macro
+└── root                                                            | simulation outputs
+    ├── minerva_fhcnue_cc_ch_lfg_norpa_tem_ma099.root               | event tree
+    ├── minerva_fhcnue_cc_ch_lfg_norpa_tem_ma099.root.par           | parameters
+    ├── minerva_fhcnue_cc_ch_lfg_norpa_tem_ma099.root.txt           | total cross section
+    ├── ...
+    ├── minerva_fhcnue_cc_ch_sf_norpa_nomec_ma099.root
+    ├── minerva_fhcnue_cc_ch_sf_norpa_nomec_ma099.root.par
+    └── minerva_fhcnue_cc_ch_sf_norpa_nomec_ma099.root.txt</code></pre></div>
+<hr />
+</section>
+<section id="naming-convention" class="level2">
+<h2>Naming convention</h2>
+<hr />
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">minerva_[beam]_[current]_[target]_[nucleus]_[rpa]_[npnh]_[axial mass]
+
+[beam]       = fhcnue / rhcnue      | neutrino / anti-neutrino with nu-e constraint
+[current]    = cc / nc              | charged / neutral current
+[target]     = ch                   | CH
+[nucleus]    = rfg / lfg / sf       | global / local Fermi gas / spectral function
+[rpa]        = rpa / norpa          | random phase approximation
+[npnh]       = nomec / tem / nieves | no npnh / transverse enhancement / Nieves et al
+[axial_mass] = maXXX                | XXX = axial mass in GeV</code></pre></div>
+<hr />
+<section id="some-common-parameters" class="level3">
+<h3>Some common parameters</h3>
+<hr />
+<div class="left">
+<pre><code>number_of_events = 10000000
+
+nucleus_E_b =  25
+nucleus_kf  = 221
+
+dyn_qel_cc = 1
+dyn_res_cc = 1
+dyn_dis_cc = 1</code></pre>
+</div>
+<div class="right">
+<pre><code>dyn_qel_nc = 0
+dyn_res_nc = 0
+dyn_dis_nc = 0
+dyn_coh_cc = 0
+dyn_coh_nc = 0
+
+// BBBA05, hep-ex/0602017
+qel_vector_ff_set = 2</code></pre>
+</div>
+</section>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="nuwro-ccqe-extractor" class="level2">
+<h2>NuWro CCQE Extractor</h2>
+</section>
+<section id="setup" class="level2">
+<h2>Setup</h2>
+<hr />
+<ul>
+<li>To run <code>nuwro_ccqe_extractor</code> one needs ROOT with NuWro dictionary</li>
+<li>You can use my setups:</li>
+</ul>
+<pre><code>alias setup_root=&#39;source /minerva/app/users/goran/GENIE/environment_genie.sh&#39;
+
+alias myroot=&#39;/minerva/app/users/goran/nuwro_533497d/bin/myroot&#39;</code></pre>
+<hr />
+</section>
+<section id="main-function" class="level2">
+<h2>Main function</h2>
+<hr />
+<pre><code class="cpp">void nuwro_ccqe_extractor(char *filename)
+
+* assuming filename w/o .root extension
+* assuming file in pwd/root folder
+* saves output in pwd/dist folder
+</code></pre>
+<hr />
+<h3>
+Example
+</h3>
+<hr />
+<pre><code class="bash">$ cd /minerva/data/users/goran/nuwro_ccqe_samples/
+$ source /minerva/app/users/goran/GENIE/environment_genie.sh
+$ /minerva/app/users/goran/nuwro_533497d/bin/myroot
+root [0] .L nuwro_ccqe_extractor.c
+root [1] nuwro_ccqe_extractor("minerva_fhcnue_cc_ch_sf_norpa_tem_ma099")
+</code></pre>
+<hr />
+</section>
+<section id="main-loop" class="level2">
+<h2>Main loop</h2>
+<hr />
+<pre><code>for (unsigned int i = 0; i &lt; nof_events; i++)
+{
+    tree-&gt;GetEntry(i);
+
+    const double Q2 = -e-&gt;q2() / 1000000.0;     // in GeV^2
+    const double pl = e-&gt;out[0].p().z / 1000.0; // in GeV
+    const double pt = sqrt(e-&gt;out[0].p().x * e-&gt;out[0].p().x
+                           + e-&gt;out[0].p().y * e-&gt;out[0].p().y) / 1000.0;
+
+    .
+    .
+    .
+
+    if (100 * i % nof_events == 0)
+      cout &lt;&lt; 100 * i / nof_events &lt;&lt; &quot;%     \r&quot; &lt;&lt; flush;
+}</code></pre>
+<hr />
+</section>
+<section id="signal-selection" class="level2">
+<h2>Signal selection</h2>
+<hr />
+<pre><code class="cpp">    if (is_ccqe_true(e))
+    {
+        q2_true_nocut->Fill(Q2);
+        ptpl_true_nocut->Fill(pt, pl);
+
+        if (angle_cut(e))
+        {
+            q2_true_cut->Fill(Q2);
+            ptpl_true_cut->Fill(pt, pl);
+        }
+    }
+
+    if (is_ccqe_like(e))
+    {
+      ...
+    }
+</code></pre>
+<hr />
+</section>
+<section id="example-signal-definition" class="level2">
+<h2>Example signal definition</h2>
+<hr />
+<pre><code class="cpp">// check if the event is ccqe-like
+bool is_ccqe_like(event *e, const double Tk_cut = 120.0)
+{
+    // XYZ -> no. of pi+ (X), pi- (Y), pi0 (Z) in the final state
+    int pion_code = 100.0 * e->fof(211) + 10.0 * e->fof(-211) + e->fof(111);
+    // not ccqe-like if at least one pion
+    if (pion_code) return false;
+    // no proton cut for neutirno
+    if (e->in[0].pdg == 14) return true;
+    // check protons Tk for anti-neutrino
+    for (unsigned int i = 0; i < e->post.size(); i++)
+          if (e->post[i].pdg == 2212 && e->post[i].Ek() > Tk_cut) return false;
+
+    return true;
+}
+</code></pre>
+<hr />
+</section>
+<section id="section-2" class="level2">
+<h2></h2>
+<p>Read more: <a href="https://cdcvs.fnal.gov/redmine/attachments/download/26099/nuwro_howto.pdf">NuWro HowTo</a></p>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+</body>
+
+</html>

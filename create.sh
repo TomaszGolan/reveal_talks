@@ -1,6 +1,6 @@
 #!/bin/bash
 
-talk='genie_avs_sim4nu' # name of source file in markdown fodler
+talk='howto_nuwro_ccqe' # name of source file in markdown fodler
 theme='black'           # beige | black | blood | league | moon | night | serif | simple | sky | solarized | white
 hs='monokai_mod'        # highlight style from template folder (leave blank to use default = zenburn)
 transition='convex'     # none | fade | slide | convex | concave | zoom
