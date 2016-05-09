@@ -206,6 +206,17 @@ bool is_ccqe_like(event *e, const double Tk_cut = 120.0)
 
 ---
 
-##
+## Binning
 
-Read more: [NuWro HowTo](https://cdcvs.fnal.gov/redmine/attachments/download/26099/nuwro_howto.pdf)
+---
+
+```
+const double q2_bins[] = {0, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8, 1.2, 2.0};
+const double pt_bins[] = {0, 0.15, 0.25, 0.4, 0.7, 1.0, 1.5};
+const double pl_bins[] = {1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 8.0, 10.0, 15.0};
+```
+---
+
+Read more on using NuWro: [NuWro HowTo](https://cdcvs.fnal.gov/redmine/attachments/download/26099/nuwro_howto.pdf)
+
+---
