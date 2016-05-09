@@ -90,6 +90,25 @@ qel_vector_ff_set = 2
 
 ---
 
+## Histograms
+
+---
+
+```diff
+[variable]_[signal]_[angle cut]
+
+variable  = q2 / ptpl   | dsigma/dQ2 / d^2sigma/dpTdpL
+signal    = true / like | CCQE-true / CCQE-like
+angle_cut = cut / nocut | muon angle < 20
+```
+
+---
+
+* Cross sections are normalized per nucleon in $cm^2$
+* Q2, pT, and pL are in $GeV$
+
+---
+
 #
 
 ## Models
