@@ -5,9 +5,9 @@
 
   <meta charset="utf-8">
 
-  <title>How to use NuWro CCQE samples</title>
+  <title>NuWro CCQE samples</title>
 
-  <meta name="description" content="How to use NuWro CCQE samples">
+  <meta name="description" content="NuWro CCQE samples">
 
    <meta name="author" content="Tomasz Golan" /> 
 
@@ -47,7 +47,7 @@
     <div class="slides">
 
       <section>
-        <h1>How to use NuWro CCQE samples</h1>
+        <h1>NuWro CCQE samples</h1>
          <h3>Tomasz Golan</h3> 
         <p>
           <h4>CCQE meeting, 05.10.2016</h4>
@@ -60,6 +60,7 @@
 <ul>
 <li>Some NuWro samples were produced.</li>
 <li>More NuWro samples will be produced.</li>
+<li>What samples?</li>
 <li>Where do they live?</li>
 <li>How to use them?</li>
 </ul>
@@ -101,10 +102,11 @@
 [npnh]       = nomec / tem / nieves | no npnh / transverse enhancement / Nieves et al
 [axial_mass] = maXXX                | XXX = axial mass in GeV</code></pre></div>
 <hr />
-<section id="some-common-parameters" class="level3">
-<h3>Some common parameters</h3>
+</section>
+<section id="some-common-parameters" class="level2">
+<h2>Some common parameters</h2>
 <hr />
-<div class="left">
+<div class="left" style="margin-bottom: 20px;">
 <pre><code>number_of_events = 10000000
 
 nucleus_E_b =  25
@@ -124,10 +126,76 @@ dyn_coh_nc = 0
 // BBBA05, hep-ex/0602017
 qel_vector_ff_set = 2</code></pre>
 </div>
-</section>
+<hr />
 </section>
 </section>
 <section id="section-1" class="level1">
+<h1></h1>
+<section id="models" class="level2">
+<h2>Models</h2>
+</section>
+<section id="fermi-gas" class="level2">
+<h2>Fermi gas</h2>
+<hr />
+<div class="left">
+<p>Nucleons move freely within the nuclear volume in constant binding potential.</p>
+<hr />
+<p><br></p>
+<ul>
+<li><p>RFG: <span class="math inline">\(p_F = \frac{\hbar}{r_0}\left(\frac{9\pi N}{4A}\right)^{1/3}\)</span></p></li>
+<li><p>LFG: <span class="math inline">\(p_F(r) = \hbar\left(3\pi^2\rho(r) \frac{N}{A}\right)^{1/3}\)</span></p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/nuwro/fermi_gas.png" width=50%> <img src="../img/nuwro/rfg_vs_lfg.png" width=50%></p>
+</div>
+<hr />
+</section>
+<section id="spectral-function" class="level2">
+<h2>Spectral function</h2>
+<hr />
+<div class="left">
+<p>The probability of removing a nucleon with momentum <span class="math inline">\(\vec p\)</span> and leaving residual nucleus with excitation energy <span class="math inline">\(E\)</span>:</p>
+<p><span class="math display">\[P(\vec p, E) = P_{MF}(\vec p, E) + P_{SRC}(\vec p, E)\]</span></p>
+<hr />
+<p><img src="../img/nuwro/src_sf.png" width=50%></p>
+</div>
+<div class="right">
+<p><img src="../img/nuwro/sf_momentum.png" width=50%> <img src="../img/nuwro/fg_vs_sf_momentum.png" width=50%></p>
+</div>
+<hr />
+</section>
+<section id="two-body-current" class="level2">
+<h2>Two-body current</h2>
+<hr />
+<div class="left" style="margin-bottom: 40px;">
+<ul>
+<li>Nieves - microscopic calculations</li>
+<li>TEM - modification of the vector magnetic form factors</li>
+<li>Both:
+<ul>
+<li>Inclusive double differential xsec for the final state lepton</li>
+<li>Final nucleons momenta are set isotropically in CMS</li>
+</ul></li>
+</ul>
+</div>
+<p><br> <img src="../img/nuwro/src_2p2h.png" width=30%></p>
+<hr />
+</section>
+<section id="tem-vs-nieves" class="level2">
+<h2>TEM vs Nieves</h2>
+<hr />
+<p><img src="../img/nuwro/npnh_total.png" class='left' style="margin-bottom: 40px;"> <img src="../img/nuwro/npnh_ratio.png" class='right'></p>
+<hr />
+</section>
+<section id="tem-vs-nieves-kinematics" class="level2">
+<h2>TEM vs Nieves: kinematics</h2>
+<hr />
+<p><img src="../img/nuwro/nieves_kinematics.png" class='left' style="margin-bottom: 40px;"> <img src="../img/nuwro/tem_kinematics.png" class='right'></p>
+<hr />
+</section>
+</section>
+<section id="section-2" class="level1">
 <h1></h1>
 <section id="nuwro-ccqe-extractor" class="level2">
 <h2>NuWro CCQE Extractor</h2>

@@ -1,9 +1,13 @@
 .right {
   float: right;
-  width: 48%
+  width: 49%;
 }
 
 .left {
   float: left;
-  width: 48%
+  width: 49%;
+}
+
+hr {
+  clear: both;
 }

@@ -1,4 +1,4 @@
-% How to use NuWro CCQE samples
+% NuWro CCQE samples
 % Tomasz Golan
 % CCQE meeting, 05.10.2016
 
@@ -8,6 +8,7 @@
 
 * Some NuWro samples were produced.
 * More NuWro samples will be produced.
+* What samples?
 * Where do they live?
 * How to use them?
 
@@ -58,12 +59,11 @@ minerva_[beam]_[current]_[target]_[nucleus]_[rpa]_[npnh]_[axial mass]
 
 ---
 
-### Some common parameters
+## Some common parameters
 
 ---
 
-<div class='left'>
-
+<div class='left' style="margin-bottom: 20px;">
 ```
 number_of_events = 10000000
 
@@ -76,7 +76,6 @@ dyn_dis_cc = 1
 ```
 </div>
 <div class='right'>
-
 ```
 dyn_qel_nc = 0
 dyn_res_nc = 0
@@ -88,6 +87,94 @@ dyn_coh_nc = 0
 qel_vector_ff_set = 2
 ```
 </div>
+
+---
+
+#
+
+## Models
+
+## Fermi gas
+
+---
+
+<div class='left'>
+Nucleons move freely within the nuclear volume in constant binding potential.
+
+---
+
+<br>
+
+* RFG:     $p_F = \frac{\hbar}{r_0}\left(\frac{9\pi N}{4A}\right)^{1/3}$
+
+* LFG:     $p_F(r) = \hbar\left(3\pi^2\rho(r) \frac{N}{A}\right)^{1/3}$
+
+</div>
+<div class='right'>
+<img src="../img/nuwro/fermi_gas.png" width=50%>
+<img src="../img/nuwro/rfg_vs_lfg.png" width=50%>
+</div>
+
+---
+
+## Spectral function
+
+---
+
+<div class='left'>
+
+The probability of removing a nucleon with momentum $\vec p$ and leaving
+residual nucleus with excitation energy $E$:
+
+$$P(\vec p, E) = P_{MF}(\vec p, E) + P_{SRC}(\vec p, E)$$
+
+---
+
+<img src="../img/nuwro/src_sf.png" width=50%>
+
+</div>
+<div class='right'>
+<img src="../img/nuwro/sf_momentum.png" width=50%>
+<img src="../img/nuwro/fg_vs_sf_momentum.png" width=50%>
+</div>
+
+---
+
+## Two-body current
+
+---
+
+<div class='left' style="margin-bottom: 40px;">
+
+* Nieves - microscopic calculations
+* TEM - modification of the vector magnetic form factors
+* Both:
+    * Inclusive double differential xsec for the final state lepton
+    * Final nucleons momenta are set isotropically in CMS
+
+</div>
+<br>
+<img src="../img/nuwro/src_2p2h.png" width=30%>
+
+---
+
+## TEM vs Nieves
+
+---
+
+<img src="../img/nuwro/npnh_total.png" class='left' style="margin-bottom: 40px;">
+<img src="../img/nuwro/npnh_ratio.png" class='right'>
+
+---
+
+## TEM vs Nieves: kinematics
+
+---
+
+<img src="../img/nuwro/nieves_kinematics.png" class='left' style="margin-bottom: 40px;">
+<img src="../img/nuwro/tem_kinematics.png" class='right'>
+
+---
 
 #
 
