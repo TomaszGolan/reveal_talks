@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>NuWro Update</title>
+
+  <meta name="description" content="NuWro Update">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>NuWro Update</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4><em>On behalf of Generator Group</em> <br> <br> MINERvA Week June 2016</h4>
+        </p>
+      </section>
+
+       <section id="recent-developments" class="level3">
+<h3>Recent developments</h3>
+<hr />
+<ul>
+<li><p>Berger-Sehgal for coherent pion production</p></li>
+<li><p>Non-resonant background scaling</p></li>
+<li><p>Reweighting tools</p></li>
+<li><p>Effective momentum and density dependent potential</p></li>
+<li><p>Hadronic states for 2p2h</p></li>
+<li><p>eWro</p></li>
+</ul>
+<hr />
+</section>
+<section id="berger-sehgal" class="level3">
+<h3>Berger-Sehgal</h3>
+<hr />
+<p><img src="../img/nuwro/bs_coh.png" width=100%></p>
+<ul>
+<li>some old NuWro samples were made with RS model, but now BS is default and will be used if not specified in a request</li>
+</ul>
+<hr />
+</section>
+<section id="non-resonant-background" class="level3">
+<h3>Non-resonant background</h3>
+<hr />
+<div class="right">
+<p>Transition region in NuWro: <img src="../img/nuwro/nonres_bkg.png" width=100%></p>
+</div>
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>There is a new parameter in params.txt: bkgrscaling</p></li>
+<li><p>It can be used to scale non-resonant background (by modifying <span class="math inline">\(\alpha\)</span>)</p></li>
+</ul>
+<p><br></p>
+</div>
+<hr />
+</section>
+<section id="fsi-reweighting" class="level3">
+<h3>FSI reweighting</h3>
+<hr />
+<blockquote>
+<p>Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.</p>
+<div style="text-align:right;">
+Francis of Assisi
+</div>
+</blockquote>
+<hr />
+<ul>
+<li><p>FSI reweighting tool for NuWro by Patrick Stowell and Luke Pickering</p></li>
+<li><p>Status: work in progress</p></li>
+</ul>
+<hr />
+</section>
+<section id="effective-potential" class="level3">
+<h3>Effective potential</h3>
+<hr />
+<div class="left">
+<p><br>Binding energy depends on both nucleons momentum and location.</p>
+</div>
+<div class="right">
+<p><img src="../img/nuwro/momrhov.png" width=100%></p>
+</div>
+<ul>
+<li><p>initial momentum random from Fermi sphere (assuming local Fermi gas)</p></li>
+<li><p>outgoing momentum random in CMS; Pauli blocking included (in LAB)</p></li>
+<li><p>in current implementation final nucleon is not affected by FSI</p></li>
+<li><p>final momentum adjusted according to: <span class="math inline">\(E \rightarrow E + V\)</span> (or nucleus in excited state if nucleon unable to leave)</p></li>
+</ul>
+<hr />
+</section>
+<section id="p2h-contribution" class="level3">
+<h3>2p2h contribution</h3>
+<hr />
+<p>There are two source of 2p2h final states:</p>
+<ul>
+<li><p>spectral function in (one body) QE dynamics</p></li>
+<li><p>two-body current interactions</p>
+<ul>
+<li><p>TEM</p></li>
+<li><p>Nieves</p></li>
+</ul></li>
+</ul>
+<p>[tbc]</p>
+<hr />
+</section>
+<section id="ewro" class="level3">
+<h3>eWro</h3>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>electron-nucleus interactions to test nuclear models in NuWro</p></li>
+<li><p>not really straightforward as total electron cross section is <span class="math inline">\(\infty\)</span>...</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/nuwro/ewro.png" width=100%> <br></p>
+</div>
+<hr />
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+</body>
+
+</html>
