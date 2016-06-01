@@ -59,9 +59,9 @@
 <hr />
 <ul>
 <li><p>Berger-Sehgal for coherent pion production</p></li>
+<li><p>Effective momentum and density dependent potential</p></li>
 <li><p>Non-resonant background scaling</p></li>
 <li><p>Reweighting tools</p></li>
-<li><p>Effective momentum and density dependent potential</p></li>
 <li><p>Hadronic states for 2p2h</p></li>
 <li><p>eWro</p></li>
 </ul>
@@ -73,38 +73,6 @@
 <p><img src="../img/nuwro/bs_coh.png" width=100%></p>
 <ul>
 <li>some old NuWro samples were made with RS model, but now BS is default and will be used if not specified in a request</li>
-</ul>
-<hr />
-</section>
-<section id="non-resonant-background" class="level3">
-<h3>Non-resonant background</h3>
-<hr />
-<div class="right">
-<p>Transition region in NuWro: <img src="../img/nuwro/nonres_bkg.png" width=100%></p>
-</div>
-<div class="left">
-<p><br></p>
-<ul>
-<li><p>There is a new parameter in params.txt: bkgrscaling</p></li>
-<li><p>It can be used to scale non-resonant background (by modifying <span class="math inline">\(\alpha\)</span>)</p></li>
-</ul>
-<p><br></p>
-</div>
-<hr />
-</section>
-<section id="fsi-reweighting" class="level3">
-<h3>FSI reweighting</h3>
-<hr />
-<blockquote>
-<p>Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.</p>
-<div style="text-align:right;">
-Francis of Assisi
-</div>
-</blockquote>
-<hr />
-<ul>
-<li><p>FSI reweighting tool for NuWro by Patrick Stowell and Luke Pickering</p></li>
-<li><p>Status: work in progress</p></li>
 </ul>
 <hr />
 </section>
@@ -125,19 +93,139 @@ Francis of Assisi
 </ul>
 <hr />
 </section>
+<section id="non-resonant-background" class="level3">
+<h3>Non-resonant background</h3>
+<hr />
+<div class="right">
+<p>Transition region in NuWro: <img src="../img/nuwro/nonres_bkg.png" width=100%></p>
+</div>
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>There is a new parameter in params.txt: bkgrscaling</p></li>
+<li><p>Control non-resonant background contribution to SPP</p></li>
+</ul>
+<p><br></p>
+</div>
+<hr />
+</section>
+<section id="nuwro-reweighting" class="level3">
+<h3>NuWro reweighting</h3>
+<hr />
+<ul>
+<li>Reweighting tools developed by Luke Pickering (Imperial College London) and Patrick Stowell (University of Sheffield)</li>
+</ul>
+<div class="left">
+<p><br></p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">   Nuwro_MaCCQE         Nuwro_BBBA07
+   Nuwro_NormQEL        Nuwro_NormRES
+   Nuwro_NormDIS        Nuwro_NormCOH
+   Nuwro_NormMEC        Nuwro_NormDYN
+   Nuwro_MaRES          Nuwro_Ca5
+   Nuwro_Ma_NCEL        Nuwro_Ma_NCEL_s
+   Nuwro_DeltaS</code></pre></div>
+<p><br></p>
+<p><em>All reweighting plots courtesy of Luke and Patrick</em></p>
+</div>
+<p><img src="../img/nuwro/nrw_qelma.png" class=right  style="margin-bottom: 20px;"></p>
+<hr />
+</section>
+<section id="resdis-reweighting" class="level3">
+<h3>RES/DIS reweighting</h3>
+<hr />
+<p><img src="../img/nuwro/nrw_resmaca.png" class="left"  style="margin-bottom: 40px;"></p>
+<p><img src="../img/nuwro/nrw_sppbkg.png" class="right"></p>
+<hr />
+</section>
+<section id="fsi-reweighting" class="level3">
+<h3>FSI reweighting</h3>
+<hr />
+<ul>
+<li>Luke and Patrick also started to work on <strong>FSI reweighting</strong></li>
+</ul>
+<blockquote>
+<p>Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.</p>
+<div style="text-align:right;">
+Francis of Assisi
+</div>
+</blockquote>
+<hr />
+</section>
 <section id="p2h-contribution" class="level3">
 <h3>2p2h contribution</h3>
 <hr />
-<p>There are two source of 2p2h final states:</p>
+<div class="left">
+<p>Two sources of 2p2h final states:</p>
 <ul>
 <li><p>spectral function in (one body) QE dynamics</p></li>
 <li><p>two-body current interactions</p>
 <ul>
-<li><p>TEM</p></li>
-<li><p>Nieves</p></li>
+<li><p>Transverse Enhancement Model (TEM) by A. Bodek et al.</p></li>
+<li><p>Nieves et al. model</p></li>
 </ul></li>
 </ul>
-<p>[tbc]</p>
+</div>
+<div class="right">
+<p><img src="../img/nuwro/src_sf.png" width=50%></p>
+<p><img src="../img/nuwro/src_2p2h.png" width=50%></p>
+</div>
+<hr />
+</section>
+<section id="two-body-current" class="level3">
+<h3>Two-body current</h3>
+<hr />
+<div class="left">
+<p><em>Only lepton kinematics</em></p>
+<p><img src="../img/nuwro/npnh_total.png"></p>
+</div>
+<div class="right">
+<p><img src="../img/nuwro/tem_kinematics.png" width=50%> <img src="../img/nuwro/nieves_kinematics.png" width=50%></p>
+</div>
+<hr />
+</section>
+<section id="p2h-open-questions" class="level3">
+<h3>2p2h: open questions</h3>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>interaction point <em>(see plot)</em></p></li>
+<li><p>isospin <em>(pn more likely)</em></p></li>
+<li><p>initial momenta</p></li>
+<li><p>final momenta</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/nuwro/rho_rho2.png" width=75%></p>
+<p><em>(blue <span class="math inline">\(\rightarrow r^2\rho\)</span>, red <span class="math inline">\(\rightarrow r^2\rho^2\)</span>)</em></p>
+</div>
+<hr />
+</section>
+<section id="p2h-initial-momenta" class="level3">
+<h3>2p2h: initial momenta</h3>
+<hr />
+<ul>
+<li><p>two nucleons in back-to-back configuration</p></li>
+<li><p>momentum distribution includes large momentum tail (taken from SF)</p></li>
+<li><p>CM motion (gaussian distribution)</p></li>
+<li><p>or no CM motion and mec_back_to_back_smearing</p></li>
+</ul>
+<hr />
+</section>
+<section id="p2h-final-momenta" class="level3">
+<h3>2p2h: final momenta</h3>
+<hr />
+<ul>
+<li><p>uniform in CMS</p></li>
+<li><p>or prefer some direction respect to <span class="math inline">\(\vec q\)</span></p></li>
+</ul>
+<p><img src="../img/nuwro/mec_final_mom_a.png" width=75%></p>
+<hr />
+</section>
+<section id="cc-no-pion-events" class="level3">
+<h3>CC no pion events</h3>
+<hr />
+<p><img src="../img/nuwro/momentum_threshold_mec.png" width=100%></p>
 <hr />
 </section>
 <section id="ewro" class="level3">

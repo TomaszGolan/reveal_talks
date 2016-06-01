@@ -8,11 +8,11 @@
 
 * Berger-Sehgal for coherent pion production
 
+* Effective momentum and density dependent potential
+
 * Non-resonant background scaling
 
 * Reweighting tools
-
-* Effective momentum and density dependent potential
 
 * Hadronic states for 2p2h
 
@@ -30,42 +30,6 @@
 will be used if not specified in a request
 
 ---
-
-### Non-resonant background
-
----
-
-<div class="right">
-Transition region in NuWro:
-<img src="../img/nuwro/nonres_bkg.png" width=100%>
-</div>
-<div class="left"><br>
-
-* There is a new parameter in params.txt: bkgrscaling
-
-* It can be used to scale non-resonant background (by modifying $\alpha$)
-
-<br>
-</div>
-
----
-
-### FSI reweighting
-
----
-
-> Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.
->
-<div style="text-align:right;">Francis of Assisi</div>
-
----
-
-* FSI reweighting tool for NuWro by Patrick Stowell and Luke Pickering
-
-* Status: work in progress
-
----
-
 
 ### Effective potential
 
@@ -89,21 +53,176 @@ Transition region in NuWro:
 
 ---
 
+### Non-resonant background
+
+---
+
+<div class="right">
+Transition region in NuWro:
+<img src="../img/nuwro/nonres_bkg.png" width=100%>
+</div>
+<div class="left"><br>
+
+* There is a new parameter in params.txt: bkgrscaling
+
+* Control non-resonant background contribution to SPP
+
+<br>
+</div>
+
+---
+
+### NuWro reweighting
+
+---
+
+* Reweighting tools developed by Luke Pickering (Imperial College London) and Patrick Stowell (University of Sheffield)
+
+<div class="left"><br>
+
+```cpp
+   Nuwro_MaCCQE         Nuwro_BBBA07
+   Nuwro_NormQEL        Nuwro_NormRES
+   Nuwro_NormDIS        Nuwro_NormCOH
+   Nuwro_NormMEC        Nuwro_NormDYN
+   Nuwro_MaRES          Nuwro_Ca5
+   Nuwro_Ma_NCEL        Nuwro_Ma_NCEL_s
+   Nuwro_DeltaS
+```
+
+<br>
+
+*All reweighting plots courtesy of Luke and Patrick*
+
+</div>
+
+<img src="../img/nuwro/nrw_qelma.png" class=right  style="margin-bottom: 20px;">
+
+---
+
+### RES/DIS reweighting
+
+---
+
+<img src="../img/nuwro/nrw_resmaca.png" class="left"  style="margin-bottom: 40px;">
+
+<img src="../img/nuwro/nrw_sppbkg.png" class="right">
+
+---
+
+### FSI reweighting
+
+---
+
+* Luke and Patrick also started to work on **FSI reweighting**
+
+> Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.
+>
+<div style="text-align:right;">Francis of Assisi</div>
+
+---
+
 ### 2p2h contribution
 
 ---
 
-There are two source of 2p2h final states:
+<div class="left">
+
+Two sources of 2p2h final states:
 
 * spectral function in (one body) QE dynamics
 
 * two-body current interactions
 
-    * TEM
+    * Transverse Enhancement Model (TEM) by A. Bodek et al.
 
-    * Nieves
+    * Nieves et al. model
 
-[tbc]
+</div>
+<div class="right">
+
+<img src="../img/nuwro/src_sf.png" width=50%>
+
+<img src="../img/nuwro/src_2p2h.png" width=50%>
+
+</div>
+
+---
+
+### Two-body current
+
+---
+
+<div class="left">
+
+*Only lepton kinematics*
+
+<img src="../img/nuwro/npnh_total.png">
+</div>
+<div class="right">
+<img src="../img/nuwro/tem_kinematics.png" width=50%>
+<img src="../img/nuwro/nieves_kinematics.png" width=50%>
+</div>
+
+---
+
+### 2p2h: open questions
+
+---
+
+<div class="left"><br>
+
+* interaction point *(see plot)*
+
+* isospin *(pn more likely)*
+
+* initial momenta
+
+* final momenta
+
+</div>
+
+<div class="right">
+<img src="../img/nuwro/rho_rho2.png" width=75%>
+
+*(blue $\rightarrow r^2\rho$, red $\rightarrow r^2\rho^2$)*
+
+</div>
+
+---
+
+### 2p2h: initial momenta
+
+---
+
+* two nucleons in back-to-back configuration
+
+* momentum distribution includes large momentum tail (taken from SF)
+
+* CM motion (gaussian distribution)
+
+* or no CM motion and mec_back_to_back_smearing
+
+---
+
+### 2p2h: final momenta
+
+---
+
+* uniform in CMS
+
+* or prefer some direction respect to $\vec q$
+
+<img src="../img/nuwro/mec_final_mom_a.png" width=75%>
+
+
+---
+
+### CC no pion events
+
+---
+
+<img src="../img/nuwro/momentum_threshold_mec.png" width=100%>
 
 ---
 
