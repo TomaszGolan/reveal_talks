@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>GENIE Update</title>
+
+  <meta name="description" content="GENIE Update">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>GENIE Update</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4><em>On behalf of Generator Group</em> <br> <br> MINERvA Week June 2016</h4>
+        </p>
+      </section>
+
+       <section id="on-the-last-genie-update" class="level3">
+<h3>On the last GENIE Update</h3>
+<hr />
+<ul>
+<li>Effective spectral function by A. Bodek et al.</li>
+<li>Very high energy extension to 5 TeV</li>
+<li>Inclusive eta production</li>
+<li>Berger-Sehgal resonant pion model with MiniBooNE tuning</li>
+<li>Improved hA FSI model</li>
+<li>Single kaon production</li>
+<li>Flux driver updates</li>
+<li>GSL for all integration routines</li>
+<li>See <a href="http://minerva-docdb.fnal.gov:8080/cgi-bin/ShowDocument?docid=11836">docdb-11836</a></li>
+</ul>
+<hr />
+</section>
+<section id="whats-new-in-genie-2.11" class="level3">
+<h3>What's new in GENIE 2.11</h3>
+<hr />
+<ul>
+<li>One-body current QEL with LFG and RPA gas by Nieves et al.</li>
+<li>Two-body current interactions by Nieves et al</li>
+<li>hN FSI improvements</li>
+<li>Kaon FSI</li>
+<li>Resonance model update</li>
+<li>z-expansion</li>
+<li>New models for coherent pion production</li>
+</ul>
+<hr />
+</section>
+<section id="qel-rpa" class="level3">
+<h3>QEL + RPA</h3>
+<hr />
+<div class="left">
+<p><br></p>
+<p>The full description of QEL events is obtained by the inclusion of both:</p>
+<ul>
+<li><p>two-body current interactions (2p2h)</p></li>
+<li><p>random phase approximation (RPA)</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/genie/nieves_qel.png" width=100%> <em>J. Nieves et al. <a href="http://arxiv.org/abs/1310.7091">arXiv:1310.7091 [hep-ph]</a></em></p>
+</div>
+<hr />
+</section>
+<section id="two-body-current-interactions" class="level3">
+<h3>Two-body current interactions</h3>
+<hr />
+<div class="left">
+<ul>
+<li><p>Interaction occurs on two correlated nucleons (SRC)</p></li>
+<li><p>No meson production</p></li>
+</ul>
+<p><img src="../img/nuwro/src_2p2h.png" width=50%></p>
+</div>
+<div class="right">
+<p><img src="../img/nuwro/nieves_kinematics.png" width=100%> <em>Plot taken from NuWro</em></p>
+</div>
+<hr />
+</section>
+<section id="hn2015-fsi" class="level3">
+<h3>hN2015 FSI</h3>
+<hr />
+<div class="left">
+<ul>
+<li><p>pion-nucleon cross section based on Oset et al. model</p>
+<ul>
+<li>absorption is introduced through the modification of <span class="math inline">\(\Delta\)</span> self-energy in nuclear matter</li>
+</ul></li>
+<li><p>the correction to nucleon-nucleon cross section is included</p>
+<ul>
+<li>effective mass (potential) changes free xsec in nuclear matter</li>
+</ul></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<p><img src="../img/genie/total_correction_pp.png" width=100%></p>
+</div>
+<hr />
+</section>
+<section id="kaon-fsi" class="level3">
+<h3>Kaon FSI</h3>
+<hr />
+<div class="left">
+<p><br><br></p>
+<ul>
+<li><p>charge exchange added</p></li>
+<li><p>absorption improved</p></li>
+<li><p>at this point, only for hA</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/genie/kaon_fsi.png" width=100%></p>
+</div>
+<hr />
+</section>
+<section id="resonance-model" class="level3">
+<h3>Resonance model</h3>
+<hr />
+<ul>
+<li><p>Model parameters updated to PDG 2014</p></li>
+<li><p><span class="math inline">\(\Delta \rightarrow \pi N\)</span> angular distribution based on Rein-Sehgal</p></li>
+<li><p><span class="math inline">\(\Delta \rightarrow N \gamma\)</span> improved kinematics and W dependence (based on MiniBooNE)</p></li>
+</ul>
+<hr />
+</section>
+<section id="z-expansion" class="level3">
+<h3>z-expansion</h3>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li>Parametrization of form factors:</li>
+</ul>
+<p><span class="math display">\[F_A(q^2) = \sum\limits_{k=0}^{k_{max}} a_k z(q^2)^k\]</span> <span class="math display">\[z(q^2, t_{cut}, t_0) = \]</span> <span class="math display">\[\frac{\sqrt{t_{cut} - q^2} - \sqrt{t_{cut} - t_0}}{\sqrt{t_{cut} - q^2} + \sqrt{t_{cut} - t_0}}\]</span></p>
+<p>where <span class="math inline">\(t\)</span>, <span class="math inline">\(a_k\)</span> are arbitrary numbers</p>
+</div>
+<div class="right">
+<p><img src="../img/genie/zexp_minerva.png" width=100%> <em>A. Meyer et al. <a href="http://arxiv.org/abs/1603.03048">arXiv:1603.03048 [hep-ph]</a></em></p>
+</div>
+<hr />
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+</body>
+
+</html>
