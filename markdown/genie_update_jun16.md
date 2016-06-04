@@ -158,3 +158,26 @@ where $t$, $a_k$ are arbitrary numbers
 </div>
 
 ---
+
+### Coherent pion production
+
+---
+
+<div class="left"><br>
+
+Two new coherent pion production models:
+
+* Berger-Sehgal
+
+* Alvarez-Ruso
+
+</div>
+<div class="right">
+
+<img src="../img/genie/coh_bs_total.png" width=100%>
+
+</div>
+
+---
+
+# THE END
