@@ -18,7 +18,7 @@
 
 ---
 
-### What's new in GENIE 2.11
+### What's new in GENIE 2.12
 
 ---
 
@@ -28,7 +28,7 @@
 * Kaon FSI
 * Resonance model update
 * z-expansion
-* New models for coherent pion production
+* Berger-Sehgal for COH
 
 ---
 
@@ -105,19 +105,19 @@ The full description of QEL events is obtained by the inclusion of both:
 
 ---
 
-<div class="left"><br><br>
+<div class="left">
 
 * charge exchange added
-
 * absorption improved
 
-* at this point, only for hA
+<img src="../img/genie/kaon_fsi_reac.png" width=100%>
 
 </div>
-
 <div class="right">
 
-<img src="../img/genie/kaon_fsi.png" width=100%>
+<img src="../img/genie/kaon_fsi_fk.png" width=100%>
+
+*at this point, only for hA*
 
 </div>
 
@@ -127,11 +127,22 @@ The full description of QEL events is obtained by the inclusion of both:
 
 ---
 
-* Model parameters updated to PDG 2014
+<div class="left">
 
-* $\Delta \rightarrow \pi N$ angular distribution based on Rein-Sehgal
+* $\Delta \rightarrow \pi N$ angular distribution (based on Rein-Sehgal)
 
-* $\Delta \rightarrow N \gamma$ improved kinematics and W dependence (based on MiniBooNE)
+<img src="../img/genie/res_angle_cm.png" width=100%>
+
+</div>
+<div class="right">
+
+* $\Delta \rightarrow N \gamma$ improved kinematics and W dependence (based on MB)
+
+<img src="../img/genie/res_w_ratio.png" width=100%>
+
+</div>
+
+
 
 ---
 
@@ -163,20 +174,10 @@ where $t$, $a_k$ are arbitrary numbers
 
 ---
 
-<div class="left"><br>
+Berger-Sehgal for CC/NC coherent pion production
 
-Two new coherent pion production models:
-
-* Berger-Sehgal
-
-* Alvarez-Ruso
-
-</div>
-<div class="right">
-
-<img src="../img/genie/coh_bs_total.png" width=100%>
-
-</div>
+<img src="../img/genie/coh_bs_total_cc.png" class="left">
+<img src="../img/genie/coh_bs_total_nc.png" class="right">
 
 ---
 

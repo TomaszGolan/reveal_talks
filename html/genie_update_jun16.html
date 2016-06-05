@@ -70,8 +70,8 @@
 </ul>
 <hr />
 </section>
-<section id="whats-new-in-genie-2.11" class="level3">
-<h3>What's new in GENIE 2.11</h3>
+<section id="whats-new-in-genie-2.12" class="level3">
+<h3>What's new in GENIE 2.12</h3>
 <hr />
 <ul>
 <li>One-body current QEL with LFG and RPA gas by Nieves et al.</li>
@@ -80,7 +80,7 @@
 <li>Kaon FSI</li>
 <li>Resonance model update</li>
 <li>z-expansion</li>
-<li>New models for coherent pion production</li>
+<li>Berger-Sehgal for COH</li>
 </ul>
 <hr />
 </section>
@@ -140,26 +140,33 @@
 <h3>Kaon FSI</h3>
 <hr />
 <div class="left">
-<p><br><br></p>
 <ul>
-<li><p>charge exchange added</p></li>
-<li><p>absorption improved</p></li>
-<li><p>at this point, only for hA</p></li>
+<li>charge exchange added</li>
+<li>absorption improved</li>
 </ul>
+<p><img src="../img/genie/kaon_fsi_reac.png" width=100%></p>
 </div>
 <div class="right">
-<p><img src="../img/genie/kaon_fsi.png" width=100%></p>
+<p><img src="../img/genie/kaon_fsi_fk.png" width=100%></p>
+<p><em>at this point, only for hA</em></p>
 </div>
 <hr />
 </section>
 <section id="resonance-model" class="level3">
 <h3>Resonance model</h3>
 <hr />
+<div class="left">
 <ul>
-<li><p>Model parameters updated to PDG 2014</p></li>
-<li><p><span class="math inline">\(\Delta \rightarrow \pi N\)</span> angular distribution based on Rein-Sehgal</p></li>
-<li><p><span class="math inline">\(\Delta \rightarrow N \gamma\)</span> improved kinematics and W dependence (based on MiniBooNE)</p></li>
+<li><span class="math inline">\(\Delta \rightarrow \pi N\)</span> angular distribution (based on Rein-Sehgal)</li>
 </ul>
+<p><img src="../img/genie/res_angle_cm.png" width=100%></p>
+</div>
+<div class="right">
+<ul>
+<li><span class="math inline">\(\Delta \rightarrow N \gamma\)</span> improved kinematics and W dependence (based on MB)</li>
+</ul>
+<p><img src="../img/genie/res_w_ratio.png" width=100%></p>
+</div>
 <hr />
 </section>
 <section id="z-expansion" class="level3">
@@ -181,17 +188,8 @@
 <section id="coherent-pion-production" class="level3">
 <h3>Coherent pion production</h3>
 <hr />
-<div class="left">
-<p><br></p>
-<p>Two new coherent pion production models:</p>
-<ul>
-<li><p>Berger-Sehgal</p></li>
-<li><p>Alvarez-Ruso</p></li>
-</ul>
-</div>
-<div class="right">
-<p><img src="../img/genie/coh_bs_total.png" width=100%></p>
-</div>
+<p>Berger-Sehgal for CC/NC coherent pion production</p>
+<p><img src="../img/genie/coh_bs_total_cc.png" class="left"> <img src="../img/genie/coh_bs_total_nc.png" class="right"></p>
 <hr />
 </section>
 <section id="the-end" class="level1">
