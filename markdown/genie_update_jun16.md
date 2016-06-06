@@ -131,7 +131,7 @@ The full description of QEL events is obtained by the inclusion of both:
 
 * $\Delta \rightarrow \pi N$ angular distribution (based on Rein-Sehgal)
 
-<img src="../img/genie/res_angle_cm.png" width=100%>
+<img src="../img/genie/res_angle.png" width=100%>
 
 </div>
 <div class="right">
