@@ -117,7 +117,7 @@ The full description of QEL events is obtained by the inclusion of both:
 
 <img src="../img/genie/kaon_fsi_fk.png" width=100%>
 
-*at this point, only for hA*
+*mentioned updates, only for hA*
 
 </div>
 
