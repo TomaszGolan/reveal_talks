@@ -70,8 +70,7 @@ The full description of QEL events is obtained by the inclusion of both:
 </div>
 <div class="right">
 
-<img src="../img/nuwro/nieves_kinematics.png" width=100%>
-*Plot taken from NuWro*
+<img src="../img/genie/nieves_q3_nu.png" width=60%>
 
 </div>
 
