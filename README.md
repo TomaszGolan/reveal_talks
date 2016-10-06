@@ -5,7 +5,7 @@
 - [How to use NuWro CCQE samples](http://tomaszgolan.github.io/reveal_talks/html/howto_nuwro_ccqe.html)
 - [NuWro Update](http://tomaszgolan.github.io/reveal_talks/html/nuwro_update_jun16.html)
 - [GENIE Update](http://tomaszgolan.github.io/reveal_talks/html/genie_update_jun16.html)
-
+- [Projekt C++](http://tomaszgolan.github.io/reveal_talks/html/projekt_cpp.html)
 
 # Use these links to print as pdf
 
@@ -14,3 +14,4 @@
 - [How to use NuWro CCQE samples](http://tomaszgolan.github.io/reveal_talks/html/howto_nuwro_ccqe.html?print-pdf)
 - [NuWro Update](http://tomaszgolan.github.io/reveal_talks/html/nuwro_update_jun16.html?print-pdf)
 - [GENIE Update](http://tomaszgolan.github.io/reveal_talks/html/genie_update_jun16.html?print-pdf)
+- [Projekt C++](http://tomaszgolan.github.io/reveal_talks/html/projekt_cpp.html?print-pdf)
