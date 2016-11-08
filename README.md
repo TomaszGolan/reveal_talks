@@ -6,6 +6,7 @@
 - [NuWro Update](http://tomaszgolan.github.io/reveal_talks/html/nuwro_update_jun16.html)
 - [GENIE Update](http://tomaszgolan.github.io/reveal_talks/html/genie_update_jun16.html)
 - [Projekt C++](http://tomaszgolan.github.io/reveal_talks/html/projekt_cpp.html)
+- [MINERvA Review (wip)](http://tomaszgolan.github.io/reveal_talks/html/minerva_review.html)
 
 # Use these links to print as pdf
 
@@ -15,3 +16,4 @@
 - [NuWro Update](http://tomaszgolan.github.io/reveal_talks/html/nuwro_update_jun16.html?print-pdf)
 - [GENIE Update](http://tomaszgolan.github.io/reveal_talks/html/genie_update_jun16.html?print-pdf)
 - [Projekt C++](http://tomaszgolan.github.io/reveal_talks/html/projekt_cpp.html?print-pdf)
+- [MINERvA Review (wip)](http://tomaszgolan.github.io/reveal_talks/html/minerva_review.html?print-pdf)

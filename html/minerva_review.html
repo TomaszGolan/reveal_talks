@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>MINERvA Review</title>
+
+  <meta name="description" content="MINERvA Review">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>MINERvA Review</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4>Neutrino Seminar, 14.11.2016</h4>
+        </p>
+      </section>
+
+       <section id="postdoc-summary" class="level2">
+<h2>Postdoc summary</h2>
+<hr />
+<div class="left">
+<p><strong>University of Rochester</strong></p>
+<p><em>Department of Physics and Astronomy</em></p>
+<p>MINERvA (prof. Kevin McFarland)</p>
+<hr />
+<ul>
+<li>flux systematic errors</li>
+<li>physics reconstruction using machine learning</li>
+<li>generator group coordinator</li>
+<li>production group leader</li>
+</ul>
+</div>
+<div class="right">
+<p><strong>Fermi National Accelerator Laboratory</strong></p>
+<p><em>Scientific Computing Division</em></p>
+<p>GENIE (dr. Gabe Perdue)</p>
+<hr />
+<ul>
+<li>nuclear effects in GENIE</li>
+<li>automated validation system</li>
+<li>&quot;user support&quot;</li>
+</ul>
+</div>
+</section>
+<section id="section" class="level1">
+<h1></h1>
+<section id="main-injector-experiment-nu-a" class="level2">
+<h2><font color=red>M</font>ain <font color=red>IN</font>jector <font color=red>E</font>xpe<font color=red>R</font>iment <font color=red><span class="math inline">\(\nu\)</span>-A</font></h2>
+</section>
+<section id="minerva-experiment" class="level2">
+<h2>MINERvA Experiment</h2>
+<hr />
+<div class="left">
+<ul>
+<li>MINERvA is a neutrino-scattering experiment at Fermilab</li>
+<li>Collaboration of about 50-100 physicist</li>
+<li>NuMI beam is used to measure cross section for neutrino-nucleus interactions</li>
+<li>The detector includes several different nuclear targets</li>
+</ul>
+</div>
+<p><img src="../img/minerva/minerva.jpg" width=30%></p>
+</section>
+<section id="detector" class="level2">
+<h2>Detector</h2>
+<hr />
+<p><img src="../img/minerva/minerva_detector.png" width=75%></p>
+</section>
+<section id="nuclear-targets" class="level2">
+<h2>Nuclear targets</h2>
+<hr />
+<p><img src="../img/minerva/minerva_nuclear_targets.jpg" width=50%></p>
+</section>
+<section id="numi-beamline" class="level2">
+<h2>NuMI Beamline</h2>
+<hr />
+<p><img src="../img/minerva/numi_beamline.png" width=50%></p>
+<iframe data-autoplay width="420" height="315" src="https://www.youtube.com/embed/U_xWDWKq1CM">
+</iframe>
+</section>
+<section id="low-vs-medium-energy" class="level2">
+<h2>Low vs Medium Energy</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>by changing distance between horns one can change energy spectrum</p></li>
+<li><p>by changing horns polarization one can switch between neutrino and anti-neutrino mode</p></li>
+</ul>
+</div>
+<p><img src="../img/minerva/numi_spectrum.png" width=30%></p>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="flux" class="level2">
+<h2>Flux</h2>
+</section>
+<section id="numi-beam-simulation" class="level2">
+<h2>NuMI Beam Simulation</h2>
+<hr />
+<p><img src="../img/minerva/numi_beamline_example.png" width=75%></p>
+<ul>
+<li><p>Flux simulation starts with a Geant4 with the NuMI geometry</p></li>
+<li><p>All of the information about interactions leading to neutrino are stored</p></li>
+<li><p>The results of the simulation are corrected by external data</p></li>
+<li><p><em>Similar approach to the one T2K used</em></p></li>
+</ul>
+</section>
+<section id="hadron-scattering-data" class="level2">
+<h2>Hadron Scattering Data</h2>
+<hr />
+<ul>
+<li><p>NA49 - charged hadron production in proton scattering off thin targets</p></li>
+<li><p><em>FLUKA is used to scale proton energy from <span class="math inline">\(158\)</span> to <span class="math inline">\(120\)</span> GeV</em></p></li>
+<li><p>MIPP - charged hadron production on thin target and NuMI target replica</p></li>
+</ul>
+</section>
+<section id="na49-data" class="level2">
+<h2>NA49 Data</h2>
+<hr />
+<p><img src="../img/minerva/na49_data.png" width=75%></p>
+</section>
+<section id="mipp-data" class="level2">
+<h2>MIPP data</h2>
+<hr />
+<p><img src="../img/minerva/mipp_data.png" width=50%></p>
+</section>
+<section id="reweighting" class="level2">
+<h2>Reweighting</h2>
+<hr />
+<p><span class="math display">\[w_{HP} = \frac{f_{data}(x_F, p_T, E)}{f_{MC}(x_F, p_T, E)}, ~~~~~ f\equiv\frac{E}{\sigma}\frac{d^3\sigma}{dp^3}\]</span></p>
+<ul>
+<li><p>Using external hadron production data events are weighted using the above formula</p></li>
+<li><p>An event is reweighted on &quot;interaction-by-interaction&quot; basis</p></li>
+<li><p>Whenever possible - &quot;thick&quot; target data is used</p></li>
+</ul>
+</section>
+<section id="uncertainties" class="level2">
+<h2>Uncertainties</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p><em>Many-Universes</em> method is used to propagate external data uncertainties to our flux</p></li>
+<li><p>for each universe (<em>u</em>) data central value is shifted (respect to data uncertainties)</p></li>
+</ul>
+<p><span class="math display">\[w_u \sim \prod_i w_{HP, u, i}\]</span></p>
+</div>
+<p><img src="../img/minerva/multiuniverse.png" class=right></p>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="flux-history" class="level2">
+<h2>Flux history</h2>
+</section>
+<section id="flux-generations" class="level2">
+<h2>Flux generations</h2>
+<hr />
+<ul>
+<li><p>Generation 0 -&gt; no MIPP data</p></li>
+<li><p>Generation 1 -&gt; MIPP thin target data + other improvements</p></li>
+<li><p>Generation 2 -&gt; MIPP thick target data + other improvements</p></li>
+</ul>
+</section>
+<section id="flux-vs-publications" class="level2">
+<h2>Flux vs publications</h2>
+<hr />
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Flux</strong></th>
+<th style="text-align: center;"><strong>Analysis</strong></th>
+<th style="text-align: center;"><strong>Reference</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Generation 0</td>
+<td style="text-align: center;"><span class="math inline">\(\nu_\mu\)</span> CCQE</td>
+<td style="text-align: center;">PRL 111 (2013) 022502</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Generation 0</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{\nu_\mu}\)</span> CCQE</td>
+<td style="text-align: center;">PRL 111 (2013) 022501</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Generation 1</td>
+<td style="text-align: center;">CC target ratios</td>
+<td style="text-align: center;">PRL 112 (2014) 231801</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Generation 1</td>
+<td style="text-align: center;">Coherent <span class="math inline">\(\pi\)</span></td>
+<td style="text-align: center;">PRL 113 (2014) 261802</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Generation 1</td>
+<td style="text-align: center;"><span class="math inline">\(\nu_\mu\)</span> muon + proton</td>
+<td style="text-align: center;">PRD (2015) 071301</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Generation 1</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{\nu_\mu}\)</span> CC <span class="math inline">\(\pi^0\)</span></td>
+<td style="text-align: center;">PLB 749 (2015) 130</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="generation-0-vs-generation-2-thick-off" class="level2">
+<h2>Generation 0 vs Generation 2 (thick off)</h2>
+<hr />
+<p><img src="../img/minerva/ratio_gen0_ppfx_def_numu.png"></p>
+</section>
+<section id="generation-1-vs-generation-2-thick-off" class="level2">
+<h2>Generation 1 vs Generation 2 (thick off)</h2>
+<hr />
+<p><img src="../img/minerva/spec_rat_gen2_gen1_fhc_numu.png" width=45%></p>
+</section>
+<section id="generation-2-thin-vs-thick" class="level2">
+<h2>Generation 2 (thin vs thick)</h2>
+<hr />
+<p><img src="../img/minerva/ppfx_thin.png" float=left width=40%> <img src="../img/minerva/ppfx_thick.png" float=right width=40%></p>
+</section>
+<section id="generation-2-ratio" class="level2">
+<h2>Generation 2: ratio</h2>
+<hr />
+<p><img src="../img/minerva/thick_vs_thin.png"></p>
+</section>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="flux-constraints" class="level2">
+<h2>Flux constraints</h2>
+</section>
+<section id="nu-e-constraint" class="level2">
+<h2><span class="math inline">\(\nu e\)</span> constraint</h2>
+<hr />
+<div class="left">
+<p><img src="../img/minerva/nue_events.png"></p>
+<ul>
+<li>Weighting up universes that agree better with data</li>
+</ul>
+</div>
+<div class="right">
+<ul>
+<li>Experimental signature is a very forward single electron in the finale state</li>
+</ul>
+<p><img src="../img/minerva/nue_signal.png"></p>
+</div>
+</section>
+<section id="generation-1-nu-e" class="level2">
+<h2>Generation 1 + <span class="math inline">\(\nu e\)</span></h2>
+<hr />
+<p><img src="../img/minerva/spec_rat_gen2_gen1_fhc_numu.png" width=45%> <img src="../img/minerva/spec_rat_gen2_gen1_nu-e_numu.png" width=45%></p>
+</section>
+<section id="low-nu-method" class="level2">
+<h2>low-<span class="math inline">\(\nu\)</span> method</h2>
+<hr />
+<p><span class="math display">\[\frac{d\sigma}{d\nu} = A + B\frac{\nu}{E} - \frac{C}{2}\frac{\nu^2}{E^2}\]</span></p>
+<ul>
+<li><p>Differential cross-section can be expressed by the above formula</p></li>
+<li><p>It is a constant for <span class="math inline">\(\frac{\nu}{E} \rightarrow 0\)</span></p></li>
+<li><p>It can be used to constraint the flux prediction (with high-energy normalization taken from other measurements, like NOMAD)</p></li>
+</ul>
+</section>
+<section id="low-nu-vs-generation-2" class="level2">
+<h2>low-<span class="math inline">\(\nu\)</span> vs generation 2</h2>
+<hr />
+<p><img src="../img/minerva/thick_thin_low.png"></p>
+</section>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<section id="ccqe-results" class="level2">
+<h2>CCQE results</h2>
+</section>
+<section id="ccqe-true-aka-1-track" class="level2">
+<h2>CCQE &quot;true&quot; aka &quot;1-track&quot;</h2>
+<hr />
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Flux</strong></th>
+<th style="text-align: center;"><strong>Analysis</strong></th>
+<th style="text-align: center;"><strong>Reference</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Generation 0</td>
+<td style="text-align: center;"><span class="math inline">\(\nu_\mu\)</span> CCQE</td>
+<td style="text-align: center;">PRL 111 (2013) 022502</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Generation 0</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{\nu_\mu}\)</span> CCQE</td>
+<td style="text-align: center;">PRL 111 (2013) 022501</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li><p>require only muon track</p></li>
+<li><p>target -&gt; scintillator (CH)</p></li>
+</ul>
+</section>
+<section id="high-q2-candidates" class="level2">
+<h2>High-<span class="math inline">\(Q^2\)</span> candidates</h2>
+<hr />
+<p><img src="../img/minerva/ccqe_signal_highQ.png" width=70%></p>
+</section>
+<section id="low-q2-candidates" class="level2">
+<h2>Low-<span class="math inline">\(Q^2\)</span> candidates</h2>
+<hr />
+<p><img src="../img/minerva/ccqe_signal_lowQ.png" width=70%></p>
+</section>
+<section id="background" class="level2">
+<h2>Background</h2>
+<hr />
+<p><img src="../img/minerva/ccqe_signal_bkg.png" width=70%></p>
+</section>
+<section id="background-subtraction" class="level2">
+<h2>Background subtraction</h2>
+<hr />
+<p><img src="../img/minerva/ccqe_bkg_scaling.png" width=70%></p>
+</section>
+<section id="nu_mu-ccqe" class="level2">
+<h2><span class="math inline">\(\nu_\mu\)</span> CCQE</h2>
+<hr />
+<p><img src="../img/minerva/ccqe_numu.png" class=left> <img src="../img/minerva/ccqe_numu_ratio.png" class=right></p>
+</section>
+<section id="barnu_mu-ccqe" class="level2">
+<h2><span class="math inline">\(\bar\nu_\mu\)</span> CCQE</h2>
+<hr />
+<p><img src="../img/minerva/ccqe_numubar.png" class=left> <img src="../img/minerva/ccqe_numubar_ratio.png" class=right></p>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+</body>
+
+</html>
