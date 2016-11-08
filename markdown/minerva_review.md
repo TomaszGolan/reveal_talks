@@ -179,10 +179,11 @@ $$w_u \sim \prod_i w_{HP, u, i}$$
 |:--------:|:------------:|:-------------:|
 | Generation 0 | $\nu_\mu$ CCQE | PRL 111 (2013) 022502 |
 | Generation 0 | $\bar{\nu_\mu}$ CCQE | PRL 111 (2013) 022501 |
-| Generation 1 | CC target ratios | PRL 112 (2014) 231801 |
-| Generation 1 | Coherent $\pi$ | PRL 113 (2014) 261802 |
-| Generation 1 | $\nu_\mu$ muon + proton | PRD (2015) 071301 |
+| Generation 1 | $\nu_\mu$ muon + proton | PRD 91 (2015) 071301 |
+| Generation 1 | $\nu_\mu$ CC $\pi^\pm$ | PRD 92 (2015) 092008 |
 | Generation 1 | $\bar{\nu_\mu}$ CC $\pi^0$ | PLB 749 (2015) 130 |
+| Generation 1 | Coherent $\pi$ | PRL 113 (2014) 261802 |
+| Generation 1 | CC target ratios | PRL 112 (2014) 231801 |
 
 ## Generation 0 vs Generation 2 (thick off)
 
@@ -261,9 +262,9 @@ $$\frac{d\sigma}{d\nu} = A + B\frac{\nu}{E} - \frac{C}{2}\frac{\nu^2}{E^2}$$
 
 #
 
-## CCQE results
+## CCQE measurements
 
-## CCQE "true" aka "1-track"
+## CCQE-"true" aka "1-track"
 
 ---
 
@@ -315,3 +316,276 @@ $$\frac{d\sigma}{d\nu} = A + B\frac{\nu}{E} - \frac{C}{2}\frac{\nu^2}{E^2}$$
 
 <img src="../img/minerva/ccqe_numubar.png" class=left>
 <img src="../img/minerva/ccqe_numubar_ratio.png" class=right>
+
+
+## CCQE-"like" aka "muon+proton"
+
+---
+
+| **Flux** | **Analysis** | **Reference** |
+|:--------:|:------------:|:-------------:|
+| Generation 1 | $\nu_\mu$ muon + proton | PRD (2015) 071301 |
+
+<br>
+
+* CC $\nu_\mu$ on $CH$
+
+* require a muon, at least one proton, and no pions in the final state
+
+* based on hadronic kinematics
+
+* *proton kinetic energy > 110 MeV*
+
+## $\nu_\mu$ CCQE-like
+
+---
+
+<img src="../img/minerva/ccqe_like_numu.png" class=left>
+<img src="../img/minerva/ccqe_like_numu_ratio.png" class=right>
+
+#
+
+## Pion production measurements
+
+## Charged pion production
+
+---
+
+<div class=left>
+
+CC $1\pi^\pm$
+
+---
+
+* require a muon and exactly one charged pion
+
+* $W < 1.4$ GeV
+
+</div>
+
+<div class=right>
+
+CC $N\pi^\pm$
+
+---
+
+* require a muon and at least one charged pion
+
+* $W < 1.8$ GeV
+
+</div>
+
+## Invariant mass
+
+---
+
+<div class=left>
+
+<br>
+
+$$E_\nu = E_\mu + E_{recoil}$$
+$$Q^2 = 2E_\nu(E_\mu  - |\vec p_\mu|\cos\theta_\mu) - m_\mu^2$$
+$$W_{exp}^2 = M_p^2 - Q^2 + 2M_pE_{recoil}$$
+
+<br>
+
+* $E_{recoil}$ is measured colorimetrically
+
+</div>
+
+<img src="../img/minerva/wexp.png" width=40%>
+
+## Backrounds vs invariant mass
+
+---
+
+<img src="../img/minerva/wexp_bkg.png">
+
+## CC $1\pi^\pm$
+
+---
+
+<img src="../img/minerva/cc1pic.png">
+
+## CC $N\pi^\pm$
+
+---
+
+<img src="../img/minerva/ccnpic.png">
+
+## $\bar\nu_\mu$ CC $1\pi^0$
+
+---
+
+* require a muon and a single neutral pion (visible as two photons)
+* about 70% of background - multipion events $\pi^0 + \pi^\pm$
+    * $pi^\pm$ is not tracked
+    * $\pi^-\rightarrow\pi^0$
+* the rest of the background is mostly due to energy deposit by $\pi^-$ and neutrons misidentified as photons
+
+## Invariant mass of $\gamma\gamma$
+
+---
+
+<div class=left>
+
+<br><br>
+
+The $\gamma\gamma$ invariant mass is reconstructed from the photon energies ($E_1$, $E_2$):
+
+$$m_{\gamma\gamma}^2 = 2E_1E_2(1 - \cos\theta_{\gamma\gamma})$$
+
+</div>
+
+<img src="../img/minerva/mgg.png" class=right>
+
+## Differential cross sections
+
+---
+
+<img src="../img/minerva/cc1pi0_mom.png" class=left>
+<img src="../img/minerva/cc1pi0_ang.png" class=right>
+
+## Coherent pion production
+
+---
+
+<img src="../img/minerva/coh_candidate.png">
+
+* require two final state particles: $\mu^\pm$ and $\pi^\mp$ and no extra visible recoil
+
+## Background
+
+---
+
+<img src="../img/minerva/coh_bkg.png">
+
+## Low energy transfer requirement
+
+---
+
+<img src="../img/minerva/coh_tcut.png">
+
+## Total cross section
+
+---
+
+<img src="../img/minerva/coh_total.png">
+
+## Differential cross section (energy)
+
+---
+
+<img src="../img/minerva/coh_energy.png">
+
+## Differential cross section (angle)
+
+---
+
+<img src="../img/minerva/coh_angle.png">
+
+
+#
+
+## Other measurements highlights
+
+## Inclusive $\nu_\mu$ CC ratios
+
+---
+
+<div class=left>
+
+<img src="../img/minerva/target_ratios1.png" width=75%>
+
+* shadowing at low $x$
+
+* no MEC in simulations (high $x$ dominated by QE)
+
+</div>
+
+<img src="../img/minerva/target_ratios2.png" width=30%>
+
+## DIS $\nu_\mu$ CC ratios
+
+---
+
+<div class=left>
+
+<img src="../img/minerva/dis_ratios1.png" width=75%>
+
+* $W > 2$ GeV and $Q^2 > 1$ GeV$^2$
+
+* $E_\nu$ up to 50 GeV
+
+</div>
+
+<img src="../img/minerva/dis_ratios2.png" width=30%>
+
+## Available energy vs momentum transfer
+
+---
+
+<div class=left>
+
+<br>
+
+* $E_{avail}$ - sum of proton and charged pion kinetic energy and neutral pion, electron, and photon total energy
+
+</div>
+
+<img src="../img/minerva/availableE.png" width=50%>
+
+## NC diffractive $\pi^0$ production
+
+---
+
+<div class=left>
+
+<br>
+
+* The most plausible source of the excess seen in the data is diffractive NC $\pi^0$ production from hydrogen in the scintillator target of MINERvA.
+
+</div>
+
+<img src="../img/minerva/nc_diffractive.png" width=50%>
+
+## CC pion production (muon variables)
+
+---
+
+<div class=left>
+
+<br>
+
+* $\nu$-CC($\pi^+$) and $\bar\nu$-CC($\pi^0$)
+
+* total cross section
+
+* differential cross sections:
+
+    * muon momentum
+    * muon angle
+    * $Q^2$
+
+</div>
+
+<img src="../img/minerva/ccpi_muon.png" width=30%>
+
+## Kaon production
+
+---
+
+<img src="../img/minerva/kaon_production.png" class=left>
+<img src="../img/minerva/kaon_coh.png" class=right>
+
+#
+
+## Summary
+
+---
+
+* MINERvA offers an unique opportunity to measure neutrino cross section on different nuclear targets
+
+* There is still a lot of collected data to analyze (e.g. in nuclear target region)
+
+* Medium energy data will allow to study more precisely DIS (and transition region?)
