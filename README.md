@@ -7,6 +7,7 @@
 - [GENIE Update](http://tomaszgolan.github.io/reveal_talks/html/genie_update_jun16.html)
 - [Projekt C++](http://tomaszgolan.github.io/reveal_talks/html/projekt_cpp.html)
 - [MINERvA Review](http://tomaszgolan.github.io/reveal_talks/html/minerva_review.html)
+- [MLMPR (Warsaw 17.01)](http://tomaszgolan.github.io/reveal_talks/html/mlmpr_warsaw17.html)
 
 # Use these links to print as pdf
 
@@ -17,3 +18,4 @@
 - [GENIE Update](http://tomaszgolan.github.io/reveal_talks/html/genie_update_jun16.html?print-pdf)
 - [Projekt C++](http://tomaszgolan.github.io/reveal_talks/html/projekt_cpp.html?print-pdf)
 - [MINERvA Review](http://tomaszgolan.github.io/reveal_talks/html/minerva_review.html?print-pdf)
+- [MLMPR (Warsaw 17.01)](http://tomaszgolan.github.io/reveal_talks/html/mlmpr_warsaw17.html?print-pdf)
