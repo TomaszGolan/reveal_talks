@@ -11,3 +11,15 @@
 hr {
   clear: both;
 }
+
+.reveal .footer {
+  width: 25%;
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  font-size: 0.5em;
+  color: #ddd;
+  background-color: #282828;
+  text-align: left;
+  padding-left: 0.5em;
+}

@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Machine Learning for MINERvA Physics Reconstruction</title>
+
+  <meta name="description" content="Machine Learning for MINERvA Physics Reconstruction">
+
+   <meta name="author" content="T. Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Machine Learning for MINERvA Physics Reconstruction</h1>
+         <h3>T. Golan</h3> 
+        <p>
+          <h4>Warsaw, 11.01.2017</h4>
+        </p>
+      </section>
+
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<ul>
+<li><a href="#minerva-experiment">Introduction I: MINERvA</a></li>
+<li><a href="#machine-learning">Introduction II: Machine Learning</a></li>
+<li><a href="#mlmpr-first-attempts">MLMPR: first attempts</a></li>
+</ul>
+</section>
+<section id="section" class="level1">
+<h1></h1>
+<section id="main-injector-experiment-nu-a" class="level2">
+<h2><font color=red>M</font>ain <font color=red>IN</font>jector <font color=red>E</font>xpe<font color=red>R</font>iment <font color=red><span class="math inline">\(\nu\)</span>-A</font></h2>
+</section>
+<section id="minerva-experiment" class="level2">
+<h2>MINERvA Experiment</h2>
+<hr />
+<div class="left">
+<ul>
+<li>MINERvA is a neutrino-scattering experiment at Fermilab</li>
+<li>Collaboration of about 50-100 physicist</li>
+<li>NuMI beam is used to measure cross section for neutrino-nucleus interactions</li>
+<li>The detector includes several different nuclear targets</li>
+</ul>
+</div>
+<p><img src="../img/minerva/minerva.jpg" width=30%></p>
+</section>
+<section id="detector" class="level2">
+<h2>Detector</h2>
+<hr />
+<p><img src="../img/minerva/minerva_detector.png" width=75%></p>
+</section>
+<section id="nuclear-targets" class="level2">
+<h2>Nuclear targets</h2>
+<hr />
+<p><img src="../img/minerva/minerva_nuclear_targets.jpg" width=50%></p>
+</section>
+<section id="event-example-1" class="level2">
+<h2>Event example 1</h2>
+<hr />
+<p><img src="../img/minerva/event_example1.png" width=60%> <br><em>courtesy of G. Perdue</em></p>
+</section>
+<section id="event-example-2" class="level2">
+<h2>Event example 2</h2>
+<hr />
+<p><img src="../img/minerva/event_example2.png" width=60%> <br><em>courtesy of G. Perdue</em></p>
+</section>
+<section id="vertex-reconstruction" class="level2">
+<h2>Vertex Reconstruction</h2>
+<hr />
+<ul>
+<li><p>tracking based algorithms fail for high energy events</p></li>
+<li><p>&quot;by eye&quot; method is very often more accurate</p></li>
+<li><p>idea: use algorithms for images analysis and pattern recognition</p></li>
+</ul>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="machine-learning" class="level2">
+<h2>Machine Learning</h2>
+</section>
+<section id="why-ml" class="level2">
+<h2>Why ML?</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p><a href="http://image-net.org">ImageNet</a> is an image database</p></li>
+<li>Annual competition for classification
+<ul>
+<li>2010: 71.8%</li>
+<li>2011: 74.3%</li>
+<li>2012: 84.0%</li>
+<li>2013: 88.2%</li>
+<li>2014: 93.3%</li>
+<li>2015: <font color=red>96.4%</font></li>
+</ul></li>
+<li>Humans: about <font color=red>95%</font></li>
+</ul>
+</div>
+<div class="right">
+<ul>
+<li>Why humans fail?</li>
+</ul>
+<p><img src='../img/ml/alaskan_malamute.jpg'></p>
+<p>Siberian Husky or Alaskan Malamute?</p>
+</div>
+</section>
+<section id="understanding-cnn" class="level2">
+<h2>Understanding CNN</h2>
+<hr />
+<p><font size=6></p>
+<blockquote>
+<p>If you can't explain it simply, you don't understand it well enough.</p>
+<div style="text-align:right;">
+Albert Einstein
+</div>
+</blockquote>
+<p></font></p>
+<hr />
+<p><br></p>
+<ul>
+<li>lets start from <a href="#linear-regression">linear regression</a></li>
+<li>then introduce a <a href="#single-neuron">single neuron</a> and <a href="#neural-networks">neural networks</a></li>
+<li>to finally get to <a href="#convolutional-neural-networks">convolutional neural networks</a></li>
+</ul>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="linear-regression" class="level2">
+<h2>Linear Regression</h2>
+</section>
+<section id="notation" class="level2">
+<h2>Notation</h2>
+<hr />
+<ul>
+<li>Hypothesis (for convenience <span class="math inline">\(x_0 = 1\)</span>): <span class="math display">\[h(x) = w_0 + w_1x_1 + ... + w_nx_n = \sum\limits_{i=0}^n w_i x_i = w^T x\]</span></li>
+<li>Cost function: <span class="math display">\[f(w) = \frac{1}{2}\sum\limits_{i=0}^n\left(h (x^{(i)}) - y^{(i)}\right)^2\]</span></li>
+<li>Learning step (gradient descent, <span class="math inline">\(\alpha\)</span> - training rate): <span class="math display">\[w_j = w_j - \alpha\frac{\partial f(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></li>
+</ul>
+</section>
+<section id="example" class="level2">
+<h2>Example</h2>
+<hr />
+<img src="../img/ml/linear_regression_learning.gif" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li><p><strong>epoch</strong> = one loop over the whole training sample</p></li>
+<li><p>for each feature vector weights are updated using <strong>gradient descent</strong> method</p></li>
+</ul>
+</div>
+</section>
+<section id="classification" class="level2">
+<h2>Classification</h2>
+<hr />
+<img src="../img/ml/linear_classification_learning.gif" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li><p>target: <span class="math inline">\(y = 0, 1\)</span></p></li>
+<li><p>not really efficient for classification</p></li>
+<li><p>imagine having some data ~ 100</p></li>
+<li>logistic function does better job</li>
+</ul>
+</div>
+</section>
+<section id="why-do-we-need-neural-networks" class="level2">
+<h2>Why do we need neural networks?</h2>
+<hr />
+<ul>
+<li><p>We can do classification</p></li>
+<li><p>We can do regression</p></li>
+<li><p>But real problems are nonlinear</p></li>
+</ul>
+</section>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="neural-networks" class="level2">
+<h2>Neural Networks</h2>
+</section>
+<section id="single-neuron" class="level2">
+<h2>Single Neuron</h2>
+<hr />
+<img src="../img/ml/single_neuron.png" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li>neuron = activation function:
+<ul>
+<li>linear</li>
+<li>binary step</li>
+<li>logistic</li>
+<li>tanh</li>
+<li>relu</li>
+<li>...</li>
+</ul></li>
+<li>learned using gradient descent</li>
+</ul>
+</div>
+</section>
+<section id="non-linear-problem-xor-gate" class="level2">
+<h2>Non-linear problem: XOR gate</h2>
+<hr />
+<p><img src="../img/ml/xor_vs_and_gates.png" width=100%></p>
+</section>
+<section id="neural-network-for-xor" class="level2">
+<h2>Neural network for XOR</h2>
+<hr />
+<p><img src="../img/ml/nn_two_neurons.png" width=60%></p>
+<blockquote>
+<p>x XOR y = (x AND NOT y) OR (y AND NOT x)</p>
+</blockquote>
+</section>
+<section id="neural-networks-1" class="level2">
+<h2>Neural Networks</h2>
+<hr />
+<ul>
+<li>more complicated problems require more neurons</li>
+</ul>
+<p><img src="../img/ml/nn_bp.png"></p>
+</section>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<section id="convolutional-neural-networks" class="level2">
+<h2>Convolutional Neural Networks</h2>
+</section>
+<section id="idea" class="level2">
+<h2>Idea</h2>
+<hr />
+<p><img src="../img/ml/cnn_idea_sketch.png" width=50%></p>
+</section>
+<section id="convolution" class="level2">
+<h2>Convolution</h2>
+<hr />
+<p><img src="../img/ml/convolution_example.gif" width=50%></p>
+<p>src: <a href="http://deeplearning.stanford.edu/wiki/images/6/6c/Convolution_schematic.gif">deeplearning.net</a></p>
+</section>
+<section id="clones-of-a-neuron-looking-at-different-part-of-an-image" class="level2">
+<h2>&quot;Clones&quot; of a neuron looking at different part of an image</h2>
+<hr />
+<p><img src="../img/ml/minerva_filter.png" width = "100%"></p>
+</section>
+<section id="convolution-layer" class="level2">
+<h2>Convolution Layer</h2>
+<hr />
+<center>
+<em>No. of convolved feature vectors / matrices = No. of filters</em>
+</center>
+<p><img src="../img/ml/minerva_filter_layer.png" width = "50%"></p>
+</section>
+<section id="pooling" class="level2">
+<h2>Pooling</h2>
+<hr />
+<p><img src="../img/ml/pool_example.png" width = "75%"></p>
+<p>src: <a href="http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/">wildml.com</a></p>
+</section>
+<section id="pooling---example" class="level2">
+<h2>Pooling - example</h2>
+<hr />
+<p><img src="../img/ml/max_pooling_example.png" width = "100%"></p>
+<p>src: <a href="http://arxiv.org/abs/1506.03767">arxiv</a></p>
+</section>
+<section id="cnn-example" class="level2">
+<h2>CNN example</h2>
+<hr />
+<p><img src="../img/ml/cnn_example.png" width = "100%"></p>
+<p>src: <a href="http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/">wildml.com</a></p>
+</section>
+</section>
+<section id="section-5" class="level1">
+<h1></h1>
+<section id="mlmpr-first-attempts" class="level2">
+<h2>MLMPR First Attempts</h2>
+</section>
+<section id="what-are-we-looking-for" class="level2">
+<h2>What are we looking for?</h2>
+<hr />
+<ul>
+<li><p>The first goal is to use CNN to find vertex in nuclear target region</p>
+<ul>
+<li><strong>Classification</strong>: upstream of target 1, target 1, plastic between target 1 and target 2, target 2...</li>
+</ul></li>
+<li><p>Next steps: NC<span class="math inline">\(\pi^0\)</span>? <span class="math inline">\(\pi\)</span> momentum? hadron multiplicities?</p></li>
+</ul>
+</section>
+<section id="classification-regions" class="level2">
+<h2>Classification regions</h2>
+<hr />
+<p><img src="../img/ml/mlvf_detector_regions.png" width=60%></p>
+</section>
+<section id="section-6" class="level2">
+<h2></h2>
+<img src="../img/ml/mlvf_cnn_vs_track_127.png" class='left'>
+<div class="right">
+<p><br></p>
+<h2 id="the-current-best">The current best</h2>
+<hr />
+<pre><code>test accuracy:        92.67 %
+
+    target 0 accuracy:            75.861 %
+    target 1 accuracy:            94.878 %
+    target 2 accuracy:            94.733 %
+    target 3 accuracy:            93.596 %
+    target 4 accuracy:            90.404 %
+    target 5 accuracy:            94.011 %
+    target 6 accuracy:            87.775 %
+    target 7 accuracy:            85.225 %
+    target 8 accuracy:            94.109 %
+    target 9 accuracy:            53.077 %
+    target 10 accuracy:           96.608 %</code></pre>
+</div>
+<p><br></p>
+</section>
+<section id="purity-efficiency-preliminary" class="level2">
+<h2>Purity * Efficiency <em>(preliminary)</em></h2>
+<hr />
+<p><img src="../img/ml/targetid_pur_eff_inc.png" class='left'> <img src="../img/ml/targetid_pur_eff_dis.png" class='right'></p>
+</section>
+<section id="how-did-we-get-here" class="level2">
+<h2>How did we get here?</h2>
+<hr />
+<p><font size=6></p>
+<blockquote>
+<p>In order to attain the impossible, one must attempt the absurd.</p>
+<div style="text-align:right;">
+Miguel de Cervante
+</div>
+</blockquote>
+<p></font></p>
+<hr />
+<div class="left">
+<ul>
+<li>Some educated guesses</li>
+<li>A little bit of intuition</li>
+<li>And many, many attempts</li>
+<li>... on 2 GPU's</li>
+<li>... and later using Titan</li>
+</ul>
+</div>
+<div class="right">
+<ul>
+<li>Titan has <strong>18,668</strong> NVIDIA Kepler GPUs</li>
+</ul>
+<p><img src="../img/andy.gif" width=50%></p>
+</div>
+</section>
+</section>
+<section id="section-7" class="level1">
+<h1></h1>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<hr />
+<ul>
+<li>ML approach outperforms track-based reconstruction</li>
+<li>Statistics, efficiency and purity is improved for inclusive and DIS samples</li>
+<li>And this is just the beginning</li>
+</ul>
+</section>
+</section>
+<section id="section-8" class="level1">
+<h1></h1>
+<section id="backup-slides" class="level2">
+<h2>Backup slides</h2>
+</section>
+<section id="linear-classification" class="level2">
+<h2>Linear Classification</h2>
+<hr />
+<p><img src="../img/ml/linear_classification_learning.gif"  class="left"> <img src="../img/ml/linear_classification_learning_far_data.gif" class="right"></p>
+</section>
+<section id="logistic-regression" class="level2">
+<h2>Logistic Regression</h2>
+</section>
+<section id="logistic-function" class="level2">
+<h2>Logistic function</h2>
+<hr />
+<img src="../img/ml/sigmoid_function.png" class='right'>
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>Logistic function: <span class="math display">\[g(z) = \frac{1}{1 + e^{-z}}\]</span></p></li>
+<li>Hypothesis: <span class="math display">\[h(x) = g(w^Tx) = \frac{1}{1 + e^{-w^Tx}}\]</span></li>
+</ul>
+</div>
+</section>
+<section id="classification-1" class="level2">
+<h2>Classification</h2>
+<hr />
+<ul>
+<li><p>Probability of 1: <span class="math display">\[P (y = 1 | x, w) = h(x)\]</span></p></li>
+<li><p>Probability of 0: <span class="math display">\[P (y = 0 | x, w) = 1 - h(x)\]</span></p></li>
+<li><p>Probability: <span class="math display">\[p (y | x, w) = (h(x))^y\cdot(1 - h(x))^{1 - y}\]</span></p></li>
+</ul>
+</section>
+<section id="section-9" class="level2">
+<h2></h2>
+<ul>
+<li><p>Likelihood: <span class="math display">\[L(w) = \prod\limits_{i=0}^n p(y^{(i)} | x^{(i)}, w) = \prod\limits_{i=0}^n (h(x^{(i)}))^{y^{(i)}}\cdot(1 - h(x^{(i)}))^{1 - y^{(i)}}\]</span></p></li>
+<li><p>Log-likelihood: <span class="math display">\[l(w) = \log L(w) = \sum\limits_{i=0}^n y^{(i)}\log h(x^{(i)}) + (1 - y^{(i)})\log (1-h(x^{(i)}))\]</span></p></li>
+<li><p>Learning step (maximize <span class="math inline">\(l(w)\)</span>): <span class="math display">\[w_j = w_j + \alpha\frac{\partial l(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></p></li>
+</ul>
+</section>
+<section id="logistic-classification" class="level2">
+<h2>Logistic Classification</h2>
+<hr />
+<p><img src="../img/ml/logistic_classification.gif"  class="left"> <img src="../img/ml/logistic_classification_far_data.gif" class="right"></p>
+</section>
+<section id="non-linear-problem" class="level2">
+<h2>Non-linear problem</h2>
+<hr />
+<p><img src="../img/ml/point_in_out_circle.png" width=100% style="background-color: white;"></p>
+</section>
+<section id="trick" class="level2">
+<h2>Trick</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>Feature vector: <span class="math display">\[(x,y) \rightarrow (x,y,x^2,y^2)\]</span></p></li>
+<li><p>Hypothesis: <span class="math display">\[h (x) = \frac{1}{1 + e^{-w_0 - w_1x - w_2y - w_3x^2 - w_4y^2}}\]</span></p></li>
+</ul>
+<p><em>In general, adding extra dimension by hand would be hard / impossible. Neural networks do that for us.</em></p>
+</div>
+<p><img src="../img/ml/point_in_out_circle_sigmoid.png" width=40%></p>
+</section>
+<section id="and-gate" class="level2">
+<h2>AND gate</h2>
+<hr />
+<div class="left">
+<p><img src="../img/ml/single_neuron.png" width=60%></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(x_2\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">AND</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="right">
+<p><br></p>
+<ul>
+<li>Hypothesis = logistic function:</li>
+</ul>
+<p><span class="math display">\[h(x) = \frac{1}{1 + e^{-w^Tx}}\]</span></p>
+<hr />
+<p>Intuition:</p>
+<ul>
+<li><span class="math inline">\(w_0 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_1 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_2 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_1 + w_2 &gt; 0\)</span></li>
+</ul>
+</div>
+</section>
+<section id="and-gate---learning" class="level2">
+<h2>AND gate - learning</h2>
+<hr />
+<p><img src="../img/ml/and_gate_weights.png" width=60% style="background-color: white"></p>
+</section>
+<section id="purity-preliminary" class="level2">
+<h2>Purity <em>(preliminary)</em></h2>
+<hr />
+<p><img src="../img/ml/targetid_pur_inc.png" class='left'> <img src="../img/ml/targetid_pur_dis.png" class='right'></p>
+</section>
+<section id="efficiency-preliminary" class="level2">
+<h2>Efficiency <em>(preliminary)</em></h2>
+<hr />
+<p><img src="../img/ml/targetid_eff_inc.png" class='left'> <img src="../img/ml/targetid_eff_dis.png" class='right'></p>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
