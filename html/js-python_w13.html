@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Języki skryptowe - Python</title>
+
+  <meta name="description" content="Języki skryptowe - Python">
+
+   <meta name="author" content="Wykład 13" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Języki skryptowe - Python</h1>
+         <h3>Wykład 13</h3> 
+        <p>
+          <h4>Powtórka cz. I</h4>
+        </p>
+      </section>
+
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="section" class="level1">
+<h1></h1>
+<section id="plan-wykładu" class="level2">
+<h2>Plan wykładu</h2>
+<hr />
+<ul>
+<li><a href="#tryb-interaktywny">Wprowadzenie</a></li>
+<li><a href="#typy-danych">Typy danych</a></li>
+<li><a href="#instrukcja-warunkowa-if">Instrukcje sterujące</a></li>
+<li><a href="#funkcje">Funkcje</a></li>
+</ul>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="tryb-interaktywny" class="level2">
+<h2>Tryb interaktywny</h2>
+<hr />
+<figure>
+<img src="../img/python/python_interactive.gif" />
+</figure>
+</section>
+<section id="tryb-interaktywny-1" class="level2">
+<h2>Tryb interaktywny</h2>
+<hr />
+<div class="left">
+<pre class="py"><code># my_math.py
+&quot;&quot;&quot;Zbiór funkcji matematycznych&quot;&quot;&quot;
+
+
+def delta(a, b, c):
+    &quot;&quot;&quot;Wyróżnik trójmianu kwadratowego&quot;&quot;&quot;
+    return b*b - 4*a*c
+
+if __name__ == &quot;__main__&quot;:
+    a = eval(input(&quot;a = &quot;))
+    b = eval(input(&quot;b = &quot;))
+    c = eval(input(&quot;c = &quot;))
+    print(&quot;Delta =&quot;, delta(a, b, c))</code></pre>
+</div>
+<div class="right">
+<p><br> <img src="../img/python/python_interactive_test.gif" /></p>
+</div>
+</section>
+<section id="tryb-interaktywny-2" class="level2">
+<h2>Tryb interaktywny</h2>
+<hr />
+<div class="left">
+<pre class="py"><code># my_math.py
+&quot;&quot;&quot;Zbiór funkcji matematycznych&quot;&quot;&quot;
+
+
+def delta(a, b, c):
+    &quot;&quot;&quot;Wyróżnik trójmianu kwadratowego&quot;&quot;&quot;
+    return b*b - 4*a*c
+
+if __name__ == &quot;__main__&quot;:
+    a = eval(input(&quot;a = &quot;))
+    b = eval(input(&quot;b = &quot;))
+    c = eval(input(&quot;c = &quot;))
+    print(&quot;Delta =&quot;, delta(a, b, c))</code></pre>
+</div>
+<div class="right">
+<p><br> <img src="../img/python/python_interactive_doc.gif" /></p>
+</div>
+</section>
+<section id="tryb-skryptowy" class="level2">
+<h2>Tryb skryptowy</h2>
+<hr />
+<div class="left">
+<pre class="py"><code># my_math.py
+&quot;&quot;&quot;Zbiór funkcji matematycznych&quot;&quot;&quot;
+
+
+def delta(a, b, c):
+    &quot;&quot;&quot;Wyróżnik trójmianu kwadratowego&quot;&quot;&quot;
+    return b*b - 4*a*c
+
+if __name__ == &quot;__main__&quot;:
+    a = eval(input(&quot;a = &quot;))
+    b = eval(input(&quot;b = &quot;))
+    c = eval(input(&quot;c = &quot;))
+    print(&quot;Delta =&quot;, delta(a, b, c))</code></pre>
+</div>
+<div class="right">
+<p><br> <img src="../img/python/python_script.gif" /></p>
+</div>
+</section>
+<section id="typowanie-dynamiczne" class="level2">
+<h2>Typowanie dynamiczne</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>przypisywanie typów w trakcie działania programu</p></li>
+<li><p>jedna zmienna może przechowywać różne typy</p></li>
+<li><p>zaleta: wygoda</p></li>
+<li><p>wada: kontrola</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br> <img src="../img/python/python_zmienne.gif" /></p>
+</div>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="typy-danych" class="level2">
+<h2>Typy danych</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>liczby: <font color="red">int</font>, <font color="red">float</font>, <font color="red">complex</font></p></li>
+<li><p>sekwencje: <font color="green">list</font>, <font color="red">tuple</font>, <font color="red">range</font>, <font color="red">str</font></p></li>
+<li><p>zbiory: <font color="green">set</font>, <font color="red">frozenset</font></p></li>
+<li><p>mapujące: <font color="green">dict</font></p></li>
+</ul>
+<p><em><font color="red">typy niemutujące</font><br><font color="green">typy mutujące</font></em></p>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code>&gt;&gt;&gt; x = [1, 2, 3]
+&gt;&gt;&gt; y = x
+&gt;&gt;&gt; y.append(4)
+&gt;&gt;&gt; x
+[1, 2, 3, 4]
+# y.append zmieniło x
+# bo zmienne x i y wskazują
+# na ten sam obiekt
+&gt;&gt;&gt; id(x)
+140462289826888
+&gt;&gt;&gt; id(y)
+140462289826888
+# list.copy tworzy kopię
+&gt;&gt;&gt; z = x.copy()
+&gt;&gt;&gt; id(z)
+140462289924616</code></pre>
+</div>
+</section>
+<section id="typy-sekwencyjne---indeksowanie" class="level2">
+<h2>Typy sekwencyjne - indeksowanie</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>indeksowanie od <span class="math inline">\(0\)</span> do <span class="math inline">\(N-1\)</span></p></li>
+<li><p>ujemny indeks - liczymy od końca</p></li>
+<li><p>wycinki <code>[poczatek:koniec]</code> lub <code>[poczatek:koniec:krok]</code></p></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code>&gt;&gt;&gt; x = [1, 2, 3, 4, 5] # tworzymy listę
+&gt;&gt;&gt; x[1] # indeks 1 -&gt; drugi element
+2
+&gt;&gt;&gt; x[-1] # indeks -1 -&gt; ostatni element
+5
+&gt;&gt;&gt; x[1::2] # od drugiego do końca co dwa
+[2, 4]
+# indeks 5 wychodzi poza zasięg
+# bo od 0 do 4
+&gt;&gt;&gt; x[5]
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+IndexError: list index out of range
+&gt;&gt;&gt;</code></pre>
+</div>
+</section>
+<section id="operacje-na-sekwencjach" class="level2">
+<h2>Operacje na sekwencjach</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>operator <code>in</code> sprawdza, czy element znajduje się w danej sekwencji</p></li>
+<li><p>operator <code>+</code> dodaje do siebie dwie sekwencje tego samego typu</p></li>
+<li><p>operator <code>del</code> usuwa wycinek listy</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre class="py"><code>&gt;&gt;&gt; x = [1, 2, 3] + [4, 5]
+&gt;&gt;&gt; x
+[1, 2, 3, 4, 5]
+&gt;&gt;&gt; 5 in x # 5 jest na liście
+True
+&gt;&gt;&gt; del x[-1] # usuwamy ostatni element
+&gt;&gt;&gt; 5 in x # 5 nie ma na liście
+False</code></pre>
+</div>
+</section>
+<section id="funkcje-wbudowane" class="level2">
+<h2>Funkcje wbudowane</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p><em>len</em> zwraca długość sekwencji</p></li>
+<li><p><em>min</em> zwraca najmniejszy element</p></li>
+<li><p><em>max</em> zwraca największy element</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre class="py"><code>&gt;&gt;&gt; x = (1, 2, 3, 4, 5) # krotka
+&gt;&gt;&gt; len(x) # długość krotki
+5
+&gt;&gt;&gt; min(x) # minimum
+1
+&gt;&gt;&gt; max(x) # maksimum
+5</code></pre>
+</div>
+</section>
+<section id="zbiory" class="level2">
+<h2>Zbiory</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>zbiór (<em>set</em>) nie może zawierać duplikatów</p></li>
+<li><p>jest nieuporządkowany</p></li>
+<li><p><em>frozenset</em> nie można modyfikować</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code>&gt;&gt;&gt; x = {1, 2, 3, 1, 2, 4} # set
+&gt;&gt;&gt; x # duplikaty automatycznie usunięte
+{1, 2, 3, 4}
+&gt;&gt;&gt; x.add(5) # dodajemy 5
+&gt;&gt;&gt; x
+{1, 2, 3, 4, 5}
+&gt;&gt;&gt; x.add(5) # nic się nie dzieje
+&gt;&gt;&gt; x
+{1, 2, 3, 4, 5}
+&gt;&gt;&gt; frozen = frozenset(x) # nietykalny zbiór
+&gt;&gt;&gt; frozen.add(5) # nie można modyfikować
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  AttributeError: &#39;frozenset&#39; object has
+  no attribute &#39;add&#39;</code></pre>
+</div>
+</section>
+<section id="zbiory---przykład" class="level2">
+<h2>Zbiory - przykład</h2>
+<hr />
+<div class="left">
+<pre class="py"><code># lista_zakupow.py
+&quot;&quot;&quot;System zarządzania listą zakupów.&quot;&quot;&quot;
+
+
+def dodaj(produkt, lista):
+    &quot;&quot;&quot;Dodaje produkt do listy zakupów.&quot;&quot;&quot;
+    print(&quot;Dodaję:&quot;, produkt)
+    lista.add(produkt)
+    print(&quot;Lista:&quot;, lista)
+
+
+def usun(produkt, lista):
+    &quot;&quot;&quot;Usuwa produkt z listy zakupów.&quot;&quot;&quot;
+    print(&quot;Usuwam:&quot;, produkt)
+    lista.discard(produkt)
+    print(&quot;Lista:&quot;, lista)
+
+if __name__ == &quot;__main__&quot;:
+    zakupy = set()  # moja lista zakupów
+    dodaj(&quot;jajka&quot;, zakupy)
+    dodaj(&quot;masło&quot;, zakupy)
+    dodaj(&quot;jajka&quot;, zakupy)
+    dodaj(&quot;chleb&quot;, zakupy)
+    usun(&quot;masło&quot;, zakupy)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python lista_zakupow.py
+Dodaję: jajka
+Lista: {&#39;jajka&#39;} # jajka dodane
+Dodaję: masło
+Lista: {&#39;jajka&#39;, &#39;masło&#39;} # masło dodane
+Dodaję: jajka
+Lista: {&#39;jajka&#39;, &#39;masło&#39;} # jajka już są
+Dodaję: chleb
+Lista: {&#39;jajka&#39;, &#39;chleb&#39;, &#39;masło&#39;} # +chleb
+Usuwam: masło
+Lista: {&#39;jajka&#39;, &#39;chleb&#39;} # masło usunięte</code></pre>
+</div>
+</section>
+<section id="część-wspólna-zbiorów" class="level2">
+<h2>Część wspólna zbiorów</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p><em>set.intersection</em> zwraca część wspólną zbiorów</p></li>
+<li><p>lub można skorzystać z operatora <code>&amp;</code></p></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code>&gt;&gt;&gt; x = {1, 2, 3, 4}
+&gt;&gt;&gt; y = {1, 5, 2, 8}
+&gt;&gt;&gt; x.intersection(y)
+{1, 2}
+&gt;&gt;&gt; x &amp; y # intersection
+{1, 2}</code></pre>
+</div>
+</section>
+<section id="część-wspólna---przykład" class="level2">
+<h2>Część wspólna - przykład</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># przedmioty.py
+
+with open(&quot;fk.txt&quot;) as f:
+    fk = f.read().splitlines()
+
+with open(&quot;issp.txt&quot;) as f:
+    issp = f.read().splitlines()
+
+common = list(set(issp) &amp; set(fk))
+
+print(&quot;Wspólne przedmioty:&quot;, common)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code># zawartość pliku fk.txt
+goran@ift438:~$ cat fk.txt
+fizyka
+matematyka
+python
+# zawartość pliku issp.txt
+goran@ift438:~$ cat issp.txt
+c++
+python
+matematyka
+# uruchamiamy przedmioty.py
+goran@ift438:~$ python przedmioty.py
+Wspólne przedmioty: [&#39;python&#39;, &#39;matematyka&#39;]</code></pre>
+</div>
+</section>
+<section id="słowniki" class="level2">
+<h2>Słowniki</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>słowniki (<em>dict</em>) mapują <em>klucze</em> na <em>wartości</em></p></li>
+<li><p>nie są uporządkowane</p></li>
+<li><p><em>slownik[klucz]</em> zwraca odpowiednią wartość</p></li>
+<li><p><em>slownik.get(klucz)</em> zwraca wartość lub <em>NULL</em> jeśli klucz nie istnieje</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code>&gt;&gt;&gt; x = {&quot;jeden&quot;: 1, &quot;dwa&quot;: 2}
+&gt;&gt;&gt; x[&quot;jeden&quot;] # wartość dla klucza &quot;jeden&quot;
+1
+&gt;&gt;&gt; x.get(&quot;dwa&quot;) # wartość dla klucza &quot;dwa&quot;
+2
+&gt;&gt;&gt; x[&quot;trzy&quot;] # nie ma &quot;trzy&quot; -&gt; błąd
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+KeyError: &#39;trzy&#39;
+&gt;&gt;&gt; x.get(&quot;trzy&quot;) # nie ma &quot;trzy&quot; -&gt; NULL
+&gt;&gt;&gt; zmienna = x.get(&quot;trzy&quot;) or 3 # NULL or 3
+&gt;&gt;&gt; zmienna
+3</code></pre>
+</div>
+</section>
+<section id="słowniki-przykład" class="level2">
+<h2>Słowniki przykład</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># ewidencja.py
+&quot;&quot;&quot;Ewidencja pojazdów&quot;&quot;&quot;
+
+indeks = 0  # id pojazdu
+pojazdy = {}
+
+
+def dodaj(nazwa):
+    &quot;&quot;&quot;Dodaje pojazd i generuje nowe id.&quot;&quot;&quot;
+    global indeks  # użyj globalnej zmiennej
+    global pojazdy
+
+    pojazdy[nazwa] = indeks  # dodaj pojazd
+
+    indeks += 1  # zwieksz id
+
+if __name__ == &quot;__main__&quot;:
+    dodaj(&quot;maluch&quot;)
+    dodaj(&quot;polonez&quot;)
+    dodaj(&quot;ford mustang&quot;)
+
+    for car, index in pojazdy.items():
+        print(index, car)</code></pre>
+</div>
+<div class="right">
+<p><br><br><br></p>
+<pre><code>goran@ift438:~$ python ewidencja.py
+0 maluch
+1 polonez
+2 ford mustang</code></pre>
+</div>
+</section>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="instrukcja-warunkowa-if" class="level2">
+<h2>Instrukcja warunkowa <em>if</em></h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li>instrukcja warunkowa <em>if</em> umożliwia wykonanie bloku instrukcji gdy spełnione jest zadane wyrażenie logiczne</li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code>if wyrażenie:
+  instrukcja
+elif inne_wyrażenie:
+  jakaś inna instrukcja
+else:
+  jeszcze inna instrukcja</code></pre>
+</div>
+</section>
+<section id="if---przykład" class="level2">
+<h2><em>if</em> - przykład</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># imie.py
+&quot;&quot;&quot;Sprawdza, czy podane imię
+jest męskie czy żeńskie.
+&quot;&quot;&quot;
+
+# pobiera imię od użytkownika
+imie = input(&quot;Podaj swoje imię: &quot;)
+
+if imie[-1] == &#39;a&#39;:  # jeśli kończy się na a
+    print(&quot;Jesteś kobietą.&quot;)
+else:  # jeśli nie kończy się na a
+    print(&quot;Nie jesteś kobietą.&quot;)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python imie.py
+Podaj swoje imię: Tomasz
+Nie jesteś kobietą.
+goran@ift438:~$ python imie.py
+Podaj swoje imię: Katarzyna
+Jesteś kobietą.
+goran@ift438:~$ python imie.py
+Podaj swoje imię: Barnaba
+Jesteś kobietą.</code></pre>
+</div>
+</section>
+<section id="if-elif---przykład" class="level2">
+<h2><em>if elif</em> - przykład</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># usa.py
+&quot;&quot;&quot;Prawa obywatela USA.&quot;&quot;&quot;
+
+# pobiera wiek (input)
+# zamienia na liczbę (eval)
+wiek = eval(input(&quot;Podaj wiek: &quot;))
+
+if wiek &lt; 18:
+    print(&quot;Jesteś nieletni.&quot;)
+elif wiek &lt; 21:
+    print(&quot;Możesz głosować, &quot;
+          &quot;ale piwa się nie napijesz.&quot;)
+else:
+    print(&quot;Możesz wszystko.&quot;)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python usa.py
+Podaj wiek: 12
+Jesteś nieletni.
+goran@ift438:~$ python usa.py
+Podaj wiek: 20
+Możesz głosować, ale piwa się nie napijesz.
+goran@ift438:~$ python usa.py
+Podaj wiek: 30
+Możesz wszystko.</code></pre>
+</div>
+</section>
+<section id="pętla-for" class="level2">
+<h2>Pętla <em>for</em></h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>pętla po sekwencji</p></li>
+<li><p>pętla po dowolnym obiekcie, który jest iterowalny</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre class="py"><code>for zmienna in sekwencja:
+  instrukcja</code></pre>
+</div>
+</section>
+<section id="pętla-po-range" class="level2">
+<h2>Pętla po <em>range</em></h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># range.py
+&quot;&quot;&quot;Pętle po range&quot;&quot;&quot;
+
+print(&quot;range(10):&quot;, end=&#39; &#39;)
+
+for liczba in range(10):
+    print(liczba, end=&#39; &#39;)
+
+print(&quot;\nrange(3, 10):&quot;, end=&#39; &#39;)
+
+for liczba in range(3, 10):
+    print(liczba, end=&#39; &#39;)
+
+print(&quot;\nrange(3, 10, 2):&quot;, end=&#39; &#39;)
+
+for liczba in range(3, 10, 2):
+    print(liczba, end=&#39; &#39;)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python range.py
+range(10): 0 1 2 3 4 5 6 7 8 9
+range(3, 10): 3 4 5 6 7 8 9
+range(3, 10, 2): 3 5 7 9</code></pre>
+<ul>
+<li><em>range(początek, koniec, krok)</em> zadaje ciąg liczb od początku do końca z zadanym kroku</li>
+<li>domyślnie początek = 0, a krok = 1</li>
+</ul>
+</div>
+</section>
+<section id="kolokwium---zadanie-1" class="level2">
+<h2>Kolokwium - zadanie 1</h2>
+<hr />
+<p>Niech <code>poczatek</code> i <code>koniec</code> będą całkowitymi zmiennymi globalnymi. Napisz pętlę <code>for</code>, która drukuje na ekranie liczby całkowite ze zbioru <code>[poczatek, koniec]</code>.</p>
+<div class="left">
+<p><br></p>
+<pre class="py"><code># zad1.py
+
+poczatek = 10
+koniec = 20
+
+for x in range(poczatek, koniec+1):
+    print(x, end=&#39; &#39;)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python zad1.py
+10 11 12 13 14 15 16 17 18 19 20</code></pre>
+</div>
+</section>
+<section id="pętla-po-liście-krotce" class="level2">
+<h2>Pętla po liście / krotce</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># for.py
+&quot;&quot;&quot;Pętle po liście i krotce.&quot;&quot;&quot;
+
+
+lista = [&quot;jeden&quot;, &quot;dwa&quot;, &quot;trzy&quot;, &quot;cztery&quot;]
+krotka = (&quot;pięć&quot;, &quot;sześć&quot;, 7, 8)
+
+# pętla po liście
+for element in lista:
+    print(element, end=&#39; &#39;)
+
+# pętla po krotce
+for element in krotka:
+    print(element, end=&#39; &#39;)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python for.py
+jeden dwa trzy cztery pięć sześć 7 8</code></pre>
+<p><br></p>
+<ul>
+<li>krotka przechowuje dane różnych typów, ale to w niczym nie przeszkadza</li>
+</ul>
+</div>
+</section>
+<section id="lista-z-listy-w-pętli" class="level2">
+<h2>Lista z listy w pętli</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># list.py
+&quot;&quot;&quot;Tworzy listę z listy w pętli.&quot;&quot;&quot;
+
+words = [&quot;jeden&quot;, &quot;dwa&quot;, &quot;trzy&quot;]
+lengths = []
+
+# zapisz długość każdego słowa na liście
+for word in words:
+    lengths.append(len(word))
+
+# drukowanie &quot;równoległe&quot;
+for i in range(len(words)):
+    print(&quot;{} ma długość {}&quot;
+          .format(words[i], lengths[i]))</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python list.py
+jeden ma długość 5
+dwa ma długość 3
+trzy ma długość 4</code></pre>
+<p><br></p>
+<ul>
+<li>w tej sytuacji <em>append</em> nie jest efektywnym rozwiązaniem</li>
+</ul>
+</div>
+</section>
+<section id="lista-składana" class="level2">
+<h2>Lista składana</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># list.py
+&quot;&quot;&quot;Tworzy listę z listy w pętli.&quot;&quot;&quot;
+
+words = [&quot;jeden&quot;, &quot;dwa&quot;, &quot;trzy&quot;]
+lengths = [len(w) for w in words]
+
+# drukowanie &quot;równoległe&quot;
+for i in range(len(words)):
+    print(&quot;{} ma długość {}&quot;
+          .format(words[i], lengths[i]))</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python list.py
+jeden ma długość 5
+dwa ma długość 3
+trzy ma długość 4</code></pre>
+<p><br></p>
+<ul>
+<li>już lepiej, ale <em>range</em> jest trochę nieeleganckie</li>
+</ul>
+</div>
+</section>
+<section id="pakowanie" class="level2">
+<h2>Pakowanie</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># list.py
+&quot;&quot;&quot;Tworzy listę z listy w pętli.&quot;&quot;&quot;
+
+words = [&quot;jeden&quot;, &quot;dwa&quot;, &quot;trzy&quot;]
+lengths = [len(w) for w in words]
+
+# drukowanie &quot;równoległe&quot;
+for w, l in zip(words, lengths):
+    print(&quot;{} ma długość {}&quot;.format(w, l))</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python list.py
+jeden ma długość 5
+dwa ma długość 3
+trzy ma długość 4</code></pre>
+<p><br></p>
+<ul>
+<li><em>zip</em> tworzy pary (word, length)</li>
+</ul>
+</div>
+</section>
+<section id="pętla-for-po-słowniku" class="level2">
+<h2>Pętla <em>for</em> po słowniku</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p><em>dict.keys()</em> zwraca klucze</p></li>
+<li><p><em>dict.values()</em> zwraca wartości</p></li>
+<li><p><em>dict.items()</em> zwraca pary (klucz, wartość)</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code>&gt;&gt;&gt; x = {&quot;jeden&quot;: 1, &quot;dwa&quot;: 2, &quot;trzy&quot;: 3}
+&gt;&gt;&gt; for key in x.keys(): print(key)
+...
+trzy
+dwa
+jeden
+&gt;&gt;&gt; for value in x.values(): print(value)
+...
+3
+2
+1
+&gt;&gt;&gt; for key, value in x.items(): print(key, value)
+...
+trzy 3
+dwa 2
+jeden 1</code></pre>
+</div>
+</section>
+<section id="pętla-po-słowniku---przykład" class="level2">
+<h2>Pętla po słowniku - przykład</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># dict.py
+&quot;&quot;&quot;Wczytuje słownik z pliku i go drukuje.&quot;&quot;&quot;
+
+
+def wczytaj(plik):
+    &quot;&quot;&quot;Wczytuje słownik z pliku.&quot;&quot;&quot;
+    slownik = {}
+
+    with open(plik) as f:
+        for line in f:
+            key, value = \
+                line.strip(&#39;\n&#39;).split(&#39; &#39;)
+            slownik[key] = value
+
+    return slownik
+
+
+def drukuj(slownik):
+    &quot;&quot;&quot;Drukuje słownik.&quot;&quot;&quot;
+    for k, v in slownik.items():
+        print(k, v)
+
+if __name__ == &quot;__main__&quot;:
+    slownik = wczytaj(&quot;slownik.txt&quot;)
+    drukuj(slownik)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ cat slownik.txt
+klucz1 wartość1
+klucz2 wartość2
+klucz3 wartość3
+goran@ift438:~$ python dict.py
+klucz2 wartość2
+klucz3 wartość3
+klucz1 wartość1</code></pre>
+</div>
+</section>
+<section id="pętla-while" class="level2">
+<h2>Pętla <em>while</em></h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>pętla <em>while</em> wykonywana jest dopóki spełniony jest zadany warunek</p></li>
+<li><p>trzeba uważać na pętle nieskończone</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre class="py"><code>while warunek:
+  instrukcja</code></pre>
+</div>
+</section>
+<section id="kolokwium---zadanie-2" class="level2">
+<h2>Kolokwium - zadanie 2</h2>
+<hr />
+<p>Niech <code>poczatek</code> i <code>koniec</code> będą całkowitymi zmiennymi globalnymi. Napisz pętlę <code>while</code>, która drukuje na ekranie liczby całkowite ze zbioru <code>[poczatek, koniec]</code>.</p>
+<div class="left">
+<p><br></p>
+<pre class="py"><code># zad2.py
+
+poczatek = 10
+koniec = 20
+
+while poczatek &lt;= koniec:
+    print(poczatek, end=&#39; &#39;)
+    poczatek += 1
+</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python zad2.py
+10 11 12 13 14 15 16 17 18 19 20</code></pre>
+</div>
+</section>
+<section id="while---przykład" class="level2">
+<h2><em>while</em> - przykład</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># password.py
+&quot;&quot;&quot;Pobieraj do skutku.&quot;&quot;&quot;
+
+
+def check(word, l=10):
+    &quot;&quot;&quot;Sprawdza, czy podane słowo
+    posiada odpowednią długość&quot;&quot;&quot;
+    return len(word) &gt;= l
+
+if __name__ == &quot;__main__&quot;:
+    while not check(input(&quot;Podaj hasło: &quot;)):
+        print(&quot;Hasło musi posiadać &quot;
+              &quot;co najmniej 10 znaków.&quot;)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python password.py
+Podaj hasło: 1234
+Hasło musi posiadać co najmniej 10 znaków.
+Podaj hasło: 1234567  
+Hasło musi posiadać co najmniej 10 znaków.
+Podaj hasło: 1234567890
+goran@ift438:~$</code></pre>
+</div>
+</section>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<section id="funkcje" class="level2">
+<h2>Funkcje</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>funkcje to &quot;wywoływalne bloki instrukcji&quot;</p></li>
+<li><p>mogą przyjmować argumenty</p></li>
+<li><p>mogą zwracać obiekty</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre class="py"><code>def nazwa_funkcji (argumenty):
+  instrukcje</code></pre>
+</div>
+</section>
+<section id="funkcje---przykład" class="level2">
+<h2>Funkcje - przykład</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># funkcje.py
+&quot;&quot;&quot;Przykłady funkcji&quot;&quot;&quot;
+
+
+def arg0():
+    print(&quot;Nie przyjmuję argumentów.&quot;)
+
+
+def arg1(x):
+    print(&quot;Przyjmuję jeden argument:&quot;, x)
+
+
+def arg1d(x=1):
+    print(&quot;Mam arg z wart. domyślną:&quot;, x)
+
+if __name__ == &quot;__main__&quot;:
+    arg0()
+    arg1(5)
+    arg1d(10)
+    arg1d()</code></pre>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre><code>goran@ift438:~$ python funkcje.py
+Nie przyjmuję argumentów.
+Przyjmuję jeden argument: 5
+Mam arg z wart. domyślną: 10
+Mam arg z wart. domyślną: 1</code></pre>
+</div>
+</section>
+<section id="kolokwium---zadanie-3" class="level2">
+<h2>Kolokwium - zadanie 3</h2>
+<hr />
+<p>Napisz funkcję, która liczy objętość prostopadłościanu. Funkcja powinna przyjmować trzy argumenty, które są długościami krawędzi. Wywołana z jednym argumentem powinna się domyślić, że chodzi o sześcian.</p>
+<div class="left">
+<p><br></p>
+<pre class="py"><code># zad3.py
+
+
+def vol(a, b=0, c=0):
+    return a*b*c or a**3
+
+print(vol(2))
+print(vol(2, 3, 2))</code></pre>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre><code>goran@ift438:~$ python zad3.py
+8
+12</code></pre>
+</div>
+</section>
+<section id="atrybuty-funkcji" class="level2">
+<h2>Atrybuty funkcji</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># static.py
+
+
+def funkcja():
+    &quot;&quot;&quot;Zlicza ilość wywołań.&quot;&quot;&quot;
+    funkcja.counter += 1
+    print(&quot;Wywołana {} razy.&quot;.
+          format(funkcja.counter))
+
+funkcja.counter = 0  # wartość początkowa
+
+for _ in range(10):
+    funkcja()</code></pre>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre><code>goran@ift438:~$ python static.py
+Wywołana 1 razy.
+Wywołana 2 razy.
+Wywołana 3 razy.
+Wywołana 4 razy.
+Wywołana 5 razy.
+Wywołana 6 razy.
+Wywołana 7 razy.
+Wywołana 8 razy.
+Wywołana 9 razy.
+Wywołana 10 razy.</code></pre>
+</div>
+</section>
+<section id="kolokwium---zadanie-4" class="level2">
+<h2>Kolokwium - zadanie 4</h2>
+<hr />
+<p>Napisz skrypt, który pobiera od użytkownika dowolny tekst, a następnie drukuje na ekranie liczbę występujących w nim samogłosek.</p>
+<div class="left">
+<p><br></p>
+<pre class="py"><code># zad4.py
+
+def count(text):
+    &quot;&quot;&quot;Zlicza ilość samogłosek.&quot;&quot;&quot;
+    counter = 0
+
+    for letter in text.lower():
+        counter += letter in count.vowels
+
+    return counter
+
+count.vowels = &#39;eyuioa&#39;
+
+if __name__ == &quot;__main__&quot;:
+    text = input(&quot;Wprowadź tekst: &quot;)
+    print(&quot;#samogłosek =&quot;, count(text))</code></pre>
+</div>
+<div class="right">
+<p><br><br></p>
+<pre><code>goran@ift438:~$ python zad4.py
+Wprowadź tekst: Ala ma kota
+#samogłosek = 5</code></pre>
+</div>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>

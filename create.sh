@@ -1,6 +1,6 @@
 #!/bin/bash
 
-talk='mlmpr_warsaw17'     # name of source file in markdown fodler
+talk='js-python_w13'      # name of source file in markdown fodler
 theme='black'             # beige | black | blood | league | moon | night | serif | simple | sky | solarized | white
 hs='monokai_mod'          # highlight style from template folder (leave blank to use default = zenburn)
 transition='convex'       # none | fade | slide | convex | concave | zoom
