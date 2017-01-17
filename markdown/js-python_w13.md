@@ -18,6 +18,8 @@ Navigate:
 * [Typy danych](#typy-danych)
 * [Instrukcje sterujące](#instrukcja-warunkowa-if)
 * [Funkcje](#funkcje)
+* [Operacje na plikach](#operacje-na-plikach)
+* [Moduły](#moduly)
 
 #
 
@@ -361,6 +363,8 @@ Lista: {'jajka', 'chleb'} # masło usunięte
 
 ```py
 # przedmioty.py
+"""Sprawdza wspólne przedmioty."""
+
 
 with open("fk.txt") as f:
     fk = f.read().splitlines()
@@ -469,6 +473,10 @@ goran@ift438:~$ python ewidencja.py
 2 ford mustang
 ```
 
+<br>
+
+* *global* sygnalizuje, że operujemy na zmiennej globalnej
+
 </div>
 
 #
@@ -547,12 +555,12 @@ Jesteś kobietą.
 # zamienia na liczbę (eval)
 wiek = eval(input("Podaj wiek: "))
 
-if wiek < 18:
+if wiek < 18: # mniej niż 18
     print("Jesteś nieletni.")
-elif wiek < 21:
+elif wiek < 21: # między 18 a 21
     print("Możesz głosować, "
           "ale piwa się nie napijesz.")
-else:
+else: # powyżej 21
     print("Możesz wszystko.")
 ```
 
@@ -891,6 +899,10 @@ klucz3 wartość3
 klucz1 wartość1
 ```
 
+<br>
+
+* więcej o plikach za chwilę
+
 </div>
 
 ## Pętla *while*
@@ -961,8 +973,7 @@ def check(word, l=10):
 
 if __name__ == "__main__":
     while not check(input("Podaj hasło: ")):
-        print("Hasło musi posiadać "
-              "co najmniej 10 znaków.")
+        print("Hasło za krótkie.")
 ```
 
 </div>
@@ -971,9 +982,9 @@ if __name__ == "__main__":
 ```
 goran@ift438:~$ python password.py
 Podaj hasło: 1234
-Hasło musi posiadać co najmniej 10 znaków.
-Podaj hasło: 1234567  
-Hasło musi posiadać co najmniej 10 znaków.
+Hasło za krótkie.
+Podaj hasło: 1234567
+Hasło za krótkie.
 Podaj hasło: 1234567890
 goran@ift438:~$
 ```
@@ -1044,6 +1055,10 @@ Mam arg z wart. domyślną: 10
 Mam arg z wart. domyślną: 1
 ```
 
+<br>
+
+* po argumencie z wartością domyślną wszystkie pozostałe też muszą ją mieć
+
 </div>
 
 ## Kolokwium - zadanie 3
@@ -1084,6 +1099,7 @@ goran@ift438:~$ python zad3.py
 
 ```py
 # static.py
+"""Demonstracja zmiennej 'statycznej'"""
 
 
 def funkcja():
@@ -1154,3 +1170,897 @@ Wprowadź tekst: Ala ma kota
 ```
 
 </div>
+
+## Argumenty kluczowe
+
+---
+
+<div class="left"><br>
+
+```py
+# arg.py
+"""Argumenty kluczowe vs pozycyjne"""
+
+def funkcja(a, b, c):
+    """Drukuje podane argumenty."""
+    print("a =", a)
+    print("b =", b)
+    print("c =", c)
+
+if __name__ == "__main__":
+    # argumenty pozycyjne
+    print("funkcja(1, 2, 3)")
+    funkcja(1, 2, 3)
+    # argumenty kluczowe
+    print("funkcja(b=1, c=2, a=3)")
+    funkcja(b=1, c=2, a=3)
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python arg.py
+funkcja(1, 2, 3)
+a = 1
+b = 2
+c = 3
+funkcja(b=1, c=2, a=3)
+a = 3
+b = 1
+c = 2
+```
+
+<br>
+
+* można mieszać, ale najpierw pozycyjne potem kluczowe
+
+</div>
+
+## Modyfikowanie argumentów
+
+---
+
+<div class="left"><br>
+
+```py
+# pass.py
+"""Modyfikowanie wewnątrz funkcji."""
+
+
+def inc(x):
+    """Modyfikuje zmienną x."""
+    x += 1
+    print("Wewnątrz funkcji:", x)
+
+
+def add(x):
+    """Modyfikuje listę."""
+    x.append(1)
+    print("Wewnątrz funkcji:", x)
+
+
+if __name__ == "__main__":
+    # int
+    x = 1
+    print("Przed wywołaniem funkcji:", x)
+    inc(x)
+    print("Po wywołaniu funkcji:", x)
+    # list
+    x = [0]
+    print("Przed wywołaniem funkcji:", x)
+    add(x)
+    print("Po wywołaniu funkcji:", x)
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python pass.py
+Przed wywołaniem funkcji: 1
+Wewnątrz funkcji: 2
+Po wywołaniu funkcji: 1
+Przed wywołaniem funkcji: [0]
+Wewnątrz funkcji: [0, 1]
+Po wywołaniu funkcji: [0, 1]
+```
+
+<br>
+
+* modyfikacja zmiennej niemutowalnej tworzy nowy obiekt
+
+</div>
+
+## Modyfikowanie niemutowalnych
+
+---
+
+<div class="left"><br>
+
+```py
+# pass_int.py
+"""Modyfikowanie argumentów
+niemutowalnych wewnątrz funkcji."""
+
+
+def inc(x):
+    """Modyfikuje zmienną x."""
+    x += 1
+    return x
+
+if __name__ == "__main__":
+    x = 1
+    print("Przed wywołaniem funkcji:", x)
+    x = inc(x)
+    print("Po wywołaniu funkcji:", x)
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python pass_int.py
+Przed wywołaniem funkcji: 1
+Po wywołaniu funkcji: 2
+```
+
+<br>
+
+* jedyną możliwością jest zwrócenie nowej wartości
+
+</div>
+
+## Zwracanie kilku zmiennych
+
+---
+
+<div class="left"><br>
+
+```py
+# return.py
+"""Funkcja może zwracać kilka obiektów"""
+
+def update(a, b, c):
+    """Aktualizuje zmienne a, b, c."""
+    return a+1, b+2, c+3
+
+if __name__ == "__main__":
+    a, b, c = update(0, 0, 0)
+    print("a =", a)
+    print("b =", b)
+    print("c =", c)
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python return.py
+a = 1
+b = 2
+c = 3
+```
+
+<br>
+
+* zwracana jest krotka
+* `a, b, c = (krotka)` rozpakowauje ją
+
+</div>
+
+## Dowolna liczba argumentów pozycyjnych
+
+---
+
+<div class="left"><br>
+
+```py
+# args.py
+"""*args - krotka argumentów"""
+
+
+def nie_wiem_czego_chce(*args):
+    """Dowolna liczba argumentów."""
+    for argument in args:
+        print(argument, end=' ')
+
+if __name__ == "__main__":
+    print("Bez argumentów:", end=' ')
+    nie_wiem_czego_chce()
+    print("\nZ jednym argumentem:", end=' ')
+    nie_wiem_czego_chce(1)
+    print("\nZ dwoma argumentami:", end=' ')
+    nie_wiem_czego_chce(1, 2)
+    print("\nZe str i listą:", end=' ')
+    nie_wiem_czego_chce(1, 2, "3", [4, 5])
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python args.py
+Bez argumentów:
+Z jednym argumentem: 1
+Z dwoma argumentami: 1 2
+Ze str i listą: 1 2 3 [4, 5]
+```
+
+<br>
+
+* `*args` - krotka argumentów pozycyjnych dowolnych typów
+
+</div>
+
+## Kontrola typów
+
+---
+
+<div class="left"><br>
+
+```py
+# typec.py
+"""Sprawdzanie typów"""
+import sys
+
+
+def tylko_int(*args):
+    """Sprawdza czy int, zwraca sumę."""
+    suma = 0
+
+    for arg in args:
+        if type(arg) is int:
+            suma += arg
+        else:
+            print("ERROR: zmienna typu:",
+                  type(arg))
+            sys.exit(1)
+
+    return suma
+
+if __name__ == "__main__":
+    suma = tylko_int(1, 2, 3, 4, 5)
+    print("Suma =", suma)
+
+    suma = tylko_int(1, 2, 3, 4, 5.0)
+    print("Suma =", suma)
+
+    suma = tylko_int(1, 2, 3, 4, '5')
+    print("Suma =", suma)
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python typec.py
+Suma = 15
+ERROR: zmienna typu: <class 'float'>
+```
+
+<br>
+
+* można ręcznie sprawdzić, czy podane typy nam odpowiadają
+
+</div>
+
+## Kolokwium - zadanie 3
+
+---
+
+Napisz funkcję, która liczy objętość prostopadłościanu. Funkcja powinna przyjmować trzy argumenty, które są długościami krawędzi. Wywołana z jednym argumentem powinna się domyślić, że chodzi o sześcian.
+
+<div class="left"><br>
+
+```py
+# zad3b.py
+
+
+def vol(a, *reszta):
+    try:
+        return a*reszta[0]*reszta[1]
+    except:
+        return a**3
+
+print(vol(2))
+print(vol(2, 3, 2))
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python zad3b.py
+8
+12
+```
+
+<br>
+
+* albo jakiś `if` (np. `if reszta: ...`)
+
+</div>
+
+
+## Argumenty po `*args`
+
+---
+
+<div class="left"><br>
+
+```py
+# argsplus.py
+"""Po *args tylko kluczowe"""
+
+
+def funkcja(arg1, *args, arg2):
+    print("arg1 =", arg1)
+    print("args =", args)
+    print("arg2 =", arg2)
+
+if __name__ == "__main__":
+    # arg2 jako kluczowy
+    funkcja(1, 2, 3, 4, 5, arg2=6)
+    # tylko pozycyjne
+    funkcja(1, 2, 3, 4, 5, 6)
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python argsplus.py
+arg1 = 1
+args = (2, 3, 4, 5)
+arg2 = 6
+Traceback (most recent call last):
+  File "argsplus.py", line 14, in <module>
+    funkcja(1, 2, 3, 4, 5, 6)
+TypeError: funkcja() missing 1 required
+           keyword-only argument: 'arg2'
+```
+
+</div>
+
+## Dowolna liczba argumentów kluczowych
+
+---
+
+<div class="left"><br>
+
+```py
+# kwargs.py
+"""**kwargs - słownik argumentów"""
+
+
+def nie_wiem_czego_chce(**kwargs):
+    """Dowolna liczba argumentów."""
+    for zmienna, wartosc in kwargs.items():
+        print(zmienna, '=', wartosc)
+
+if __name__ == "__main__":
+    print("Bez argumentów:")
+    nie_wiem_czego_chce()
+    print("\nZ jednym argumentem:")
+    nie_wiem_czego_chce(a=1)
+    print("\nZ dwoma argumentami:")
+    nie_wiem_czego_chce(a=1, b=2)
+    print("\nZe słownikiem:")
+    zmienne = {'a': 1, 'b': 2, 'c': [3, 4]}
+    nie_wiem_czego_chce(**zmienne)
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python kwargs.py
+Bez argumentów:
+
+Z jednym argumentem:
+a = 1
+
+Z dwoma argumentami:
+b = 2
+a = 1
+
+Ze słownikiem:
+b = 2
+a = 1
+c = [3, 4]
+```
+
+</div>
+
+#
+
+## Operacje na plikach
+
+---
+
+<div class="left"><br>
+
+* funkcja *open* otwiera plik
+* przykładowe tryby:
+    * `r` - tylko do odczytu
+    * `w` - tylko do zapisu (kasuje plik jeśli istnieje)
+    * `a` - tylko do zapisu (zaczyna od końca pliku)
+
+</div>
+<div class="right"><br><br>
+
+```py
+with open(file, mode) as f:
+  operacje na f
+```
+
+<br>
+
+* `with ... as ...` gwarantuje nam poprawne zamknięcie pliku
+
+</div>
+
+## Pliki - przykład
+
+---
+
+<div class="left"><br>
+
+```py
+# files.py
+"""Edycja pliku"""
+
+with open("plik", 'w') as f:
+    # tworzy / czyści istniejący
+    f.write("Moja pierwsza linia\n")
+
+with open("plik", 'a') as f:
+    # dodaje na koniec
+    f.write("Moja druga linia\n")
+
+print("Drukuję zawartość pliku:\n")
+
+with open("plik", 'r') as f:
+    print(f.read())
+    f.write("Będzie błąd")
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python files.py
+Drukuję zawartość pliku:
+
+Moja pierwsza linia
+Moja druga linia
+
+Traceback (most recent call last):
+  File "files.py", line 16, in <module>
+    f.write("Będzie błąd")
+io.UnsupportedOperation: not writable
+```
+
+</div>
+
+## Kolokwium - zadanie 5
+
+---
+
+Napisz skrypt, który wymaga dwóch argumentów z linii komend:
+
+```
+python append.py file text
+```
+
+Program powinien:
+
+* dodać `text` na koniec pliku `file` (od nowej linii)
+* stworzyć `file`, jeśli nie istnieje
+* zwracać odpowiedni komunikat i przerywać pracę programu, gdy podana została zła liczba argumentów
+
+## Zadanie 5
+
+---
+
+<div class="left"><br>
+
+```py
+# zad5.py
+import sys
+
+
+def append(file, text):
+    """Dodaje tekst na koniec pliku"""
+    with open(file, 'a') as f:
+        f.write(text + '\n')
+
+
+def help():
+    """Drukuje pomoc i zamyka program"""
+    print("usage: zad5.py [file] [text]")
+    sys.exit(1)
+
+if __name__ == "__main__":
+    # zad5.py file text -> 3 arg
+    len(sys.argv) == 3 or help()
+    # try except jakby był jakiś problem
+    try:
+        append(sys.argv[1], sys.argv[2])
+    except:
+        print("Coś poszło nie tak.")
+        sys.exit(2)
+```
+
+</div>
+<div class="right"><br><br>
+
+```
+goran@ift438:~$ python zad5.py
+usage: zad5.py [file] [text]
+goran@ift438:~$ python zad5.py plik raz
+goran@ift438:~$ python zad5.py plik "a b"
+goran@ift438:~$ python zad5.py plik 123
+goran@ift438:~$ cat plik
+raz
+a b
+123
+```
+
+</div>
+
+#
+
+## Moduly
+
+---
+
+* do importowania modułów służy *import*
+
+```py
+import math # a potem math.sin(...)
+
+from math import sin # a potem sin(...)
+
+from math import sin as sinus # a potem sinus(...)
+```
+
+* własne moduły importuje się w ten sam sposób
+
+## Przykładowy moduł
+
+---
+
+<div class="left"><br>
+
+```py
+# my_math.py
+"""Zbiór funkcji matematycznych"""
+
+
+def delta(a, b, c):
+    """Wyróżnik trójmianu kwadratowego"""
+    return b*b - 4*a*c
+
+if __name__ == "__main__":
+    a = eval(input("a = "))
+    b = eval(input("b = "))
+    c = eval(input("c = "))
+    print("Delta =", delta(a, b, c))
+```
+
+</div>
+<div class="right"><br>
+
+```
+goran@ift438:~$ python
+Python 3.5.2 |Anaconda 4.2.0 (64-bit)| (default, Jul  2 2016, 17:53:06)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import my_math
+>>>
+# funkcja main nie jest
+# wykonywana podczas importowania
+```
+
+```
+goran@ift438:~$ python my_math.py
+a = 1
+b = 2
+c = 3
+Delta = -8
+```
+
+</div>
+
+## Przykładowy moduł - importowanie
+
+---
+
+<div class="left"><br>
+
+```py
+# importowanie.py
+"""Importujemy my_math"""
+import my_math
+
+
+def ma_rozwiazanie(a, b, c):
+    """Sprawdza czy równanie kwadratowe
+    ma rozwiązanie w zbiorze
+    liczb rzeczywistych"""
+
+    return my_math.delta(a, b, c) >= 0
+
+if __name__ == "__main__":
+    wspolczynniki = (1, 2, 3)
+    # argumenty podane jako
+    # rozpakowana krotka
+    if ma_rozwiazanie(*wspolczynniki):
+        print("Równanie ma rozwiązanie.")
+    else:
+        print("Brak miejsc zerowych.")
+```
+
+</div>
+<div class="right"><br>
+
+```
+goran@ift438:~$ python importowanie.py
+Brak miejsc zerowych.
+```
+
+<br>
+
+* oczywiście `importowanie.py` może być też zaimportowany przez inny plik
+
+</div>
+
+## Import w imporcie
+
+---
+
+<div class="left"><br>
+
+```py
+# import2.py
+"""Importujemy importowanie"""
+import importowanie
+
+
+a, b, c = 1, 2, 1  # współczynniki
+
+flaga = importowanie.ma_rozwiazanie(a, b, c)
+delta = importowanie.my_math.delta(a, b, c)
+
+print("Równanie o współczynnikach:", a, b, c)
+print("Delta =", delta)
+print("Rozwiązanie =", flaga)
+```
+
+</div>
+<div class="right"><br>
+
+```
+goran@ift438:~$ python import2.py
+Równanie o współczynnikach: 1 2 1
+Delta = 0
+Rozwiązanie = True
+```
+
+<br>
+
+* ale bezpośrednio `my_math.delta(...)` nie działa (chyba że zaimportujemy w pliku `import2.py`)
+
+</div>
+
+## Dwa moduły
+
+---
+
+<div class="left"><br>
+
+```py
+# pliki.py
+"""Obsługa plików"""
+
+
+def clear(file):
+    """Czyści zawartość pliku"""
+    with open(file, 'w') as f:
+        pass
+
+
+def read(file):
+    """Drukuje zawartość pliku"""
+    with open(file, 'r') as f:
+        print(f.read())
+
+
+def get_as_list(file):
+    """Zwraca zawartość pliku jako listę"""
+    with open(file, 'r') as f:
+        return f.read().splitlines()
+
+
+def save(file, text):
+    """Aktualizuje plik"""
+    with open(file, 'a') as f:
+        f.write(text + '\n')
+```
+
+</div>
+<div class="right"><br>
+
+```py
+# temp.py
+"""Przelicznik temperatur"""
+from random import uniform as randf
+
+
+def C2F(t):
+    """Przelicza Celsjusza na Fahrenheita"""
+    return 32 + 9*t/5
+
+
+def F2C(t):
+    """Przelicza Fahrenheita na Celsjusza"""
+    return 5*(t - 32)/9
+
+
+def generate(min=-40, max=40):
+    """Losowa temperatura w C"""
+    return randf(min, max)
+```
+
+</div>
+
+## Pliki - test
+
+---
+
+<div class="left"><br>
+
+```py
+# pliki_test.py
+"""Testujemy moduł pliki.py"""
+from pliki import *
+
+FILENAME = "moja_nazwa_pliku"
+TEKST = "Lorem ipsum dolor sit amet,\n"
+TEKST += "consectetur adipiscing elit."
+
+print("Kasuję zawartość pliku")
+clear(FILENAME)
+print("Zapisuję tekst do pliku")
+save(FILENAME, TEKST)
+print("Drukuję zawartość")
+read(FILENAME)
+print("Pobieram jako listę")
+lista = get_as_list(FILENAME)
+print(lista)
+print("Kasuję zawartość pliku")
+clear(FILENAME)
+print("Drukuję zawartość")
+read(FILENAME)
+```
+
+</div>
+<div class="right"><br>
+
+```
+goran@ift438:~$ python pliki_test.py
+Kasuję zawartość pliku
+Zapisuję tekst do pliku
+Drukuję zawartość
+Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.
+
+Pobieram jako listę
+['Lorem ipsum dolor sit amet,', 'consectetur adipiscing elit.']
+Kasuję zawartość pliku
+Drukuję zawartość
+
+goran@ift438:~$
+```
+
+</div>
+
+## Temperatury - test
+
+---
+
+<div class="left"><br>
+
+```py
+# temp_test.py
+"""Testujemy moduł temp.py"""
+import temp
+
+t = temp.generate()
+print("Wylosowano t =", t)
+tf = temp.C2F(t)
+print("W Fahrenheitach tf =", tf)
+tc = temp.F2C(tf)
+print("I znowu w C =", tc)
+```
+
+</div>
+<div class="right"><br>
+
+```
+goran@ift438:~$ python temp_test.py
+Wylosowano t = -39.33099248284039
+W Fahrenheitach tf = -38.7957864691127
+I znowu w C = -39.330992482840394
+```
+
+<br>
+
+* `t != tc` - dokładność numeryczna
+
+</div>
+
+## Dwa moduły współpracują
+
+---
+
+<div class="left"><br>
+
+```py
+# savetemp.py
+"""Mniej więcej lista 7"""
+import temp
+import pliki
+
+N = 5  # tyle będziemy losować
+FILE_C = "celsjusz.txt"
+FILE_F = "fahrenheit.txt"
+
+# czyścimy pliki
+pliki.clear(FILE_C)
+pliki.clear(FILE_F)
+
+# tworzymy celsjusz.txt
+for _ in range(N):
+    pliki.save(FILE_C, str(temp.generate()))
+
+# wczytujemy wygenerowane t
+temperatury = pliki.get_as_list(FILE_C)
+
+# poćwiczymy wyrażenie lambda
+c2f = lambda t: str(temp.C2F(float(t)))
+
+# tworzymy fahrenheit.txt
+for t in temperatury:
+    pliki.save(FILE_F, c2f(t))
+
+# drukujemy pliki
+pliki.read(FILE_C)
+pliki.read(FILE_F)
+```
+
+</div>
+<div class="right"><br>
+
+```
+goran@ift438:~$ python savetemp.py
+29.486462160609335
+-37.3869854880457
+39.99258440119404
+-2.6828613770385203
+-5.615302523540045
+
+85.0756318890968
+-35.29657387848226
+103.98665192214926
+27.170849521330663
+21.892455457627918
+```
+
+</div>
+
+#
+
+## Za tydzień powtórki ciąg dalszy
