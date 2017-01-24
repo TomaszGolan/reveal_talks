@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Języki skryptowe - Python</title>
+
+  <meta name="description" content="Języki skryptowe - Python">
+
+   <meta name="author" content="Wykład 14" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Języki skryptowe - Python</h1>
+         <h3>Wykład 14</h3> 
+        <p>
+          <h4>Powtórka cz. II</h4>
+        </p>
+      </section>
+
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="section" class="level1">
+<h1></h1>
+<section id="programowanie-obiektowe" class="level2">
+<h2>Programowanie obiektowe</h2>
+<hr />
+<ul>
+<li>klasa definiuje nowy typ obiektu zadany przez
+<ul>
+<li>dane</li>
+<li>metody (funkcje)</li>
+</ul></li>
+<li>obiekty różnych typów mogą ze sobą oddziaływać</li>
+</ul>
+</section>
+<section id="przykład---lista-zakupów" class="level2">
+<h2>Przykład - lista zakupów</h2>
+<hr />
+<div class="left">
+<pre class="py"><code># lista_zakupow.py
+&quot;&quot;&quot;System zarządzania listą zakupów.&quot;&quot;&quot;
+
+
+def dodaj(produkt, lista):
+    &quot;&quot;&quot;Dodaje produkt do listy zakupów.&quot;&quot;&quot;
+    print(&quot;Dodaję:&quot;, produkt)
+    lista.add(produkt)
+    print(&quot;Lista:&quot;, lista)
+
+
+def usun(produkt, lista):
+    &quot;&quot;&quot;Usuwa produkt z listy zakupów.&quot;&quot;&quot;
+    print(&quot;Usuwam:&quot;, produkt)
+    lista.discard(produkt)
+    print(&quot;Lista:&quot;, lista)
+
+if __name__ == &quot;__main__&quot;:
+    zakupy = set()  # moja lista zakupów
+    dodaj(&quot;jajka&quot;, zakupy)
+    dodaj(&quot;masło&quot;, zakupy)
+    dodaj(&quot;jajka&quot;, zakupy)
+    dodaj(&quot;chleb&quot;, zakupy)
+    usun(&quot;masło&quot;, zakupy)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>goran@ift438:~$ python lista_zakupow.py
+Dodaję: jajka
+Lista: {&#39;jajka&#39;} # jajka dodane
+Dodaję: masło
+Lista: {&#39;jajka&#39;, &#39;masło&#39;} # masło dodane
+Dodaję: jajka
+Lista: {&#39;jajka&#39;, &#39;masło&#39;} # jajka już są
+Dodaję: chleb
+Lista: {&#39;jajka&#39;, &#39;chleb&#39;, &#39;masło&#39;} # +chleb
+Usuwam: masło
+Lista: {&#39;jajka&#39;, &#39;chleb&#39;} # masło usunięte</code></pre>
+</div>
+</section>
+<section id="lista-zakupów---obiektowo" class="level2">
+<h2>Lista zakupów - obiektowo</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># lista_zakupow.py
+&quot;&quot;&quot;System zarządzania listą zakupów.&quot;&quot;&quot;
+
+
+class Lista_Zakupow:
+    &quot;&quot;&quot;Lista zakupów&quot;&quot;&quot;
+
+    def __init__(self):
+        &quot;&quot;&quot;Konstruktor tworzy zbiór&quot;&quot;&quot;
+        self.lista = set()  # pusty zbiór
+
+    def dodaj(self, produkt):
+        &quot;&quot;&quot;Dodaje produkt do listy zakupów.&quot;&quot;&quot;
+        print(&quot;Dodaję:&quot;, produkt)
+        self.lista.add(produkt)
+        print(&quot;Lista:&quot;, self.lista)
+
+    def usun(self, produkt):
+        &quot;&quot;&quot;Usuwa produkt z listy zakupów.&quot;&quot;&quot;
+        print(&quot;Usuwam:&quot;, produkt)
+        self.lista.discard(produkt)
+        print(&quot;Lista:&quot;, self.lista)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>&gt;&gt;&gt; import lista_zakupow as lz
+&gt;&gt;&gt; help(lz)</code></pre>
+<pre><code>Help on module lista_zakupow:
+
+NAME
+    lista_zakupow - System zarządzania listą zakupów.
+
+CLASSES
+    builtins.object
+        Lista_Zakupow
+
+    class Lista_Zakupow(builtins.object)
+     |  Lista zakupów
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      Konstruktor tworzy zbiór
+     |  
+     |  dodaj(self, produkt)
+     |      Dodaje produkt do listy zakupów.
+     |  
+     |  usun(self, produkt)
+     |      Usuwa produkt z listy zakupów.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)</code></pre>
+</div>
+</section>
+<section id="lista-zakupów---test" class="level2">
+<h2>Lista zakupów - test</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># lz_test.py
+&quot;&quot;&quot;Testujemy listę zakupów&quot;&quot;&quot;
+from lista_zakupow import Lista_Zakupow
+
+
+lista = Lista_Zakupow()
+lista.dodaj(&quot;jajka&quot;)
+lista.dodaj(&quot;masło&quot;)
+lista.dodaj(&quot;jajka&quot;)
+lista.dodaj(&quot;chleb&quot;)
+lista.usun(&quot;masło&quot;)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>$ python lz_test.py
+Dodaję: jajka
+Lista: {&#39;jajka&#39;}
+Dodaję: masło
+Lista: {&#39;masło&#39;, &#39;jajka&#39;}
+Dodaję: jajka
+Lista: {&#39;masło&#39;, &#39;jajka&#39;}
+Dodaję: chleb
+Lista: {&#39;masło&#39;, &#39;jajka&#39;, &#39;chleb&#39;}
+Usuwam: masło
+Lista: {&#39;jajka&#39;, &#39;chleb&#39;}</code></pre>
+</div>
+</section>
+<section id="lista-v2" class="level2">
+<h2>Lista v2</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># lista_zakupow_v2.py
+&quot;&quot;&quot;System zarządzania listą zakupów.&quot;&quot;&quot;
+
+
+class Lista_Zakupow:
+    &quot;&quot;&quot;Lista zakupów&quot;&quot;&quot;
+
+    def __init__(self):
+        &quot;&quot;&quot;Konstruktor tworzy zbiór&quot;&quot;&quot;
+        self.lista = set()  # pusty zbiór
+
+    def __str__(self):
+        &quot;&quot;&quot;Drukuje listę zakupów&quot;&quot;&quot;
+        s = &quot;Lista zakupów\n&quot;
+        s += &quot;-&quot;*20
+
+        for i, p in enumerate(self.lista):
+            s += &quot;\n{}. {}&quot;.format(i+1, p)
+
+        return s
+
+    def dodaj(self, produkt):
+        &quot;&quot;&quot;Dodaje produkt do listy zakupów.&quot;&quot;&quot;
+        self.lista.add(produkt)
+
+    def usun(self, produkt):
+        &quot;&quot;&quot;Usuwa produkt z listy zakupów.&quot;&quot;&quot;
+        self.lista.discard(produkt)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code># lz_test_v2.py
+&quot;&quot;&quot;Testujemy listę zakupów&quot;&quot;&quot;
+from lista_zakupow_v2 import Lista_Zakupow
+
+
+lista = Lista_Zakupow()
+lista.dodaj(&quot;jajka&quot;)
+lista.dodaj(&quot;masło&quot;)
+lista.dodaj(&quot;jajka&quot;)
+lista.dodaj(&quot;chleb&quot;)
+lista.usun(&quot;masło&quot;)
+
+print(lista)  # __str__</code></pre>
+<pre><code>$ python lz_test_v2.py
+Lista zakupów
+--------------------
+1. chleb
+2. jajka</code></pre>
+</div>
+</section>
+<section id="dziedziczenie---ponowne-wykorzystanie" class="level2">
+<h2>Dziedziczenie - ponowne wykorzystanie</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># todo.py
+&quot;&quot;&quot;Zarządzanie obowiązkami&quot;&quot;&quot;
+from lista_zakupow_v2 import Lista_Zakupow
+
+
+class Todo(Lista_Zakupow):
+    &quot;&quot;&quot;Lista rzeczy do zrobienia&quot;&quot;&quot;
+
+    def __init__(self):
+        &quot;&quot;&quot;Tylko konstruktor klasy bazowej&quot;&quot;&quot;
+        super().__init__()
+
+    def __str__(self):
+        &quot;&quot;&quot;Nadpisujemy print&quot;&quot;&quot;
+        s = &quot;Lista rzeczy do zrobienia\n&quot;
+        s += &quot;-&quot;*20
+
+        for i, p in enumerate(self.lista):
+            s += &quot;\n{}. {}&quot;.format(i+1, p)
+
+        return s</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code># todo_test.py
+import todo
+
+
+lista = todo.Todo()
+lista.dodaj(&quot;Wyrzuć śmieci&quot;)
+lista.dodaj(&quot;Wyjdź z psem&quot;)
+
+print(lista)</code></pre>
+<pre><code>$ python todo_test.py
+Lista rzeczy do zrobiebia
+--------------------
+1. Wyjdź z psem
+2. Wyrzuć śmieci</code></pre>
+</div>
+</section>
+<section id="klasa-mąż" class="level2">
+<h2>Klasa mąż</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># maz.py
+&quot;&quot;&quot;System zarządzanie mężem&quot;&quot;&quot;
+from lista_zakupow_v2 import Lista_Zakupow
+from todo import Todo
+
+
+class Maz:
+    &quot;&quot;&quot;Obsługa męża&quot;&quot;&quot;
+
+    def __init__(self):
+        &quot;&quot;&quot;Tworzy dwie listy&quot;&quot;&quot;
+        self.zakupy = Lista_Zakupow()
+        self.todo = Todo()
+
+    def kup(self, produkt):
+        &quot;&quot;&quot;Dodaj do listy zakupów&quot;&quot;&quot;
+        self.zakupy.dodaj(produkt)
+
+    def zrob(self, czynnosc):
+        &quot;&quot;&quot;Dodaj do todo&quot;&quot;&quot;
+        self.todo.dodaj(czynnosc)
+
+    def status(self):
+        &quot;&quot;&quot;Stan zadań męża&quot;&quot;&quot;
+        print(self.zakupy, self.todo, sep=&#39;\n\n&#39;)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre class="py"><code># maz_test.py
+import maz
+
+m = maz.Maz()
+
+m.kup(&quot;jajka&quot;)
+m.kup(&quot;masło&quot;)
+m.zrob(&quot;Wynieś śmieci&quot;)
+
+m.status()</code></pre>
+<pre><code>$ python maz_test.py
+Lista zakupów
+--------------------
+1. masło
+2. jajka
+
+Lista rzeczy do zrobienia
+--------------------
+1. Wynieś śmieci</code></pre>
+</div>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="sklep---plan" class="level2">
+<h2>Sklep - plan</h2>
+<hr />
+<ul>
+<li><p>Sklep - magazyn i kadry</p></li>
+<li><p>Magazyn posiada towary</p></li>
+<li><p>Kadry zarządają pracownikami</p></li>
+<li><p>Pracownicy mogą być sprzedawcami lub magazynierami</p></li>
+</ul>
+</section>
+<section id="magazyn" class="level2">
+<h2>Magazyn</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># magazyn.py
+&quot;&quot;&quot;Zarządzanie magazynem&quot;&quot;&quot;
+
+
+class Magazyn:
+    &quot;&quot;&quot;Przechowuje zapas towarów&quot;&quot;&quot;
+
+    def __init__(self):
+        &quot;&quot;&quot;Inicjuje zmienne&quot;&quot;&quot;
+        self.towary = {}  # towar: liczba
+
+    def dodaj(self, produkt, sztuki=1):
+        &quot;&quot;&quot;Dodaje produkty do magazynu&quot;&quot;&quot;
+        if self.towary.get(produkt):
+            self.towary[produkt] += sztuki
+        else:
+            self.towary[produkt] = sztuki
+
+    def usun(self, produkt, sztuki=1):
+        &quot;&quot;&quot;Usuwa produkt z magazynu&quot;&quot;&quot;
+        if self.towary.get(produkt):
+            self.towary[produkt] -= sztuki
+
+    def stan(self):
+        &quot;&quot;&quot;Drukuje stan magazynu&quot;&quot;&quot;
+        print(&quot;\nStan magazynu:\n&quot;)
+
+        for t, n in self.towary.items():
+            print(&quot; {} -&gt; {}&quot;.format(t, n))</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>&gt;&gt;&gt; import magazyn
+&gt;&gt;&gt; m = magazyn.Magazyn()
+&gt;&gt;&gt; m.dodaj(&quot;Jajka&quot;, 10)
+&gt;&gt;&gt; m.dodaj(&quot;Chleb&quot;, 10)
+&gt;&gt;&gt; m.stan()
+
+Stan magazynu:
+
+ Chleb -&gt; 10
+ Jajka -&gt; 10
+&gt;&gt;&gt; m.usun(&quot;Jajka&quot;)
+&gt;&gt;&gt; m.stan()
+
+Stan magazynu:
+
+ Chleb -&gt; 10
+ Jajka -&gt; 9</code></pre>
+</div>
+</section>
+<section id="pracownicy" class="level2">
+<h2>Pracownicy</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># pracownicy.py
+&quot;&quot;&quot;Definicje pracowników&quot;&quot;&quot;
+
+
+class Pracownik:
+    &quot;&quot;&quot;Pracownik sklepu&quot;&quot;&quot;
+
+    pid = 1234  # id pracownika
+
+    def __init__(self, imie, nazwisko):
+        &quot;&quot;&quot;Aktualizuje id i zapisuje pracownika&quot;&quot;&quot;
+        Pracownik.pid += 1
+
+        self.imie = imie
+        self.nazwisko = nazwisko
+        self.id = Pracownik.pid
+
+        self.hire()
+
+    def __str__(self):
+        &quot;&quot;&quot;Informacje o pracowniku&quot;&quot;&quot;
+        return &quot;[{}] {} {} ({})&quot;.format(
+            self.id, self.imie,
+            self.nazwisko, self.stanowisko)
+
+    def hire(self):
+        &quot;&quot;&quot;Ustaw stanowisko&quot;&quot;&quot;
+        raise NotImplementedError(
+            &quot;Klasa pochodna musi &quot;
+            &quot;zdefiniować funkcję hire()&quot;)
+
+
+class Sprzedawca(Pracownik):
+    &quot;&quot;&quot;Konkretny typ pracownika&quot;&quot;&quot;
+
+    def __init__(self, imie, nazwisko):
+        super().__init__(imie, nazwisko)
+
+    def hire(self):
+        &quot;&quot;&quot;Zatrudniony jako sprzedawca&quot;&quot;&quot;
+        self.stanowisko = &quot;sprzedawca&quot;
+
+    def sprzedaj(self, utarg, kwota):
+        &quot;&quot;&quot;Sprzedaje towary zwiększając utarg&quot;&quot;&quot;
+        print(&quot;Sprzedaje {} {}...&quot;.format(
+            self.imie, self.nazwisko))
+        utarg += kwota
+
+
+class Magazynier(Pracownik):
+    &quot;&quot;&quot;Kolejny typ pracownika&quot;&quot;&quot;
+
+    def __init__(self, imie, nazwisko):
+        super().__init__(imie, nazwisko)
+
+    def hire(self):
+        &quot;&quot;&quot;Zatrudniony jako magazynier&quot;&quot;&quot;
+        self.stanowisko = &quot;magazynier&quot;
+
+    def przynies(self, magazyn, produkt, sztuk=1):
+        &quot;&quot;&quot;Przynosi towar z magazynu&quot;&quot;&quot;
+        print(&quot;Przynosi {} {}...&quot;.format(
+            self.imie, self.nazwisko))
+        magazyn.usun(produkt, sztuk)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>&gt;&gt;&gt; import pracownicy
+&gt;&gt;&gt; s = pracownicy.Sprzedawca(&quot;Jan&quot;, &quot;Kowalski&quot;)
+&gt;&gt;&gt; m = pracownicy.Magazynier(&quot;Maria&quot;, &quot;Nowak&quot;)
+&gt;&gt;&gt; print(s)
+[1236] Jan Kowalski (sprzedawca)
+&gt;&gt;&gt; print(m)
+[1237] Maria Nowak (magazynier)</code></pre>
+<pre><code>&gt;&gt;&gt; p = pracownicy.Pracownik(&quot;Jan&quot;, &quot;Kowalski&quot;)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/doc/insync/scratch/zajęcia/2016/języki skryptowe - python/python_powtorka/oop/sklep/pracownicy.py&quot;, line 18, in __init__
+    self.hire()
+  File &quot;/doc/insync/scratch/zajęcia/2016/języki skryptowe - python/python_powtorka/oop/sklep/pracownicy.py&quot;, line 29, in hire
+    &quot;Klasa pochodna musi &quot;
+NotImplementedError: Klasa pochodna musi zdefiniować funkcję hire()</code></pre>
+</div>
+</section>
+<section id="kadry" class="level2">
+<h2>Kadry</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># kadry.py
+&quot;&quot;&quot;Lista pracowników&quot;&quot;&quot;
+from pracownicy import *
+
+
+class Kadry:
+    &quot;&quot;&quot;Zarządzanie pracownikami&quot;&quot;&quot;
+
+    def __init__(self):
+        &quot;&quot;&quot;Inicjuje pustą listę&quot;&quot;&quot;
+        self.pracownicy = []
+
+    def zatrudnij(self, imie, nazwisko, stanowisko):
+        &quot;&quot;&quot;Zatrudnia pracownika imie, nazwisko
+        na stanowisku:
+
+        0 - sprzedawca
+        1 - magazynier
+        &quot;&quot;&quot;
+        if stanowisko == 0:
+            p = Sprzedawca(imie, nazwisko)
+        elif stanowisko == 1:
+            p = Magazynier(imie, nazwisko)
+
+        self.pracownicy.append(p)
+
+    def lista(self):
+        &quot;&quot;&quot;Drukuje listę pracowników&quot;&quot;&quot;
+        print(&quot;\nLista pracowników:\n&quot;)
+
+        for p in self.pracownicy:
+            print(p)</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>&gt;&gt;&gt; import kadry
+&gt;&gt;&gt; k = kadry.Kadry()
+&gt;&gt;&gt; k.zatrudnij(&quot;Jan&quot;, &quot;Kowalski&quot;, 0)
+&gt;&gt;&gt; k.zatrudnij(&quot;Maria&quot;, &quot;Nowak&quot;, 1)
+&gt;&gt;&gt; k.lista()
+
+Lista pracowników:
+
+[1238] Jan Kowalski (sprzedawca)
+[1239] Maria Nowak (magazynier)</code></pre>
+</div>
+</section>
+<section id="sklep" class="level2">
+<h2>Sklep</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># sklep.py
+&quot;&quot;&quot;Główny program&quot;&quot;&quot;
+import kadry
+import magazyn
+import random
+
+UTARG = 0  # dzienny utarg
+MAGAZYN = magazyn.Magazyn()
+KADRY = kadry.Kadry()
+
+
+def get_sprzedawca(lista):
+    &quot;&quot;&quot;Szuka sprzedawcy na liście pracowników&quot;&quot;&quot;
+    while True:
+        p = random.choice(lista)
+        if type(p) is kadry.Sprzedawca:
+            return p
+
+
+def get_magazynier(lista):
+    &quot;&quot;&quot;Szuka magazyniera na liście pracowników&quot;&quot;&quot;
+    while True:
+        p = random.choice(lista)
+        if type(p) is kadry.Magazynier:
+            return p
+
+
+def sprzedaj(kwota):
+    &quot;&quot;&quot;Szuka sprzedacy i sprzedaje towar&quot;&quot;&quot;
+    global UTARG
+    global KADRY
+    p = get_sprzedawca(KADRY.pracownicy)
+    p.sprzedaj(UTARG, kwota)
+
+
+def przynies(produkt, sztuk):
+    &quot;&quot;&quot;Szuka magazyniera i przynosi towar&quot;&quot;&quot;
+    global MAGAZYN
+    global KADRY
+    p = get_magazynier(KADRY.pracownicy)
+    p.przynies(MAGAZYN, produkt, sztuk)
+
+if __name__ == &quot;__main__&quot;:
+    # wypełnij magazyn
+    MAGAZYN.dodaj(&quot;Jajka&quot;, 1000)
+    MAGAZYN.dodaj(&quot;Chleb&quot;, 100)
+    MAGAZYN.dodaj(&quot;Masło&quot;, 100)
+    MAGAZYN.dodaj(&quot;Mleko&quot;, 100)
+    # wydrukuj stan
+    MAGAZYN.stan()
+
+    # zatrudnij pracowników
+    KADRY.zatrudnij(&quot;Jan&quot;, &quot;Kowalski&quot;, 0)
+    KADRY.zatrudnij(&quot;Anna&quot;, &quot;Nowak&quot;, 0)
+    KADRY.zatrudnij(&quot;Maria&quot;, &quot;Rokita&quot;, 0)
+    KADRY.zatrudnij(&quot;Piotr&quot;, &quot;Mięśniak&quot;, 1)
+    # pokaż pracowników
+    KADRY.lista()
+
+    print(&quot;\n\nOtwarcie sklepu\n\n&quot;)
+
+    sprzedaj(100)
+    przynies(&quot;Jajka&quot;, 10)
+    przynies(&quot;Masło&quot;, 20)
+    sprzedaj(50)
+    sprzedaj(200)
+
+    print(&quot;\n\nZamknięcie sklepu\n\n&quot;)
+
+    print(&quot;Utarg =&quot;, UTARG)
+
+    MAGAZYN.stan()</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>$ python sklep.py
+
+Stan magazynu:
+
+ Mleko -&gt; 100
+ Jajka -&gt; 1000
+ Chleb -&gt; 100
+ Masło -&gt; 100
+
+Lista pracowników:
+
+[1235] Jan Kowalski (sprzedawca)
+[1236] Anna Nowak (sprzedawca)
+[1237] Maria Rokita (sprzedawca)
+[1238] Piotr Mięśniak (magazynier)
+
+
+Otwarcie sklepu
+
+
+Sprzedaje Anna Nowak...
+Przynosi Piotr Mięśniak...
+Przynosi Piotr Mięśniak...
+Sprzedaje Jan Kowalski...
+Sprzedaje Maria Rokita...
+
+
+Zamknięcie sklepu
+
+
+Utarg = 0
+
+Stan magazynu:
+
+ Mleko -&gt; 100
+ Jajka -&gt; 990
+ Chleb -&gt; 100
+ Masło -&gt; 80</code></pre>
+</div>
+</section>
+<section id="section-2" class="level2">
+<h2></h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code></code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code></code></pre>
+</div>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
