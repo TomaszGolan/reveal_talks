@@ -720,7 +720,7 @@ Sprzedaje Maria Rokita...
 Zamknięcie sklepu
 
 
-Utarg = 0
+Utarg = 0 # dlaczego 0?
 
 Stan magazynu:
 
@@ -732,20 +732,194 @@ Stan magazynu:
 
 </div>
 
-##
+## Poprawka
 
 ---
 
 <div class="left"><br>
 
 ```py
+# w klasie sprzedawca
+def sprzedaj(self, utarg, kwota):
+    """Sprzedaje towary zwiększając utarg"""
+    print("Sprzedaje {} {}...".format(
+        self.imie, self.nazwisko))
+    return utarg + kwota
+
+# w sklep.py
+def sprzedaj(kwota):
+    """Szuka sprzedacy i sprzedaje towar"""
+    global UTARG
+    global KADRY
+    p = get_sprzedawca(KADRY.pracownicy)
+    UTARG = p.sprzedaj(UTARG, kwota)
 ```
 
 </div>
 <div class="right"><br>
 
 ```
+$ python sklep.py
+...
+
+Utarg = 350
+
+Stan magazynu:
+
+ Jajka -> 990
+ Masło -> 80
+ Chleb -> 100
+ Mleko -> 100
 
 ```
 
 </div>
+
+#
+
+## Cechy programowania obiektowego
+
+---
+
+* dziedziczenie - klasa pochodna = klasa bazowa + dodatkowe funkcjonalności
+
+* abstrakcja - "wirtualne" obiekty, które mogą wykonywać funkcje, zmieniać swój stan oraz komunikować się z innymi obiektami
+
+* polimorfizm - wywołanie metody z zachowaniem typu (gdy zmienna może wskazywać różne "podklasy")
+
+* enkapsulacja (ukrywanie implementacji) - stan obiektu można zmieniać tylko za pomocą interfejsu
+
+## OOP - (często) łatwiejsze aktualizacje
+
+---
+
+* przychodzi klient i prosi o nową funkcjonalność
+
+> Niech magazyn wyśle automatycznie zamówienie za każdym razem, gdy magazynier zabierze towar.
+
+## Magazyn v2
+
+---
+
+<div class="left"><br>
+
+```py
+# magazyn.py
+"""Zarządzanie magazynem"""
+
+
+class Magazyn:
+    """Przechowuje zapas towarów"""
+
+    def __init__(self):
+        """Inicjuje zmienne"""
+        self.towary = {}  # towar: liczba
+
+    def dodaj(self, produkt, sztuki=1):
+        """Dodaje produkty do magazynu"""
+        if self.towary.get(produkt):
+            self.towary[produkt] += sztuki
+        else:
+            self.towary[produkt] = sztuki
+
+    def usun(self, produkt, sztuki=1):
+        """Usuwa produkt z magazynu"""
+        if self.towary.get(produkt):
+            self.towary[produkt] -= sztuki
+            self._zamow(produkt, sztuki)
+
+    def _zamow(self, produkt, sztuki=1):
+        """Zamawia towar z hurtowni"""
+        self.towary[produkt] += sztuki
+        print("Dostarczono {} sztuk {}".format(
+                produkt, sztuki))
+
+    def stan(self):
+        """Drukuje stan magazynu"""
+        print("\nStan magazynu:\n")
+
+        for t, n in self.towary.items():
+            print(" {} -> {}".format(t, n))
+```
+
+</div>
+<div class="right"><br>
+
+```
+$ python sklep.py
+
+Stan magazynu:
+
+ Mleko -> 100
+ Masło -> 100
+ Chleb -> 100
+ Jajka -> 1000
+
+Lista pracowników:
+
+[1235] Jan Kowalski (sprzedawca)
+[1236] Anna Nowak (sprzedawca)
+[1237] Maria Rokita (sprzedawca)
+[1238] Piotr Mięśniak (magazynier)
+
+
+Otwarcie sklepu
+
+
+Sprzedaje Jan Kowalski...
+Przynosi Piotr Mięśniak...
+Dostarczono Jajka sztuk 10
+Przynosi Piotr Mięśniak...
+Dostarczono Masło sztuk 20
+Sprzedaje Anna Nowak...
+Sprzedaje Jan Kowalski...
+
+
+Zamknięcie sklepu
+
+
+Utarg = 350
+
+Stan magazynu:
+
+ Mleko -> 100
+ Masło -> 100
+ Chleb -> 100
+ Jajka -> 1000
+```
+
+</div>
+
+## Tworzenie dokumentacji
+
+---
+
+* dobrze *odocstringowany* kod jest łatwy do udokumentowania, np.
+
+```
+epydoc --graph all *.py
+```
+
+* wynik: [sklep doc](http://www.ift.uni.wroc.pl/~tgolan/sklep/)
+
+## Diagramy UML
+
+---
+
+<img src="../img/python/class-diagram-example-hasp-licensing-domain.png" width=50%>
+
+[źródło](http://www.uml-diagrams.org/examples/class-diagram-example-hasp-licensing-domain.png), więcej np. [tutaj](https://www.michalwolski.pl/diagramy-uml/)
+
+#
+
+## Podsumowanie
+
+---
+
+* programowanie obiektowe wymaga trochę innego spojrzenia na problem niż programowanie strukturalne
+
+* dobrze zaprojektowany program jest łatwy w aktualizacji
+
+* jeśli obiekty komunikują się za pomocą interfejsów, zmiana implementacji jednej klasy nie wymaga aktualizacji pozostałych
+
+* dokumentacja (*docstring*) powinna powstawać razem z projektem - ułatwi to życie w przyszłości

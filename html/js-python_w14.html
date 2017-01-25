@@ -687,7 +687,7 @@ Sprzedaje Maria Rokita...
 Zamknięcie sklepu
 
 
-Utarg = 0
+Utarg = 0 # dlaczego 0?
 
 Stan magazynu:
 
@@ -697,17 +697,180 @@ Stan magazynu:
  Masło -&gt; 80</code></pre>
 </div>
 </section>
-<section id="section-2" class="level2">
-<h2></h2>
+<section id="poprawka" class="level2">
+<h2>Poprawka</h2>
 <hr />
 <div class="left">
 <p><br></p>
-<pre class="py"><code></code></pre>
+<pre class="py"><code># w klasie sprzedawca
+def sprzedaj(self, utarg, kwota):
+    &quot;&quot;&quot;Sprzedaje towary zwiększając utarg&quot;&quot;&quot;
+    print(&quot;Sprzedaje {} {}...&quot;.format(
+        self.imie, self.nazwisko))
+    return utarg + kwota
+
+# w sklep.py
+def sprzedaj(kwota):
+    &quot;&quot;&quot;Szuka sprzedacy i sprzedaje towar&quot;&quot;&quot;
+    global UTARG
+    global KADRY
+    p = get_sprzedawca(KADRY.pracownicy)
+    UTARG = p.sprzedaj(UTARG, kwota)</code></pre>
 </div>
 <div class="right">
 <p><br></p>
-<pre><code></code></pre>
+<pre><code>$ python sklep.py
+...
+
+Utarg = 350
+
+Stan magazynu:
+
+ Jajka -&gt; 990
+ Masło -&gt; 80
+ Chleb -&gt; 100
+ Mleko -&gt; 100
+</code></pre>
 </div>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="cechy-programowania-obiektowego" class="level2">
+<h2>Cechy programowania obiektowego</h2>
+<hr />
+<ul>
+<li><p>dziedziczenie - klasa pochodna = klasa bazowa + dodatkowe funkcjonalności</p></li>
+<li><p>abstrakcja - &quot;wirtualne&quot; obiekty, które mogą wykonywać funkcje, zmieniać swój stan oraz komunikować się z innymi obiektami</p></li>
+<li><p>polimorfizm - wywołanie metody z zachowaniem typu (gdy zmienna może wskazywać różne &quot;podklasy&quot;)</p></li>
+<li><p>enkapsulacja (ukrywanie implementacji) - stan obiektu można zmieniać tylko za pomocą interfejsu</p></li>
+</ul>
+</section>
+<section id="oop---często-łatwiejsze-aktualizacje" class="level2">
+<h2>OOP - (często) łatwiejsze aktualizacje</h2>
+<hr />
+<ul>
+<li>przychodzi klient i prosi o nową funkcjonalność</li>
+</ul>
+<blockquote>
+<p>Niech magazyn wyśle automatycznie zamówienie za każdym razem, gdy magazynier zabierze towar.</p>
+</blockquote>
+</section>
+<section id="magazyn-v2" class="level2">
+<h2>Magazyn v2</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<pre class="py"><code># magazyn.py
+&quot;&quot;&quot;Zarządzanie magazynem&quot;&quot;&quot;
+
+
+class Magazyn:
+    &quot;&quot;&quot;Przechowuje zapas towarów&quot;&quot;&quot;
+
+    def __init__(self):
+        &quot;&quot;&quot;Inicjuje zmienne&quot;&quot;&quot;
+        self.towary = {}  # towar: liczba
+
+    def dodaj(self, produkt, sztuki=1):
+        &quot;&quot;&quot;Dodaje produkty do magazynu&quot;&quot;&quot;
+        if self.towary.get(produkt):
+            self.towary[produkt] += sztuki
+        else:
+            self.towary[produkt] = sztuki
+
+    def usun(self, produkt, sztuki=1):
+        &quot;&quot;&quot;Usuwa produkt z magazynu&quot;&quot;&quot;
+        if self.towary.get(produkt):
+            self.towary[produkt] -= sztuki
+            self._zamow(produkt, sztuki)
+
+    def _zamow(self, produkt, sztuki=1):
+        &quot;&quot;&quot;Zamawia towar z hurtowni&quot;&quot;&quot;
+        self.towary[produkt] += sztuki
+        print(&quot;Dostarczono {} sztuk {}&quot;.format(
+                produkt, sztuki))
+
+    def stan(self):
+        &quot;&quot;&quot;Drukuje stan magazynu&quot;&quot;&quot;
+        print(&quot;\nStan magazynu:\n&quot;)
+
+        for t, n in self.towary.items():
+            print(&quot; {} -&gt; {}&quot;.format(t, n))</code></pre>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>$ python sklep.py
+
+Stan magazynu:
+
+ Mleko -&gt; 100
+ Masło -&gt; 100
+ Chleb -&gt; 100
+ Jajka -&gt; 1000
+
+Lista pracowników:
+
+[1235] Jan Kowalski (sprzedawca)
+[1236] Anna Nowak (sprzedawca)
+[1237] Maria Rokita (sprzedawca)
+[1238] Piotr Mięśniak (magazynier)
+
+
+Otwarcie sklepu
+
+
+Sprzedaje Jan Kowalski...
+Przynosi Piotr Mięśniak...
+Dostarczono Jajka sztuk 10
+Przynosi Piotr Mięśniak...
+Dostarczono Masło sztuk 20
+Sprzedaje Anna Nowak...
+Sprzedaje Jan Kowalski...
+
+
+Zamknięcie sklepu
+
+
+Utarg = 350
+
+Stan magazynu:
+
+ Mleko -&gt; 100
+ Masło -&gt; 100
+ Chleb -&gt; 100
+ Jajka -&gt; 1000</code></pre>
+</div>
+</section>
+<section id="tworzenie-dokumentacji" class="level2">
+<h2>Tworzenie dokumentacji</h2>
+<hr />
+<ul>
+<li>dobrze <em>odocstringowany</em> kod jest łatwy do udokumentowania, np.</li>
+</ul>
+<pre><code>epydoc --graph all *.py</code></pre>
+<ul>
+<li>wynik: <a href="http://www.ift.uni.wroc.pl/~tgolan/sklep/">sklep doc</a></li>
+</ul>
+</section>
+<section id="diagramy-uml" class="level2">
+<h2>Diagramy UML</h2>
+<hr />
+<p><img src="../img/python/class-diagram-example-hasp-licensing-domain.png" width=50%></p>
+<p><a href="http://www.uml-diagrams.org/examples/class-diagram-example-hasp-licensing-domain.png">źródło</a>, więcej np. <a href="https://www.michalwolski.pl/diagramy-uml/">tutaj</a></p>
+</section>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="podsumowanie" class="level2">
+<h2>Podsumowanie</h2>
+<hr />
+<ul>
+<li><p>programowanie obiektowe wymaga trochę innego spojrzenia na problem niż programowanie strukturalne</p></li>
+<li><p>dobrze zaprojektowany program jest łatwy w aktualizacji</p></li>
+<li><p>jeśli obiekty komunikują się za pomocą interfejsów, zmiana implementacji jednej klasy nie wymaga aktualizacji pozostałych</p></li>
+<li><p>dokumentacja (<em>docstring</em>) powinna powstawać razem z projektem - ułatwi to życie w przyszłości</p></li>
+</ul>
 </section>
 </section>
     </div>

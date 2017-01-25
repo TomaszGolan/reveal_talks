@@ -9,6 +9,7 @@
 - [MINERvA Review](http://tomaszgolan.github.io/reveal_talks/html/minerva_review.html)
 - [MLMPR (Warsaw 17.01)](http://tomaszgolan.github.io/reveal_talks/html/mlmpr_warsaw17.html)
 - [Powtórka z Pythona cz. I](http://tomaszgolan.github.io/reveal_talks/html/js-python_w13.html)
+- [Powtórka z Pythona cz. II](http://tomaszgolan.github.io/reveal_talks/html/js-python_w14.html)
 
 # Use these links to print as pdf
 
@@ -21,3 +22,4 @@
 - [MINERvA Review](http://tomaszgolan.github.io/reveal_talks/html/minerva_review.html?print-pdf)
 - [MLMPR (Warsaw 17.01)](http://tomaszgolan.github.io/reveal_talks/html/mlmpr_warsaw17.html?print-pdf)
 - [Powtórka z Pythona cz. I](http://tomaszgolan.github.io/reveal_talks/html/js-python_w13.html?print-pdf)
+- [Powtórka z Pythona cz. II](http://tomaszgolan.github.io/reveal_talks/html/js-python_w14.html?print-pdf)
