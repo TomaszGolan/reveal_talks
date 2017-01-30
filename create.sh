@@ -1,6 +1,6 @@
 #!/bin/bash
 
-talk='js-python_w14'      # name of source file in markdown fodler
+talk='nuwro_new_repo'     # name of source file in markdown fodler
 theme='black'             # beige | black | blood | league | moon | night | serif | simple | sky | solarized | white
 hs='monokai_mod'          # highlight style from template folder (leave blank to use default = zenburn)
 transition='convex'       # none | fade | slide | convex | concave | zoom
