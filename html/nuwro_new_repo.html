@@ -66,7 +66,23 @@
 <h2>New releases scheme</h2>
 <hr />
 <p><a href="https://github.com/NuWro/nuwro/releases" class="uri">https://github.com/NuWro/nuwro/releases</a></p>
-<p><img src="../img/nuwro/new_rel.png" width=50%></p>
+<img src="../img/nuwro/new_rel.png" class="left">
+<div class="right">
+<ul>
+<li>one can check version from command line</li>
+</ul>
+<pre><code>$ ./bin/nuwro -v
+nuwro_17.01-27-g0563b32</code></pre>
+<ul>
+<li>or from output ROOT file in TNamed(&quot;Nuwro version&quot;)</li>
+</ul>
+<pre><code>root [0] TFile* f = new TFile(&quot;out.root&quot;)
+root [1] f-&gt;Get(&quot;NuWro version&quot;)-&gt;GetTitle()
+(const char *) &quot;nuwro_17.01-30-gfd20ebd&quot;</code></pre>
+<ul>
+<li>taken from <em>git described</em> in Makefile</li>
+</ul>
+</div>
 </section>
 <section id="new-wiki" class="level2">
 <h2>New wiki</h2>
