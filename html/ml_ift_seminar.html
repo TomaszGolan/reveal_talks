@@ -5,11 +5,11 @@
 
   <meta charset="utf-8">
 
-  <title>$title$</title>
+  <title>Machine Learning for MINERvA Physics Reconstruction</title>
 
-  <meta name="description" content="$title$">
+  <meta name="description" content="Machine Learning for MINERvA Physics Reconstruction">
 
-  $for(author)$ <meta name="author" content="$author$" /> $endfor$
+   <meta name="author" content="Tomasz Golan" /> 
 
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -18,18 +18,10 @@
 
   <link rel="stylesheet" href="../reveal.js/css/reveal.css">
 
-  $if(theme)$
-    <link rel="stylesheet" href="../reveal.js/css/theme/$theme$.css" id="theme">
-  $else$
-    <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
-  $endif$
-
-  $if(highlight-style)$
-    <link rel="stylesheet" href="../template/$highlight-style$.css">
-  $else$
-    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
-  $endif$
-
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
   <link rel="stylesheet" href="../template/extra.css">
 
   <script>
@@ -44,34 +36,33 @@
   <script src="../reveal.js/lib/js/html5shiv.js"></script>
   <![endif]-->
 
-  $for(header-includes)$ $header-includes$ $endfor$
+  
 
 </head>
 
 <body>
 
-  $for(include-before)$ $include-before$ $endfor$
+  
 
   <div class="reveal">
 
     <div class="slides">
 
       <section>
-        <h1>$title$</h1>
-        $for(author)$ <h3>$author$</h3> $endfor$
+        <h1>Machine Learning for MINERvA Physics Reconstruction</h1>
+         <h3>Tomasz Golan</h3> 
         <p>
-          <h4>$date$</h4>
+          <h4>IFT seminar, 10.03.2017</h4>
         </p>
       </section>
 
-      $if(toc)$
-      <section>
-        <h2>Outline</h2>
-        <nav id="$idprefix$TOC">
-          $toc$
-        </nav>
-      </section>
-      $endif$ $body$
+       <section id="oscillation-experiment" class="level2">
+<h2>Oscillation experiment</h2>
+<hr />
+<svg id="nu_osc_exp" width="800" height="600">
+</svg>
+<script src="../js/nu_osc_exp.js"></script>
+</section>
     </div>
 
     <script src="../reveal.js/lib/js/head.min.js"></script>
@@ -87,24 +78,12 @@
         width: 1280,
         height: 720,
 
-        $if(theme)$
-          theme: Reveal.getQueryHash().theme || '$theme$',
-        $else$
-          theme: Reveal.getQueryHash().theme || 'black',
-        $endif$
-
-        $if(transition)$
-          transition: Reveal.getQueryHash().transition || '$transition$',
-        $else$
-          transition: Reveal.getQueryHash().transition || 'none',
-        $endif$
-
-        $if(speed)$
-          transitionSpeed: Reveal.getQueryHash().transitionSpeed || '$speed$',
-        $else$
-          transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'default',
-        $endif$
-
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
         dependencies: [{
             src: '../reveal.js/lib/js/classList.js',
             condition: function() {
