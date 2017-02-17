@@ -46,7 +46,8 @@ root [1] f->Get("NuWro version")->GetTitle()
 
 [https://github.com/NuWro/nuwro/wiki](https://github.com/NuWro/nuwro/wiki)
 
-<img src="../img/nuwro/new_wiki.png" width=50%>
+<img src="../img/nuwro/new_wiki.png" class="left">
+<img src="../img/nuwro/new_wiki_params.png" class="right">
 
 ## New physics
 
