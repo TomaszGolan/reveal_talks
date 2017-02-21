@@ -1,202 +1,536 @@
-var s = Snap("#nu_osc_exp");
+/**
+ * My first js script ever. It uses Snap.svg (http://snapsvg.io/) to generate 
+ * a simple animation presenting how neutrino oscillation experiments work.
+ */
 
-// screen
-var width = 800;
-var height = 600;
+var SNAP = Snap("#nu_osc_exp"); // include in html using svg with id=nu_osc_exp
 
-var margin = width / 100;
+///// SETTINGS /////
 
-var font_size = 50;
+var SPEED = 2; // scale time of all animations
 
-// colors
+var BEAM_SIZE = 48;
 
-var blue = "#42AFFA";
-var red = "#FB4953";
-var orange = "#FF4D00"
-var white = "#FFFFFF";
-var black = "#000000";
-var green = "#98E80C";
-var grey = "#222222";
+var SCREEN = {
+    width:  900, 
+    height: 600,
+    margin:  10,
+}; 
 
-// detector
+var FONT = {
+    large:  50,
+    normal: 25,
+};
 
-var detector_width = width / 5;
-var detector_height = height * 0.8;
+var DETECTOR = {
+    width:  SCREEN.width / 5,
+    height: SCREEN.height * 0.8,
+    y:      SCREEN.margin,
+};
 
-var detector = s.rect(width - detector_width - margin, margin, detector_width, detector_height, 10, 10);
+DETECTOR.x = SCREEN.width - DETECTOR.width - SCREEN.margin;
+DETECTOR.center = {
+    x: DETECTOR.x + DETECTOR.width / 2,
+    y: DETECTOR.y + DETECTOR.height / 2,
+};
 
-detector.attr({
-    fill: white,
-    'fill-opacity': 0, 
-    stroke: blue,
-    'strokeWidth': 5
-});
+var NU = {
+    radius: DETECTOR.width / 10,
+};
 
-// detector label
+var SOURCE = {
+    width:  6 * NU.radius,
+    height: 5 * NU.radius,
+};
 
-var detector_label = s.text(width - detector_width / 2 - margin, 2*margin + font_size + detector_height, "Detector");
-detector_label.attr({fontSize: font_size, fill: white, "text-anchor": "middle"})
+var BUTTON = {
+    width:  9*NU.radius,
+};
 
-// neutrino
+BUTTON.height = BUTTON.width/2;
 
-var neutrino_radius = detector_width / 10;
+///// COLORS /////
 
-// neutrino source
+var COLOR = {
+    blue:   "#42AFFA",
+    red:    "#FB4953",
+    orange: "#FF4D00",
+    white:  "#FFFFFF",
+    black:  "#000000",
+    green:  "#98E80C",
+    grey:   "#222222",
+};
 
-var source_width = 5 * neutrino_radius;
+///// DETECTOR /////
 
-var p2 = [3*margin + neutrino_radius, margin + detector_height / 2 - 2*neutrino_radius];
-var p3 = [p2[0], margin + detector_height / 2 + 2*neutrino_radius];
-var p1 = [p2[0] + source_width, p2[1]];
-var p4 = [p1[0], p3[1]];
+/**
+ * Draw a detector and its label
+ * 
+ * @returns {Object}    object
+ * @returns {Snap.rect} object.detector
+ * @returns {Snap.text} object.label
+*/
+var snap_detector = function() {
+    // build detector
+    var detector = SNAP.rect(DETECTOR.x, DETECTOR.y, 
+                             DETECTOR.width, DETECTOR.height,
+                             SCREEN.margin);
+    // paint detector
+    detector.attr({
+        fill: COLOR.white,
+        'fill-opacity': 0,
+        stroke: COLOR.blue,
+        'strokeWidth': 5,   
+    });
+    // create detector label
+    var label_x = DETECTOR.x + DETECTOR.width / 2;
+    var label_y = DETECTOR.height + FONT.large + 2*SCREEN.margin;
+    var label = SNAP.text(label_x, label_y, "Detector");
+    label.attr({
+        fontSize: FONT.large, 
+        fill: COLOR.white, 
+        "text-anchor": "middle"
+    });
+    // return Object{detector, label}
+    return {
+        detector: detector, 
+        label: label,
+    };
+};
 
-var nu_source = s.polyline(p1, p2, p3, p4);
-nu_source.attr({
-    'fill-opacity': 0,
-    stroke: white,
-    'strokeWidth': 3
-});
+///// NEUTRINO SOURCE /////
 
-var a1 = [p2[0] + 2*margin, p2[1] + 3*margin];
-var a2 = [a1[0] + 3*margin, a1[1]];
-var a3 = [a2[0], a2[1] - margin];
-var a4 = [a3[0] + 3*margin, a1[1] + margin];
-var a5 = [a3[0], a4[1] + 2*margin];
-var a6 = [a5[0], a5[1] - margin];
-var a7 = [a1[0], a6[1]];
+/**
+ * Draw an arrow
+ * 
+ * @param {number} x - left edge
+ * @param {number} y - top edge
+ * @param {number} w - width
+ * @param {number} h - height
+ * @param {number} t - thickness
+ * 
+ * @return {Snap.polyline} arrow
+ */
+var snap_arrow = function(x, y, w, h, t=0) {
+    t = t ? t : 0.4*h;
+    var wing = (h-t) / 2; // wing height
+    // arrow points
+    var a1 = [x,           y + wing];
+    var a2 = [a1[0] + w/2, a1[1]];
+    var a3 = [a2[0],       y];
+    var a4 = [a2[0] + w/2, y + h/2];
+    var a5 = [a2[0],       y + h];
+    var a6 = [a2[0],       a5[1] - wing];
+    var a7 = [a1[0],       a6[1]];
+    // create arrow
+    return SNAP.polyline(a1, a2, a3, a4, a5, a6, a7);
+};
 
-var arrow = s.polyline(a1, a2, a3, a4, a5, a6, a7);
-arrow.attr({
-    fill: white,
-    'fill-opacity': 0.25,
-});
+/**
+ * Draw a neutrino source and its label
+ * 
+ * @returns {Object}        object
+ * @returns {Snap.polyline} object.body
+ * @returns {Snap.polyline} object.arrow
+ * @returns {Snap.text}     object.label
+*/
+var snap_nu_source = function() {
+    // source edges
+    var source_left   = 4*SCREEN.margin;
+    var source_right  = source_left + SOURCE.width;
+    var source_top    = DETECTOR.center.y - SOURCE.height / 2;
+    var source_bottom = source_top + SOURCE.height;
+    // build source body
+    var body = SNAP.polyline(
+        source_right, source_top,
+        source_left, source_top,
+        source_left, source_bottom,
+        source_right, source_bottom
+    );
+    // paint source body
+    body.attr({
+        'fill-opacity': 0,
+        stroke: COLOR.white,
+        'strokeWidth': 3,
+    });
+    // nu launcher (arrow)
+    var margin = 1.5*SCREEN.margin;
+    var arrow = snap_arrow(
+        source_left + margin, 
+        source_top + margin,
+        SOURCE.width - 2*margin, 
+        SOURCE.height - 2*margin
+    );
+    arrow.attr({
+        fill: COLOR.white,
+        'fill-opacity': 0.25,
+    });
+    // neutrino source label
+    var label_x = source_left + SOURCE.width / 2;
+    var label_y = DETECTOR.height + FONT.large + 2*SCREEN.margin;
+    var label = SNAP.text(label_x, label_y, "Source");
+    label.attr({
+        fontSize: FONT.large, 
+        fill: COLOR.white, 
+        "text-anchor": "middle"
+    });
+    // return Object{body, arrow, label}
+    return {
+        body: body,
+        arrow: arrow,
+        label: label,
+    };
+};
 
-// neutrino source label
+///// START BUTTON /////
 
-var source_label = s.text((p1[0] - p2[0]) / 2 + p2[0], 2*margin + font_size + detector_height, "Source");
-source_label.attr({fontSize: font_size, fill: white, "text-anchor": "middle"});
+/**
+ * Draw a button and its label
+ * 
+ * @param {number} x - left edge
+ * @param {number} y - top edge
+ * @param {number} w - width
+ * @param {number} h - height
+ * 
+ * @returns {Object}    object
+ * @returns {Snap.rect} object.button
+ * @returns {Snap.text} object.label
+*/
+var snap_button = function(x, y, w, h, label) {
+    // draw a button
+    var button = SNAP.rect(x, y, w, h, w/10, w/10);
+    // paint a button
+    button.attr({
+        fill: COLOR.green,
+        'fill-opacity': 1.0,
+    //    stroke: GREEN,
+    //    'strokeWidth': 2,
+    //    'stroke-opacity': 1
+    });
+    // print a label
+    var button_label = SNAP.text(x + w/2, y + h/2 + FONT.normal/3, label);
+    button_label.attr({fontSize: FONT.normal, 'font-weight': 'bold', fill: COLOR.grey, "text-anchor": "middle"});
+    // return Object{button, label}
+    return {
+        button: button,
+        label: button_label,
+    };
+};
 
-// start button
+///// ANIMATIONS /////
 
-var button_w = 1.5*source_width;
-var button_h = button_w / 2;
-
-var start = s.rect(width / 2 - button_w / 2, height / 2 - button_h / 2, button_w, button_h);
-start.attr({
-    fill: white,
-    'fill-opacity': 0.75,
-    stroke: white,
-    'strokeWidth': 0,
-    'stroke-opacity': 0.25
-});
-
-var start_label = s.text(width / 2, height / 2 + font_size / 5, "START");
-start_label.attr({fontSize: font_size / 2, 'font-weight': 'bold', fill: grey, "text-anchor": "middle"});
-
-// functions
-
-var label_dis = function(label) {
-    label.animate({opacity: 0}, 1000);
-
+/** 
+ * Animate transparency to 0 and remove
+ * 
+ * @param {Snap.obj} obj - object to remove 
+ * @param {number} time - animation time
+ * 
+*/
+var smooth_remove = function(obj, time=1000) {
+    // change transparency
+    obj.animate({opacity: 0}, time/SPEED);
+    // remove after disappear
     setTimeout(function() {
         label.remove();
-    }, 1000);
+    }, time/SPEED);
 };
 
-var button_dis = function(button) {
-    button.animate({opacity: 0}, 1000);
+/** 
+ * Animate transparency to 1
+ * 
+ * @param {Snap.obj} obj - object to appear 
+ * @param {number} time - animation time
+ * 
+*/
+var smooth_appear = function(obj, time=1000) {
+    // change transparency
+    obj.animate({opacity: 1}, time/SPEED);
+};
 
-    Snap.animate(button_w, 0, function (value) {
-        button.attr({width: value, height: value / 2});
-    }, 1000, mina.bounce);
-    
+/**
+ * Make a button disappear
+ * 
+ * @param {Snap.rect} button - button to remove 
+ * @param {number} time - animation time
+
+*/
+var button_anim = function(button, time=1000) {
+    // animate blur
+    Snap.animate(0, 10, function (value) {
+        button.attr({filter: SNAP.filter(Snap.filter.blur(value, value)), 'fill-opacity': 1 - 0.1*value});
+    }, time/SPEED/2);
+    // animate size change
+    button.animate({transform: 's1,0.01'}, time/SPEED/4, mina.bounce);
+    setTimeout(function() {
+        button.animate({transform: 's10,0'}, time/SPEED*3/4, mina.easein);
+    }, time/SPEED/4);
+    // remove after disappear
     setTimeout(function() {
         button.remove();
-    }, 1000);
+    }, time/SPEED);
 };
 
-var detected = 0;
-var speed = 0.5;
-var time = width / speed;
-
-var neutrino = function() {
-    var neutrino = s.circle(a1[0] + neutrino_radius, a4[1], 0);
-    neutrino.attr({fill: green, 'fill-opacity': 0});
-
-    neutrino.animate({r: neutrino_radius}, time / 8, mina.bounce);
-    Snap.animate(0, 1, function (value) {
-        neutrino.attr({'fill-opacity': value});
-    }, time / 8, mina.bounce);
-
-    var distance = width;
-    var t = time;
-
-    if (Math.random() > 0.5)
-    {
-        distance = width - detector_width - margin + neutrino_radius;
-        t = distance / speed;
-        
-        setTimeout(function(){
-            neutrino.animate({r: 0.5*neutrino_radius}, time / 8, mina.bounce);
-            
-            Snap.animate(0, 10, function (value) {
-                neutrino.attr({filter: s.filter(Snap.filter.blur(value, value)), 'fill-opacity': 1 - 0.01*value});
-            }, time / 8, mina.bounce);
-        }, time / 4 + t);
-
-        setTimeout(function(){
-            var new_y = detector_height - 2*neutrino_radius*(1+Math.floor(detected / 4));
-            var new_x = neutrino_radius + (detected % 4) * 2 * neutrino_radius;
-            neutrino.attr({cx: new_x, cy: new_y});
-            neutrino.animate({r: neutrino_radius}, time / 8, mina.bounce);
-            Snap.animate(10, 0, function (value) {
-                neutrino.attr({filter: s.filter(Snap.filter.blur(value+1, value+1)), 'fill-opacity': 0.75 - 0.01*value});
-            }, time / 8, mina.bounce);
-        }, 3 * time / 8 + t);
-
-        setTimeout(function(){
-            detected += 1;
-        }, time / 2 + t)
-    }
-    else
-    {
-        setTimeout(function() {
-            neutrino.remove();
-        }, 2*time);        
-    }
-
-    setTimeout(function() {
-        neutrino.animate({ transform: 't' + String(distance) + ',0' }, t, mina.linear);
-    }, time / 4);
-
-    setTimeout(function() {
-        if (Math.random() > 0.7) { 
-            neutrino.animate({fill: red}, time / 4);
-        }
-    }, time / 2);
+/**
+ * Neutrino propagation
+ * 
+ * @param {Snap.circle} nu - neutrino to move
+ * @param {number} x - distance
+ * @param {number} time - animation time
+ */
+var nu_move = function (nu, x, time) {
+    // simple transform
+    nu.animate({ transform: 't' + String(x) + ',0' }, time, mina.linear);
 };
 
-var beam_size = 32;
 
-var beam = function () {
+/** 
+ * Neutrino appearance 
+ * 
+ * @param {Snap.circle} nu - neutrino to appear 
+ * @param {number} time - animation time
 
-    for (i = 0; i < beam_size; i++) {
-        setTimeout(function(){neutrino();}, i*time);
+*/
+var nu_appear = function(nu, time) {
+    // size anim
+    nu.animate({r: 1.2*NU.radius}, 0.8*time, mina.bounce);
+    setTimeout(function(){
+        nu.animate({r: NU.radius}, 0.2*time, mina.bounce);
+    }, 0.8*time);
+};
+
+/** 
+ * Neutrino disappearance 
+ * 
+ * @param {Snap.circle} nu - neutrino to disappear 
+ * @param {number} time - animation time
+
+*/
+var nu_disappear = function(nu, time) {
+    // size anim
+    nu.animate({r: 1.2*NU.radius}, 0.2*time, mina.bounce);
+    setTimeout(function() {
+        nu.animate({r: 0}, 0.8*time, mina.bounce);
+    }, 0.2*time);
+};
+
+/**
+ * Neutrino oscillation
+ * 
+ * @param {Snap.circle} nu - neutrino to osciallate 
+ * @param {number} time - animation time
+*/
+var nu_oscillate = function(nu, time) {
+    // just change color
+    nu.animate({fill: COLOR.red}, time);
+};
+
+/**
+ * Place detected neutrino in the detector
+ * 
+ * @param {Snap.circle} nu - detected neutrino
+ * @param {number} id - no. of dected neutrinos
+ */
+var nu_detect = function (nu, id) {
+    // new position
+    var new_x = 3/2*NU.radius + (id % 4) * 2 * NU.radius;
+    var new_y = DETECTOR.height - 2*NU.radius*(1+Math.floor(id / 4));
+    // update position
+    nu.attr({cx: new_x, cy: new_y});
+};
+
+///// NEUTRINO /////
+
+/**
+ * Create, propagate, oscillate etc a neutrino
+ * 
+ * @param {number} index - no. of neutrino
+ * 
+ * @return {Snap.circle} neutrino
+ */
+var snap_nu = function(index) {
+    // draw a neutrino with radius = 0
+    var neutrino = SNAP.circle(5.5*SCREEN.margin + NU.radius, DETECTOR.height/2 + SCREEN.margin, 0);
+    neutrino.attr({fill: COLOR.green, filter: SNAP.filter(Snap.filter.blur(1, 1))});
+
+    var wait_time = 50;
+
+    var appearance_time = 250;
+    
+    var distance = SCREEN.width;
+    var travel_time = 2*distance / SPEED;
+
+    // every third is detected
+    if (index % 3 == 0) {
+        // change distance travelled
+        distance += - DETECTOR.width - SCREEN.margin + NU.radius/2;
+        // update time so velocity is the same
+        travel_time = 2*distance / SPEED;
+        // mark to disappear when detected
+        setTimeout(function() {nu_disappear(neutrino, appearance_time);}, appearance_time + travel_time + 2*wait_time);
+        // mark to move when disappeared
+        setTimeout(function() {nu_detect(neutrino, Math.floor(index / 3));}, 2*appearance_time + travel_time + 2*wait_time);
+        // mark to appear again in the detector
+        setTimeout(function() {nu_appear(neutrino, appearance_time);}, 2*appearance_time + travel_time + 2*wait_time);
+    }
+    else // mark to remove
+    {
+        setTimeout(function() {neutrino.remove();}, 2*travel_time);        
+    }
+
+    nu_appear(neutrino, appearance_time);
+
+    // move after nu is ready
+    setTimeout(function() {nu_move(neutrino, distance, travel_time);}, appearance_time + wait_time);
+
+    // every fourth oscillate (skip first)
+    if ((index+1) % 5 == 0) {
+        setTimeout(function() {nu_oscillate(neutrino, 2*appearance_time);}, appearance_time + 5*wait_time);
     };
 
+    return neutrino
 };
 
-// main function
+///// ANALYZE DATA /////
 
-var main = function() {
-    // remove labels etc
-    label_dis(detector_label);
-    label_dis(source_label);
-    button_dis(start);
-    // main loop
+/** Draw expected results */
+var snap_expected = function() {
+    for (i = 0; i < BEAM_SIZE / 3; i++) {
+        var x = 3*NU.radius + (i % 4) * 2 * NU.radius;
+        var y = DETECTOR.height - 2*NU.radius*(1+Math.floor(i / 4));
+        var neutrino = SNAP.circle(x, y, 0);
+        neutrino.attr({fill: COLOR.green, filter: SNAP.filter(Snap.filter.blur(1, 1))});
+        nu_appear(neutrino, 250);
+    }
+};
+
+/** Draw expected and data labels */
+var snap_labels = function() {
+    // labels position
+    var x_expected = 5*SCREEN.margin + SOURCE.width / 2;
+    var x_data = DETECTOR.x + DETECTOR.width / 2;
+    var y = DETECTOR.height + FONT.large + 2*SCREEN.margin;
+    // expected label
+    var label_expected = SNAP.text(x_expected, y, "Expected");
+    label_expected.attr({
+        fontSize: FONT.large, 
+        fill: COLOR.white, 
+        opacity: 0,
+        "text-anchor": "middle"
+    });
+    smooth_appear(label_expected);
+    // data label
+    var label_data = SNAP.text(x_data, y, "Data");
+    label_data.attr({
+        fontSize: FONT.large, 
+        fill: COLOR.white, 
+        opacity: 0,
+        "text-anchor": "middle"
+    });
+    smooth_appear(label_data);
+};
+
+/** Draw neutrino disappearance explanation */
+var snap_disappearance= function(time=1000) {
+    // labels position
+    var x = SCREEN.width / 2;
+    var y = 2*FONT.large;
+    // draw label
+    var label = SNAP.text(x + SCREEN.width, y, "Disappearance method: missing greens");
+    label.attr({
+        fontSize: FONT.large, 
+        fill: COLOR.white, 
+        "text-anchor": "middle"
+    });
+    label.animate({transform: 't-' + String(SCREEN.width)}, time/SPEED, mina.bounce);
+};
+
+/** Draw neutrino appearance explanation */
+var snap_appearance = function(time=1000) {
+    // labels position
+    var x = SCREEN.width / 2;
+    var y = 4*FONT.large;
+    // draw label
+    var label = SNAP.text(x + SCREEN.width, y, "Appearance method: detected reds");
+    label.attr({
+        fontSize: FONT.large, 
+        fill: COLOR.white, 
+        "text-anchor": "middle"
+    });
+    label.animate({transform: 't-' + String(SCREEN.width)}, time/SPEED, mina.bounce);
+};
+
+/** Draw problem */
+var snap_problem = function() {
+    // labels position
+    var x = SCREEN.width / 2;
+    var y = 6*FONT.large;
+    // draw label
+    var label = SNAP.text(x, y, "How to estimate expected?");
+    label.attr({
+        fontSize: FONT.large, 
+        fill: COLOR.red,
+        opacity: 0,
+        "text-anchor": "middle"
+    });
+    smooth_appear(label);
+};
+
+/**
+ * Start second stage of the animation
+ */
+var analyze_data = function() {
+    // create a button
+    var analyze = snap_button(
+        SCREEN.width/2 - BUTTON.width/2,
+        SCREEN.height/2 - BUTTON.height/2,
+        BUTTON.width, BUTTON.height,
+        "ANALYZE"        
+    );
+    analyze.button.click(function() {
+        // remove garbage
+        smooth_remove(detector.detector)
+        smooth_remove(nu_source.body);
+        smooth_remove(nu_source.arrow);
+        smooth_remove(analyze.label);
+        // remove button
+        button_anim(analyze.button, 1500);
+        // move neutrinos
+        setTimeout(function() {snap_expected()}, 2000);
+        // draw labels
+        setTimeout(function() {snap_labels()}, 2500);
+        // appearance / disappearance
+        setTimeout(function() {snap_disappearance()}, 5000);
+        setTimeout(function() {snap_appearance()}, 10000);
+        setTimeout(function() {snap_problem()}, 15000);
+    });
+};
+
+////// MAIN //////
+
+var detector  = snap_detector();  // {detector, label}
+var nu_source = snap_nu_source(); // {body, arrow, label}
+var start     = snap_button(      // {button, label}
+    SCREEN.width/2 - BUTTON.width/2,
+    SCREEN.height/2 - BUTTON.height/2,
+    BUTTON.width, BUTTON.height,
+    "START"
+);
+
+start.button.click(function() {
+    // remove labels
+    smooth_remove(detector.label);
+    smooth_remove(nu_source.label);
+    smooth_remove(start.label, 500);
+    button_anim(start.button, 1500);
+    // neutrino beam
+    for (i = 0; i < BEAM_SIZE; i++) {
+        (function(index) {
+            setTimeout(function() {snap_nu(index)}, i*2*SCREEN.width/SPEED);
+        })(i);
+    };
+    // data button after beam done
     setTimeout(function() {
-        beam();
-    }, 2000);
-};
-
-start.click(main);
+        // run second stage
+        analyze_data();
+    }, (BEAM_SIZE + 2)*2*SCREEN.width/SPEED);
+});

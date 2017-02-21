@@ -7,5 +7,5 @@
 
 ---
 
-<svg id="nu_osc_exp" width="800" height="600"></svg>
+<svg id="nu_osc_exp" width="900" height="600"></svg>
 <script src="../js/nu_osc_exp.js"></script>
