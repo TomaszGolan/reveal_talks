@@ -56,7 +56,16 @@
         </p>
       </section>
 
-       <section id="section" class="level1">
+       <section id="outline" class="level2">
+<h2>Outline</h2>
+<hr />
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#minerva">Introduction to MINERvA</a></li>
+<li><a href="#machine-learning">Introduction to Machine Learning</a></li>
+</ul>
+</section>
+<section id="section" class="level1">
 <h1></h1>
 <section id="motivation" class="level2">
 <h2>Motivation</h2>
@@ -83,6 +92,335 @@
 <svg id="nu_osc_exp" width="900" height="600">
 </svg>
 <script src="../js/nu_osc_exp.js"></script>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="minerva" class="level2">
+<h2>MINERvA</h2>
+<p><font color=red>M</font>ain <font color=red>IN</font>jector <font color=red>E</font>xpe<font color=red>R</font>iment <font color=red><span class="math inline">\(\nu\)</span>-A</font></p>
+</section>
+<section id="minerva-experiment" class="level2">
+<h2>MINERvA Experiment</h2>
+<hr />
+<div class=left>
+<hr style="height:10pt; visibility:hidden;" />
+<ul>
+<li>MINERvA is a neutrino-scattering experiment at Fermilab</li>
+<li>Collaboration of about 50-100 physicist</li>
+<li>NuMI beam is used to measure cross section for neutrino-nucleus interactions</li>
+<li>The detector includes several different nuclear targets</li>
+</ul>
+</div>
+<p><img src="../img/minerva/minerva.jpg" width=30%></p>
+</section>
+<section id="numi-beamline" class="level2">
+<h2>NuMI Beamline</h2>
+<hr />
+<p><img src="../img/minerva/numi_beamline.png" width=50%></p>
+<iframe data-autoplay width="420" height="315" src="https://www.youtube.com/embed/U_xWDWKq1CM">
+</iframe>
+</section>
+<section id="low-vs-medium-energy" class="level2">
+<h2>Low vs Medium Energy</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>by changing distance between horns one can change energy spectrum</p></li>
+<li><p>by changing horns polarization one can switch between neutrino and anti-neutrino mode</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/minerva/numi_spectrum.png" width=80%></p>
+</div>
+</section>
+<section id="le-vs-me-analyses" class="level2">
+<h2>LE vs ME analyses</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li>LE analyses: almost done</li>
+<li>ME analyses: starting now
+<ul>
+<li>more energy</li>
+<li>more particles in the final state</li>
+<li>more <em>messy</em> events</li>
+<li>more problems with the reconstruction</li>
+</ul></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<p><img src="../img/minerva/le_event_example.jpg" width=100%></p>
+<p><em>LE event example</em></p>
+</div>
+</section>
+<section id="minerva-detector" class="level2">
+<h2>MINERvA Detector</h2>
+<hr />
+<p><img src="../img/minerva/minerva_detector.png" width=75%></p>
+</section>
+<section id="nuclear-targets" class="level2">
+<h2>Nuclear targets</h2>
+<hr />
+<p><img src="../img/minerva/minerva_nuclear_targets.jpg" width=50%></p>
+</section>
+<section id="event-example-1" class="level2">
+<h2>Event example 1</h2>
+<hr />
+<p><img src="../img/minerva/event_example1.png" width=60%> <br><em>courtesy of G. Perdue</em></p>
+</section>
+<section id="event-example-2" class="level2">
+<h2>Event example 2</h2>
+<hr />
+<p><img src="../img/minerva/event_example2.png" width=60%> <br><em>courtesy of G. Perdue</em></p>
+</section>
+<section id="vertex-reconstruction" class="level2">
+<h2>Vertex Reconstruction</h2>
+<hr />
+<div class=left>
+<hr style="height:10pt; visibility:hidden;" />
+<ul>
+<li><p>tracking based algorithms fail for high energy events</p></li>
+<li><p>&quot;by eye&quot; method is very often more accurate</p></li>
+<li><p>idea: use algorithms for images analysis and pattern recognition</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/minerva/event_example1_zoom.png" width=100%></p>
+</div>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="machine-learning" class="level2">
+<h2>Machine Learning</h2>
+</section>
+<section id="why-ml" class="level2">
+<h2>Why ML?</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p><a href="http://image-net.org">ImageNet</a> is an image database</p></li>
+<li>Annual competition for classification
+<ul>
+<li>2010: 71.8%</li>
+<li>2011: 74.3%</li>
+<li>2012: 84.0%</li>
+<li>2013: 88.2%</li>
+<li>2014: 93.3%</li>
+<li>2015: <font color=red>96.4%</font></li>
+</ul></li>
+<li>Humans: about <font color=red>95%</font></li>
+</ul>
+</div>
+<div class="right">
+<ul>
+<li>Why humans fail?</li>
+</ul>
+<p><img src='../img/ml/alaskan_malamute.jpg'></p>
+<p>Siberian Husky or Alaskan Malamute?</p>
+</div>
+</section>
+<section id="understanding-cnn" class="level2">
+<h2>Understanding CNN</h2>
+<hr />
+<p><font size=6></p>
+<blockquote>
+<p>If you can't explain it simply, you don't understand it well enough.</p>
+<div style="text-align:right;">
+Albert Einstein
+</div>
+</blockquote>
+<p></font></p>
+<hr />
+<p><br></p>
+<ul>
+<li>lets start from <a href="#linear-regression">linear regression</a></li>
+<li>then introduce a <a href="#single-neuron">single neuron</a> and <a href="#neural-networks">neural networks</a></li>
+<li>to finally get to <a href="#convolutional-neural-networks">convolutional neural networks</a></li>
+</ul>
+</section>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="linear-regression" class="level2">
+<h2>Linear Regression</h2>
+</section>
+<section id="notation" class="level2">
+<h2>Notation</h2>
+<hr />
+<ul>
+<li>Hypothesis (for convenience <span class="math inline">\(x_0 = 1\)</span>): <span class="math display">\[h(x) = w_0 + w_1x_1 + ... + w_nx_n = \sum\limits_{i=0}^n w_i x_i = w^T x\]</span></li>
+<li>Cost function: <span class="math display">\[f(w) = \frac{1}{2}\sum\limits_{i=0}^n\left(h (x^{(i)}) - y^{(i)}\right)^2\]</span></li>
+<li>Learning step (gradient descent, <span class="math inline">\(\alpha\)</span> - training rate): <span class="math display">\[w_j = w_j - \alpha\frac{\partial f(w)}{\partial w_j} = w_j + \alpha\sum\limits_{i=0}^n\left(y^{(i)} - h (x^{(i)})\right)x_j\]</span></li>
+</ul>
+</section>
+<section id="example" class="level2">
+<h2>Example</h2>
+<hr />
+<img src="../img/ml/linear_regression_learning.gif" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li><p><strong>epoch</strong> = one loop over the whole training sample</p></li>
+<li><p>for each feature vector weights are updated using <strong>gradient descent</strong> method</p></li>
+</ul>
+</div>
+</section>
+<section id="classification" class="level2">
+<h2>Classification</h2>
+<hr />
+<img src="../img/ml/linear_classification_learning.gif" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li><p>target: <span class="math inline">\(y = 0, 1\)</span></p></li>
+<li><p>not really efficient for classification</p></li>
+<li><p>imagine having some data ~ 100</p></li>
+<li>logistic function does better job</li>
+</ul>
+</div>
+</section>
+<section id="classification-1" class="level2">
+<h2>Classification</h2>
+<hr />
+<p><img src="../img/ml/linear_classification_learning.gif"  class="left"> <img src="../img/ml/linear_classification_learning_far_data.gif" class="right"></p>
+</section>
+<section id="logistic-function" class="level2">
+<h2>Logistic function</h2>
+<hr />
+<img src="../img/ml/sigmoid_function.png" class='right'>
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>Logistic function: <span class="math display">\[g(z) = \frac{1}{1 + e^{-z}}\]</span></p></li>
+<li>Hypothesis: <span class="math display">\[h(x) = g(w^Tx) = \frac{1}{1 + e^{-w^Tx}}\]</span></li>
+</ul>
+</div>
+</section>
+<section id="results" class="level2">
+<h2>Results</h2>
+<hr />
+<p><img src="../img/ml/logistic_classification.gif"  class="left"> <img src="../img/ml/logistic_classification_far_data.gif" class="right"></p>
+</section>
+<section id="why-do-we-need-neural-networks" class="level2">
+<h2>Why do we need neural networks?</h2>
+<hr />
+<ul>
+<li><p>We can do classification</p></li>
+<li><p>We can do regression</p></li>
+<li><p>But real problems are nonlinear</p></li>
+</ul>
+</section>
+<section id="non-linear-problem" class="level2">
+<h2>Non-linear problem</h2>
+<hr />
+<p><img src="../img/ml/point_in_out_circle.png" width=100% style="background-color: white;"></p>
+</section>
+<section id="cheat" class="level2">
+<h2>Cheat</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>Feature vector: <span class="math display">\[(x,y) \rightarrow (x,y,x^2,y^2)\]</span></p></li>
+<li><p>Hypothesis: <span class="math display">\[h (x) = \frac{1}{1 + e^{-w_0 - w_1x - w_2y - w_3x^2 - w_4y^2}}\]</span></p></li>
+</ul>
+<p><em>In general, adding extra dimension by hand would be hard / impossible. Neural networks do that for us.</em></p>
+</div>
+<p><img src="../img/ml/point_in_out_circle_sigmoid.png" width=40%></p>
+</section>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<section id="neural-networks" class="level2">
+<h2>Neural Networks</h2>
+</section>
+<section id="neuron" class="level2">
+<h2>Neuron</h2>
+<hr />
+<img src="../img/ml/single_neuron.png" class="left">
+<div class="right">
+<p><br></p>
+<ul>
+<li>neuron = activation function:
+<ul>
+<li>linear</li>
+<li>binary step</li>
+<li>logistic</li>
+<li>tanh</li>
+<li>relu</li>
+<li>...</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="and-gate" class="level2">
+<h2>AND gate</h2>
+<hr />
+<div class="left">
+<p><img src="../img/ml/single_neuron.png" width=60%></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(x_2\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">AND</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="right">
+<p><br></p>
+<ul>
+<li>Hypothesis = logistic function:</li>
+</ul>
+<p><span class="math display">\[h(x) = \frac{1}{1 + e^{-w^Tx}}\]</span></p>
+<hr />
+<p>Intuition:</p>
+<ul>
+<li><span class="math inline">\(w_0 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_1 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_2 &lt; 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_1 + w_2 &gt; 0\)</span></li>
+</ul>
+</div>
+</section>
+<section id="and-gate---learning" class="level2">
+<h2>AND gate - learning</h2>
+<hr />
+<p><img src="../img/ml/and_gate_weights.png" width=60% style="background-color: white"></p>
+</section>
+<section id="non-linear-problem-xor-gate" class="level2">
+<h2>Non-linear problem: XOR gate</h2>
+<hr />
+<p><img src="../img/ml/xor_vs_and_gates.png" width=100%></p>
+</section>
+<section id="neural-network-for-xor" class="level2">
+<h2>Neural network for XOR</h2>
+<hr />
+<p><img src="../img/ml/nn_two_neurons.png" width=60%></p>
+<blockquote>
+<p>x XOR y = (x AND NOT y) OR (y AND NOT x)</p>
+</blockquote>
 </section>
 </section>
     </div>
