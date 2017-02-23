@@ -285,19 +285,22 @@ $$h(x) = g(w^Tx) = \frac{1}{1 + e^{-w^Tx}}$$
 
 ---
 
-- We can do classification
+<div class=left><br>
 
-- We can do regression
+* We can do classification
 
-- But real problems are nonlinear
+* We can do regression
 
-## Non-linear problem
+* But real problems are nonlinear
 
----
+</div>
+<div class=right>
 
-<img src="../img/ml/point_in_out_circle.png" width=100% style="background-color: white;">
+<img src="../img/ml/point_in_out_circle_cut.png" width=100% style="background-color: white;">
 
-## Cheat
+</div>
+
+## Trick
 
 ---
 
@@ -322,7 +325,11 @@ Neural networks do that for us.*
 
 ---
 
-<img src="../img/ml/single_neuron.png" class="left">
+<div class=left>
+
+<img src="../img/ml/neuron.svg" width=60% style="background-color: white">
+
+</div>
 <div class="right"><br>
 
 - neuron = activation function:
@@ -340,7 +347,7 @@ Neural networks do that for us.*
 ---
 
 <div class="left">
-<img src="../img/ml/single_neuron.png" width=60%>
+<img src="../img/ml/and_nn.svg" width=60% style="background-color: white">
 
 | | | | | |
 |:---:|:---:|:---:|:---:|:---:|
@@ -359,10 +366,10 @@ $$h(x) = \frac{1}{1 + e^{-w^Tx}}$$
 
 Intuition:
 
-- $w_0 < 0$
-- $w_0 + w_1 < 0$
-- $w_0 + w_2 < 0$
-- $w_0 + w_1 + w_2 > 0$
+- $w_0 \ll 0$
+- $w_0 + w_1 \ll 0$
+- $w_0 + w_2 \ll 0$
+- $w_0 + w_1 + w_2 \gg 0$
 
 </div>
 
@@ -376,12 +383,38 @@ Intuition:
 
 ---
 
-<img src="../img/ml/xor_vs_and_gates.png" width=100%>
+<img src="../img/ml/xorandor.svg" width=100%  style="background-color: white">
 
 ## Neural network for XOR
 
 ---
 
-<img src="../img/ml/nn_two_neurons.png" width=60%>
+<img src="../img/ml/xor_nn.svg" width=60% style="background-color: white">
 
 > x XOR y = (x AND NOT y) OR (y AND NOT x)
+
+## Tensorflow playground
+
+---
+
+<div width=100% height=600>
+<iframe src="http://playground.tensorflow.org" width=100% height=600></iframe>
+</div>
+
+## Why do we need convolutional NN?
+
+---
+
+<div class=left><br><br>
+
+* The more complicated problem is the more neurons we need
+
+    * so more CPU/GPU time
+    * and more memory
+
+</div>
+<div class=right>
+
+<img src="../img/ml/big_nn.svg" width=100% style="background-color: white;">
+
+</div>

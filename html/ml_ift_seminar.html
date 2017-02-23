@@ -309,19 +309,20 @@ Albert Einstein
 <section id="why-do-we-need-neural-networks" class="level2">
 <h2>Why do we need neural networks?</h2>
 <hr />
+<div class="left">
+<p><br></p>
 <ul>
 <li><p>We can do classification</p></li>
 <li><p>We can do regression</p></li>
 <li><p>But real problems are nonlinear</p></li>
 </ul>
+</div>
+<div class="right">
+<p><img src="../img/ml/point_in_out_circle_cut.png" width=100% style="background-color: white;"></p>
+</div>
 </section>
-<section id="non-linear-problem" class="level2">
-<h2>Non-linear problem</h2>
-<hr />
-<p><img src="../img/ml/point_in_out_circle.png" width=100% style="background-color: white;"></p>
-</section>
-<section id="cheat" class="level2">
-<h2>Cheat</h2>
+<section id="trick" class="level2">
+<h2>Trick</h2>
 <hr />
 <div class="left">
 <ul>
@@ -341,7 +342,9 @@ Albert Einstein
 <section id="neuron" class="level2">
 <h2>Neuron</h2>
 <hr />
-<img src="../img/ml/single_neuron.png" class="left">
+<div class="left">
+<p><img src="../img/ml/neuron.svg" width=60% style="background-color: white"></p>
+</div>
 <div class="right">
 <p><br></p>
 <ul>
@@ -361,7 +364,7 @@ Albert Einstein
 <h2>AND gate</h2>
 <hr />
 <div class="left">
-<p><img src="../img/ml/single_neuron.png" width=60%></p>
+<p><img src="../img/ml/and_nn.svg" width=60% style="background-color: white"></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -397,10 +400,10 @@ Albert Einstein
 <hr />
 <p>Intuition:</p>
 <ul>
-<li><span class="math inline">\(w_0 &lt; 0\)</span></li>
-<li><span class="math inline">\(w_0 + w_1 &lt; 0\)</span></li>
-<li><span class="math inline">\(w_0 + w_2 &lt; 0\)</span></li>
-<li><span class="math inline">\(w_0 + w_1 + w_2 &gt; 0\)</span></li>
+<li><span class="math inline">\(w_0 \ll 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_1 \ll 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_2 \ll 0\)</span></li>
+<li><span class="math inline">\(w_0 + w_1 + w_2 \gg 0\)</span></li>
 </ul>
 </div>
 </section>
@@ -412,15 +415,40 @@ Albert Einstein
 <section id="non-linear-problem-xor-gate" class="level2">
 <h2>Non-linear problem: XOR gate</h2>
 <hr />
-<p><img src="../img/ml/xor_vs_and_gates.png" width=100%></p>
+<p><img src="../img/ml/xorandor.svg" width=100%  style="background-color: white"></p>
 </section>
 <section id="neural-network-for-xor" class="level2">
 <h2>Neural network for XOR</h2>
 <hr />
-<p><img src="../img/ml/nn_two_neurons.png" width=60%></p>
+<p><img src="../img/ml/xor_nn.svg" width=60% style="background-color: white"></p>
 <blockquote>
 <p>x XOR y = (x AND NOT y) OR (y AND NOT x)</p>
 </blockquote>
+</section>
+<section id="tensorflow-playground" class="level2">
+<h2>Tensorflow playground</h2>
+<hr />
+<div width="100%" height="600">
+<iframe src="http://playground.tensorflow.org" width="100%" height="600">
+</iframe>
+</div>
+</section>
+<section id="why-do-we-need-convolutional-nn" class="level2">
+<h2>Why do we need convolutional NN?</h2>
+<hr />
+<div class="left">
+<p><br><br></p>
+<ul>
+<li><p>The more complicated problem is the more neurons we need</p>
+<ul>
+<li>so more CPU/GPU time</li>
+<li>and more memory</li>
+</ul></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/ml/big_nn.svg" width=100% style="background-color: white;"></p>
+</div>
 </section>
 </section>
     </div>
