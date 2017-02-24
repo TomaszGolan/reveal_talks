@@ -69,10 +69,10 @@ function plot_weights(e, w0, w1, w2) {
         },
         xaxis: {
             title: "Epoch",
+            type: "log",
         },
         yaxis: {
             title: "Weight",
-            range: [-20, 10],
         },
     }
 
@@ -96,6 +96,7 @@ function plot_h(e, h00, h01, h10, h11) {
         },
         xaxis: {
             title: "Epoch",
+            type: "log",
         },
         yaxis: {
             title: "h(x1, x2)",
