@@ -395,9 +395,34 @@ Intuition:
 
 ---
 
-<img src="../img/ml/xor_nn.svg" width=60% style="background-color: white">
-
 > x XOR y = (x AND NOT y) OR (y AND NOT x)
+
+<div class=left>
+<img src="../img/ml/xor_nn.svg" width=100% style="background-color: white">
+</div>
+<div class=right>
+
+```
+Hidden neuron #1:
+
+0, 0 = 0.000555
+0, 1 = 0.000001
+1, 0 = 0.263002
+1, 1 = 0.000827
+
+Hidden neuron #2:
+0, 0 = 0.000567
+0, 1 = 0.290434
+1, 0 = 0.000002
+1, 1 = 0.001137
+
+Final results:
+0 XOR 0 = 0.035760
+0 XOR 1 = 0.956746
+1 XOR 0 = 0.956866
+1 XOR 1 = 0.026566
+```
+</div>
 
 ## Tensorflow playground
 
