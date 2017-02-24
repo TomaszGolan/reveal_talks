@@ -449,3 +449,75 @@ Final results:
 <img src="../img/ml/big_nn.svg" width=100% style="background-color: white;">
 
 </div>
+
+#
+
+## Convolutional Neural Networks
+
+## Idea
+
+---
+
+<img src="../img/ml/cnn_idea.svg" width=75%  style="background-color: white;">
+
+## Convolution
+
+---
+
+<img src="../img/ml/convolution_example.gif" width=50%>
+
+src: [deeplearning.net](http://deeplearning.stanford.edu/wiki/images/6/6c/Convolution_schematic.gif)
+
+## Convolution example
+
+---
+
+<img src="../img/ml/edge_example.png" width = "100%">
+<img src="../img/ml/edge_example2.png" width = "100%">
+
+
+## Convolution Layer
+
+---
+
+<center>*No. of convolved feature vectors (matrices) = No. of filters*</center>
+
+<img src="../img/ml/conv_layer.png" width = "50%">
+
+## Pooling
+
+---
+
+<img src="../img/ml/pool_example.png" width = "75%">
+
+src: [wildml.com](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)
+
+## Pooling - example
+
+---
+
+<img src="../img/ml/max_pooling_example.png" width = "100%">
+
+src: [arxiv](http://arxiv.org/abs/1506.03767)
+
+## CNN example
+
+---
+
+<img src="../img/ml/cnn_example.png" width = "100%">
+
+src: [wildml.com](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)
+
+## GoogLeNet
+
+---
+
+<div class=left>
+<img src="../img/ml/googlenet.png" width=90%>
+</div>
+<div class=right>
+<hr style="height:0pt; visibility:hidden;" />
+<img src="../img/ml/need_deep.jpg" width=100%>
+
+<img src="../img/ml/google_paper_ref.png" width=100%>
+</div>
