@@ -377,7 +377,13 @@ Intuition:
 
 ---
 
-<img src="../img/ml/and_gate_weights.png" width=60% style="background-color: white">
+<div class=left>
+<div id="and_w" style="width:600px;height:600px;"></div>
+</div>
+<div class=right>
+<div id="and_h" style="width:600px;height:600px;"></div>
+</div>
+<script src="../js/and_learning.js"></script>
 
 ## Non-linear problem: XOR gate
 
