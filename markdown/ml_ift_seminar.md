@@ -1,6 +1,6 @@
 % Machine Learning for MINERvA Physics Reconstruction
 % Tomasz Golan
-% IFT seminar, 10.03.2017
+% IFT seminar, XX.XX.2017
 
 ## Outline
 
@@ -9,6 +9,7 @@
 * [Motivation](#motivation)
 * [Introduction to MINERvA](#minerva)
 * [Introduction to Machine Learning](#machine-learning)
+* [MLMPR first results](#mlmpr)
 
 #
 
@@ -520,4 +521,128 @@ src: [wildml.com](http://www.wildml.com/2015/11/understanding-convolutional-neur
 <img src="../img/ml/need_deep.jpg" width=100%>
 
 <img src="../img/ml/google_paper_ref.png" width=100%>
+</div>
+
+# 
+
+## MLMPR
+
+*Machine Learning for MINERvA Physics Reconstruction*
+
+## First task - vertex finding
+
+---
+
+<div class=left><br>
+
+* the first goal is to use CNN to find the primary vertex in nuclear target region
+
+* each event is represented by 3 "pictures" - different views at the detector
+
+</div>
+<div class=right>
+<img src="../img/ml/mlvf_view.png" width=100%>
+*event examples courtesy of G. Perdue*
+</div>
+
+## Classification regions
+
+---
+
+<img src="../img/ml/mlvf_detector_regions.png" width=60%>
+
+## CNN in use
+
+---
+
+<div class=left>
+<img src="../img/ml/cnn_epsilon.png" width=60%>
+</div>
+<div class=right>
+<hr style="height:10pt; visibility:hidden;" />
+
+| | | |
+|:---:|:---:|:---:|:---:|
+| **Convolution layer** | **No. of filters** | **Filter size** | **Pool size** |
+| 1 | 12 | (8,3) | (2,1) |
+| 2 | 20 | (7,3) | (2,1) |
+| 3 | 28 | (6,3) | (2,1) |
+| 4 | 36 | (6,3) | (2,1) |
+
+---
+
+*and fully connected layers at the end*
+</div>
+
+## How did we get there?
+
+---
+
+<font size=6>
+
+> In order to attain the impossible, one must attempt the absurd.
+>
+<div style="text-align:right;">Miguel de Cervante</div>
+
+</font>
+
+---
+
+<br>
+<div class='left'>
+
+* Some educated guesses
+* A little bit of intuition
+* And many, many attempts
+* ... on 2 GPU's
+* ... and later using Titan
+
+</div>
+<div class='right'>
+
+* Titan has **18,668** NVIDIA Kepler GPUs
+
+<img src="../img/andy.gif" width=50%>
+
+</div>
+
+## What we got?
+
+---
+
+<br>
+
+| Target | Track-based score [%] | CNN-based score [%] | Improvement [%] |
+|:------:|:----------------------:|:--------------------:|:---------------:|
+| 1 | 89.4 | 95.7 |  6.3 |
+| 2 | 85.8 | 96.0 | 10.2 |
+| 3 | 84.0 | 94.6 | 10.6 |
+| 4 | 84.1 | 92.6 |  8.5 |
+| 5 | 86.9 | 94.6 |  7.7 |
+
+#
+
+## Summary
+
+---
+
+<div class=left>
+<hr style="height:10pt; visibility:hidden;" />
+
+* ML approach outperforms track-based reconstruction
+
+* It improves efficiency and purity
+
+* And this is just the beginning:
+
+    * hadron multiplicity?
+    * particle identification?
+    * energy/momentum reconstruction?
+    * ...
+
+</div>
+<div class=right>
+*CNN would fail to access Physical Review database*
+
+<img src="../img/ml/caffe_einstein.png" width=85%>
 </div>

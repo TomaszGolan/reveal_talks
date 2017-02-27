@@ -53,7 +53,7 @@
         <h1>Machine Learning for MINERvA Physics Reconstruction</h1>
          <h3>Tomasz Golan</h3> 
         <p>
-          <h4>IFT seminar, 10.03.2017</h4>
+          <h4>IFT seminar, XX.XX.2017</h4>
         </p>
       </section>
 
@@ -64,6 +64,7 @@
 <li><a href="#motivation">Motivation</a></li>
 <li><a href="#minerva">Introduction to MINERvA</a></li>
 <li><a href="#machine-learning">Introduction to Machine Learning</a></li>
+<li><a href="#mlmpr">MLMPR first results</a></li>
 </ul>
 </section>
 <section id="section" class="level1">
@@ -541,6 +542,179 @@ Final results:
 <hr style="height:0pt; visibility:hidden;" />
 <p><img src="../img/ml/need_deep.jpg" width=100%></p>
 <img src="../img/ml/google_paper_ref.png" width=100%>
+</div>
+</section>
+</section>
+<section id="section-6" class="level1">
+<h1></h1>
+<section id="mlmpr" class="level2">
+<h2>MLMPR</h2>
+<p><em>Machine Learning for MINERvA Physics Reconstruction</em></p>
+</section>
+<section id="first-task---vertex-finding" class="level2">
+<h2>First task - vertex finding</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>the first goal is to use CNN to find the primary vertex in nuclear target region</p></li>
+<li><p>each event is represented by 3 &quot;pictures&quot; - different views at the detector</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/ml/mlvf_view.png" width=100%> <em>event examples courtesy of G. Perdue</em></p>
+</div>
+</section>
+<section id="classification-regions" class="level2">
+<h2>Classification regions</h2>
+<hr />
+<p><img src="../img/ml/mlvf_detector_regions.png" width=60%></p>
+</section>
+<section id="cnn-in-use" class="level2">
+<h2>CNN in use</h2>
+<hr />
+<div class="left">
+<p><img src="../img/ml/cnn_epsilon.png" width=60%></p>
+</div>
+<div class=right>
+<hr style="height:10pt; visibility:hidden;" />
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Convolution layer</strong></td>
+<td style="text-align: center;"><strong>No. of filters</strong></td>
+<td style="text-align: center;"><strong>Filter size</strong></td>
+<td style="text-align: center;"><strong>Pool size</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">(8,3)</td>
+<td style="text-align: center;">(2,1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">(7,3)</td>
+<td style="text-align: center;">(2,1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">(6,3)</td>
+<td style="text-align: center;">(2,1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">(6,3)</td>
+<td style="text-align: center;">(2,1)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<em>and fully connected layers at the end</em>
+</div>
+</section>
+<section id="how-did-we-get-there" class="level2">
+<h2>How did we get there?</h2>
+<hr />
+<p><font size=6></p>
+<blockquote>
+<p>In order to attain the impossible, one must attempt the absurd.</p>
+<div style="text-align:right;">
+Miguel de Cervante
+</div>
+</blockquote>
+<p></font></p>
+<hr />
+<br>
+<div class="left">
+<ul>
+<li>Some educated guesses</li>
+<li>A little bit of intuition</li>
+<li>And many, many attempts</li>
+<li>... on 2 GPU's</li>
+<li>... and later using Titan</li>
+</ul>
+</div>
+<div class="right">
+<ul>
+<li>Titan has <strong>18,668</strong> NVIDIA Kepler GPUs</li>
+</ul>
+<p><img src="../img/andy.gif" width=50%></p>
+</div>
+</section>
+<section id="what-we-got" class="level2">
+<h2>What we got?</h2>
+<hr />
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Target</th>
+<th style="text-align: center;">Track-based score [%]</th>
+<th style="text-align: center;">CNN-based score [%]</th>
+<th style="text-align: center;">Improvement [%]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">89.4</td>
+<td style="text-align: center;">95.7</td>
+<td style="text-align: center;">6.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">85.8</td>
+<td style="text-align: center;">96.0</td>
+<td style="text-align: center;">10.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">84.0</td>
+<td style="text-align: center;">94.6</td>
+<td style="text-align: center;">10.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">84.1</td>
+<td style="text-align: center;">92.6</td>
+<td style="text-align: center;">8.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">86.9</td>
+<td style="text-align: center;">94.6</td>
+<td style="text-align: center;">7.7</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="section-7" class="level1">
+<h1></h1>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<hr />
+<div class=left>
+<hr style="height:10pt; visibility:hidden;" />
+<ul>
+<li><p>ML approach outperforms track-based reconstruction</p></li>
+<li><p>It improves efficiency and purity</p></li>
+<li><p>And this is just the beginning:</p>
+<ul>
+<li>hadron multiplicity?</li>
+<li>particle identification?</li>
+<li>energy/momentum reconstruction?</li>
+<li>...</li>
+</ul></li>
+</ul>
+</div>
+<div class="right">
+<p><em>CNN would fail to access Physical Review database</em></p>
+<p><img src="../img/ml/caffe_einstein.png" width=85%></p>
 </div>
 </section>
 </section>
