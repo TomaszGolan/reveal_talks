@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Introduction to Markdown</title>
+
+  <meta name="description" content="Introduction to Markdown">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="../template/snap.svg-min.js"></script>
+  <script src="../template/plotly-latest.min.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Introduction to Markdown</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4>Neutrino Division Seminar</h4>
+        </p>
+      </section>
+
+       <section id="section" class="level1">
+<h1></h1>
+<section id="outline" class="level2">
+<h2>Outline</h2>
+<hr />
+<ul>
+<li><a href="#markdown">Markdown basics</a></li>
+</ul>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="markdown" class="level2">
+<h2>Markdown</h2>
+<hr />
+<p><br></p>
+<ul>
+<li><p>lightweight markup language</p></li>
+<li><p>designed for HTML</p></li>
+<li><p>possible to generate many other formats: LaTeX, pdf, beamer...</p></li>
+</ul>
+</section>
+<section id="markdown---headers" class="level2">
+<h2>Markdown - headers</h2>
+<hr />
+<div class="left">
+<pre><code># Header
+
+## Subheader
+
+### Subsubheader
+
+#### Subsubsubheader</code></pre>
+</div>
+<div class="right">
+<h1 id="header">Header</h1>
+<h2 id="subheader">Subheader</h2>
+<h3 id="subsubheader">Subsubheader</h3>
+<h4 id="subsubsubheader">Subsubsubheader</h4>
+</div>
+</section>
+<section id="markdown---text-formatting" class="level2">
+<h2>Markdown - text formatting</h2>
+<hr />
+<div class="left">
+<pre><code>A blank line - new paragraph.
+
+*Text encapsulated in stars*
+
+**Text encapsulated in double stars**</code></pre>
+</div>
+<div class="right">
+<p>A blank line - new paragraph.</p>
+<p><em>Text encapsulated in stars</em></p>
+<p><strong>Text encapsulated in double stars</strong></p>
+</div>
+</section>
+<section id="markdown---bullet-list" class="level2">
+<h2>Markdown - bullet list</h2>
+<hr />
+<div class="left">
+<pre><code>Bullet list:
+
+* one can use stars
+- or dash
+* it really does not matter</code></pre>
+</div>
+<div class="right">
+<p>Bullet list:</p>
+<ul>
+<li>one can use stars</li>
+<li>or dash</li>
+<li>it really does not matter</li>
+</ul>
+</div>
+</section>
+<section id="markdown---numbered-list" class="level2">
+<h2>Markdown - numbered list</h2>
+<hr />
+<div class="left">
+<pre><code>Numbered list:
+
+1. one can use any number
+9. it really does not matter
+4. the list will be well ordered</code></pre>
+</div>
+<div class="right">
+<p>Numbered list:</p>
+<ol type="1">
+<li>one can use any number</li>
+<li>it really does not matter</li>
+<li>the list will be well ordered</li>
+</ol>
+</div>
+</section>
+<section id="markdown---math" class="level2">
+<h2>Markdown - math</h2>
+<hr />
+<div class="left">
+<pre><code>One can use LaTeX syntax for equations:
+
+$$E = \frac{1}{2}\int\limits_0^c mx dx$$</code></pre>
+</div>
+<div class="right">
+<p><span class="math display">\[E = \frac{1}{2}\int\limits_0^c mx dx\]</span></p>
+</div>
+</section>
+<section id="markdown---misc" class="level2">
+<h2>Markdown - misc</h2>
+<hr />
+<div class="left">
+<pre><code>Horizontal rule
+
+---
+
+[link](http://neutrino.ift.uni.wroc.pl/)
+
+---
+
+![Picture](../img/andy.gif)</code></pre>
+</div>
+<div class="right">
+<p>Horizontal rule</p>
+<hr />
+<p><a href="http://neutrino.ift.uni.wroc.pl/">link</a></p>
+<hr />
+<figure>
+<img src="../img/andy.gif" alt="Picture" /><figcaption>Picture</figcaption>
+</figure>
+</div>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
