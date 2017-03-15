@@ -64,6 +64,7 @@
 <hr />
 <ul>
 <li><a href="#markdown">Markdown basics</a></li>
+<li><a href="#example">Example</a></li>
 </ul>
 </section>
 </section>
@@ -187,6 +188,84 @@ $$E = \frac{1}{2}\int\limits_0^c mx dx$$</code></pre>
 <img src="../img/andy.gif" alt="Picture" /><figcaption>Picture</figcaption>
 </figure>
 </div>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="example" class="level2">
+<h2>Example</h2>
+<hr />
+<pre class="md"><code>% O Neutrinach dla Każdego...
+% ZFN
+
+&gt; I am confidnet that the future of the neutrino physics will be as exciting and fruitful
+as the past has been.
+
+Frederick Reines, 1995, wykład noblowski
+
+# Wstęp
+
+Fizyka neutrin liczy sobie już ponad 80 lat! Poznanie własności neutrin, boskich posłańców
+sił natury, jest kluczowe dla zrozumienia podstawowych praw natury dlatego planowane są
+wciąż nowe eksperymenty. Nieuchwytne neutrina wciąż stanowią dla fizyków zagadkę, którą
+rozwikłać starać się będą kolejne pokolenia fizyków. 
+
+Niniejsza strona skierowana jest do wszystkich zainteresowanych fizyką, zawiera ona zbiór
+podstawowych informacji na temat własności neutrin oraz faktów historycznych.
+
+# Cząstki elementarne
+
+Z punktu widzenia bieżącego stanu wiedzy, wydaje się, że istnieje tylko kilka naprawdę
+elementarnych składników, z których zbudowany jest otaczający na świat... 
+
+![Jądro](img/jadro.png)
+
+# Kwarki
+
+* Znamy sześć rodzajów kwarków. Fizycy mówią, że mamy sześć zapachów kwarków:
+    * u (up, górny), d (down, dolny)
+    * c (charm, górny), s (strange, dziwny)
+    * t (top, wysoki), b (bottom, niski)
+* Kwarki są cząstkami naładowanymi elektrycznie o ładunkach 2/3|e| (kwarki u, c, t),
+-1/3|e| (d, s, b). Ładunek podano względem całkowitego ładunku elektronu.
+* Proton zawiera trzy kwarki, walencyjne uud, natomiast neutron zawiera kwarki
+walencyjne ddu.
+
+# Rodzina
+
+![Tabela](img/kwarkileptony.png)
+
+W tabeli powyżej kwarki pogrupowano trzy pary, każdą z tych par nazywamy rodziną.
+Okazuję się, że każdej parze kwarków odpowiada para leptonów (l, $\nu$). </code></pre>
+</section>
+<section id="example---preview" class="level2">
+<h2>Example - preview</h2>
+<hr />
+<p><img src="../img/md_preview.png" width=70%></p>
+</section>
+<section id="example---possibilities" class="level2">
+<h2>Example - possibilities</h2>
+<hr />
+<ul>
+<li>Standalone HTML:</li>
+</ul>
+<pre><code>pandoc -s example.md -o example.html</code></pre>
+<ul>
+<li>PDF:</li>
+</ul>
+<pre><code>pandoc example.md -o example.pdf</code></pre>
+<ul>
+<li>Beamer:</li>
+</ul>
+<pre><code>pandoc -t beamer example.md -o example_beamer.pdf</code></pre>
+<ul>
+<li>Beamer with template:</li>
+</ul>
+<pre><code>pandoc -t beamer -H header.tex example.md -o example_beamer_v2.pdf</code></pre>
+<ul>
+<li>LaTeX:</li>
+</ul>
+<pre><code>pandoc -s example.md - o example.tex</code></pre>
 </section>
 </section>
     </div>

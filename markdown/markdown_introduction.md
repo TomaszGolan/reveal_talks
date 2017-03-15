@@ -9,6 +9,7 @@
 ---
 
 * [Markdown basics](#markdown)
+* [Example](#example)
 
 #
 
@@ -179,3 +180,94 @@ Horizontal rule
 ![Picture](../img/andy.gif)
 
 </div>
+
+#
+
+## Example
+
+---
+
+```md
+% O Neutrinach dla Każdego...
+% ZFN
+
+> I am confidnet that the future of the neutrino physics will be as exciting and fruitful
+as the past has been.
+
+Frederick Reines, 1995, wykład noblowski
+
+# Wstęp
+
+Fizyka neutrin liczy sobie już ponad 80 lat! Poznanie własności neutrin, boskich posłańców
+sił natury, jest kluczowe dla zrozumienia podstawowych praw natury dlatego planowane są
+wciąż nowe eksperymenty. Nieuchwytne neutrina wciąż stanowią dla fizyków zagadkę, którą
+rozwikłać starać się będą kolejne pokolenia fizyków. 
+
+Niniejsza strona skierowana jest do wszystkich zainteresowanych fizyką, zawiera ona zbiór
+podstawowych informacji na temat własności neutrin oraz faktów historycznych.
+
+# Cząstki elementarne
+
+Z punktu widzenia bieżącego stanu wiedzy, wydaje się, że istnieje tylko kilka naprawdę
+elementarnych składników, z których zbudowany jest otaczający na świat... 
+
+![Jądro](img/jadro.png)
+
+# Kwarki
+
+* Znamy sześć rodzajów kwarków. Fizycy mówią, że mamy sześć zapachów kwarków:
+    * u (up, górny), d (down, dolny)
+    * c (charm, górny), s (strange, dziwny)
+    * t (top, wysoki), b (bottom, niski)
+* Kwarki są cząstkami naładowanymi elektrycznie o ładunkach 2/3|e| (kwarki u, c, t),
+-1/3|e| (d, s, b). Ładunek podano względem całkowitego ładunku elektronu.
+* Proton zawiera trzy kwarki, walencyjne uud, natomiast neutron zawiera kwarki
+walencyjne ddu.
+
+# Rodzina
+
+![Tabela](img/kwarkileptony.png)
+
+W tabeli powyżej kwarki pogrupowano trzy pary, każdą z tych par nazywamy rodziną.
+Okazuję się, że każdej parze kwarków odpowiada para leptonów (l, $\nu$). 
+```
+
+## Example - preview
+
+---
+
+<img src="../img/md_preview.png" width=70%>
+
+## Example - possibilities
+
+---
+
+* Standalone HTML: 
+
+```
+pandoc -s example.md -o example.html
+```
+
+* PDF: 
+
+```
+pandoc example.md -o example.pdf
+```
+
+* Beamer:
+
+```
+pandoc -t beamer example.md -o example_beamer.pdf
+```
+
+* Beamer with template:
+
+```
+pandoc -t beamer -H header.tex example.md -o example_beamer_v2.pdf
+```
+
+* LaTeX:
+
+```
+pandoc -s example.md - o example.tex
+```
