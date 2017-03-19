@@ -12,6 +12,7 @@
 * [Pandoc](#pandoc)
 * [Web page](#web-page-src)
 * [Presentation](#presentation-src)
+* [Publication](#publication-src)
 
 #
 
@@ -178,9 +179,9 @@ $$E = \frac{1}{2}\int\limits_0^c mx dx$$
 
 <br>
 
-* `|:--|` - left
-* `|:-:|` - center
-* `|--:|` - right
+* `|:----|` - left
+* `|:---:|` - center
+* `|----:|` - right
 
 </div>
 <div class=right><br><br>
@@ -529,3 +530,87 @@ is found to represents the golden ratio:
 
 \end{frame}
 ```
+
+#
+
+## Publication src
+
+---
+
+```
+% Tomasz Golan
+% The study of nothing
+
+# Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat rutrum consectetur. Praesent volutpat mi ac consequat vehicula. Sed vitae faucibus lacus, sed semper turpis. Aliquam pulvinar est porttitor mollis malesuada. Phasellus vel sodales lectus. Vestibulum gravida malesuada feugiat. Duis ullamcorper, lectus pretium dignissim porttitor, odio nisi pretium ante, eget suscipit lectus tortor sit amet enim. Nam eleifend scelerisque lacus nec gravida.
+
+$$\sum\limits_{i=1}^N |c_i|^2 = 1$$
+
+# Lorep ipsum
+
+Proin hendrerit erat ac lacus dapibus interdum. Vivamus sed tellus semper, pellentesque enim vel, scelerisque nibh. Curabitur eget feugiat enim. Praesent eu fermentum leo. Curabitur tempor bibendum lobortis. Maecenas eget nunc eget eros venenatis sollicitudin et in metus. Aliquam imperdiet tortor nec vehicula iaculis. Duis odio enim, auctor id massa in, aliquet ultricies elit. Ut sit amet turpis eu nibh aliquet ultrices aliquet ac nibh. In ullamcorper nibh nec arcu venenatis, eget bibendum tellus semper. Curabitur tortor libero, porta in hendrerit eu, sollicitudin eu sapien. Integer rutrum quam eget cursus sollicitudin. Proin at augue rhoncus lorem iaculis fringilla et in neque. Donec sollicitudin elit at nisl tristique, et laoreet dolor tempor. Nam sodales orci eget neque viverra pharetra. Suspendisse et volutpat lorem.
+
+![My plot](plot.png)
+
+## Subsection
+
+Sed in iaculis ipsum. Morbi sollicitudin id ex eu aliquam. Nam lobortis bibendum elit, sed hendrerit turpis aliquam vitae. Nam lobortis ut mi et scelerisque. Aliquam porttitor eget arcu eu molestie. Ut condimentum sollicitudin elit accumsan pulvinar. Ut placerat iaculis risus ut aliquam. Aliquam erat volutpat. Phasellus sit amet euismod mi. Quisque dictum suscipit mauris sed mattis. Nunc ac aliquam lacus. Duis sed turpis in nunc tristique bibendum. Quisque elit diam, tristique et arcu in, suscipit tempus orci. Mauris accumsan tincidunt sem ut placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet ligula sit amet turpis cursus, id sollicitudin arcu feugiat.
+
+# Summary
+
+Integer a odio accumsan, sagittis erat vel, condimentum velit. Quisque ullamcorper ante turpis, non ultricies odio suscipit at. Morbi eget lectus eu ex mollis sodales a ut magna. Phasellus commodo consequat enim, sit amet rutrum dui congue eu. Vestibulum sit amet rutrum arcu. Curabitur viverra lacus sit amet nulla accumsan maximus. Donec fermentum eu nibh eget ornare. Aliquam in leo a elit gravida pretium. In urna elit, cursus a erat vitae, vehicula convallis velit. Mauris eget nisl at turpis tincidunt tincidunt non non purus. Praesent pharetra tempor augue at tempor. Cras risus lorem, dictum ut sapien a, sagittis mollis felis. Suspendisse commodo neque id nisi mattis consectetur ut sit amet urna. Praesent pretium, dolor sed malesuada gravida, nulla neque pellentesque dui, eget tempus arcu justo at odio. Pellentesque fermentum diam enim, sit amet eleifend nulla accumsan non.
+
+Donec et consectetur mauris. Cras pulvinar arcu quis lobortis congue. Phasellus lobortis augue justo, eu auctor leo tempor vel. Mauris sit amet eros odio. Nam tellus arcu, scelerisque semper tristique vitae, tincidunt vestibulum sem. Duis augue nibh, ornare ac orci vitae, sollicitudin volutpat neque. Maecenas at erat dolor. Praesent convallis ornare tortor eu vestibulum. Maecenas luctus eget nibh sed pellentesque.
+```
+
+## Publication - output
+
+---
+
+* one can get PDF directly (useful during work on draft):
+
+```
+pandoc example_pub.md -o example_pub.pdf
+```
+
+[result](http://www.ift.uni.wroc.pl/~tgolan/talks/example_pub.pdf)
+
+* or one can get LaTeX source (to format document properly):
+
+```
+pandoc -s example_pub.md -o example_pub.tex
+```
+
+## References
+
+---
+
+```
+pandoc --filter=pandoc-citeproc --biblio=example.bib --csl example.csl \
+       example_ref.md -o example_ref.pdf
+```
+
+<div class=left>
+
+```
+Nobody @my_ref says nothing.
+
+# References
+```
+</div>
+<div class=right>
+
+```
+@article{my_ref,
+author="Nobody",
+title="Nothing",
+year="2017",
+publisher="None"
+}
+```
+
+</div>
+
+<img src="../img/nothing.png">
+
