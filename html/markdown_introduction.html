@@ -68,6 +68,7 @@
 <li><a href="#web-page-src">Web page</a></li>
 <li><a href="#presentation-src">Presentation</a></li>
 <li><a href="#publication-src">Publication</a></li>
+<li><a href="#markdown-to-slides">Extras</a></li>
 </ul>
 </section>
 </section>
@@ -572,6 +573,79 @@ publisher=&quot;None&quot;
 }</code></pre>
 </div>
 <p><img src="../img/nothing.png"></p>
+</section>
+</section>
+<section id="section-6" class="level1">
+<h1></h1>
+<section id="markdown-to-slides" class="level2">
+<h2>Markdown-to-slides</h2>
+<hr />
+<div class="left">
+<pre><code># My first markdown-to-slides presentation
+
+## Is is that simple?
+
+1. first bullet point
+.red[- important subbullet]
+2. and some equation
+
+$$x^2 = \int_0^x ydy$$
+
+.footnote[.gray[*I like footnotes]]
+
+## Two columns? Why not
+
+.left-column[
+You may want to use some colors, like .red[red], to highlight .blue[important stuff].
+Or even .orange[**bold some part of text**]. And sometime you want to provide a link to your source:
+
+Gif source = [link](http://theodysseyonline.com/portland-state/life-lessons-from-andy-dwyer/343455)
+
+]
+.right-column[
+![](andy.gif)
+]
+
+## Some bash code
+
+ ```bash
+#!/bin/bash
+
+cd $HOME
+echo &quot;I am at home!&quot;
+ ```
+
+###Some C++ code
+
+ ```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    cout &lt;&lt; &quot;Hello World!\n&quot;;
+
+    return 0;
+}
+ ```
+
+## References
+
+- Introduction to *remark*: http://remarkjs.com/
+- Introduction to *markdown-to-slides*: [md2slides](http://www.lendmeyourear.net/wp-content/uploads/markdown-remark-slides.html)
+- *Markdown* wiki: [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)</code></pre>
+</div>
+<div width="50%" height="480">
+<iframe style="background: #FFFFFF;" src="http://tomaszgolan.github.io/md2slides_template" width="50%" height="480">
+</iframe>
+</div>
+</section>
+<section id="marp" class="level2">
+<h2>MARP</h2>
+<hr />
+<p><img src="../img/marp-cast.gif" width=60%></p>
+<p><a href="https://yhatt.github.io/marp/">src</a></p>
 </section>
 </section>
     </div>
