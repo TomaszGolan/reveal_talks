@@ -418,11 +418,15 @@ $$x_2 = -0.6180339887498949$$
 <h2>Presentation - template</h2>
 <hr />
 <ul>
-<li><em>header.tex</em> with custom options (optional)</li>
+<li>Use <code>-t beamer</code> option to get the PDF presentation</li>
+</ul>
+<pre><code>pandoc -t beamer example.md -o example.pdf</code></pre>
+<ul>
+<li>One can include custom options, e.g. <em>header.tex</em>:</li>
 </ul>
 <pre><code>\setbeamertemplate{footline}[frame number]</code></pre>
 <ul>
-<li>To include custom options use <code>-H</code> flag:</li>
+<li>Use <code>-H [tex file]</code> to include the file:</li>
 </ul>
 <pre><code>pandoc -t beamer -H header.tex example.md -o example.pdf</code></pre>
 <ul>

@@ -431,13 +431,19 @@ $$x_2 = -0.6180339887498949$$
 
 ---
 
-* *header.tex* with custom options (optional)
+* Use `-t beamer` option to get the PDF presentation
+
+```
+pandoc -t beamer example.md -o example.pdf
+```
+
+* One can include custom options, e.g. *header.tex*:
 
 ```
 \setbeamertemplate{footline}[frame number]
 ```
 
-* To include custom options use `-H` flag:
+* Use `-H [tex file]` to include the file: 
 
 ```
 pandoc -t beamer -H header.tex example.md -o example.pdf
