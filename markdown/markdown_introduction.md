@@ -1,6 +1,6 @@
-% Be lazy with Markdown
-% Tomasz Golan
-% Neutrino Division Seminar
+% Markdown, Pandoc,
+% and other tools for lazy people
+% Tomasz Golan @ Neutrino Seminar
 
 <div class='footer'>
 Navigate:
@@ -795,6 +795,22 @@ mkdocs gh-deploy
 <br>
 
 [example](https://github.com/tomaszgolan/mkdocs_helloworld)
+
+## NuWro wiki
+
+---
+
+<div width=100% height=600>
+<iframe src="http://ift.uni.wroc.pl/~tgolan/nuwro-wiki" width=100% height=600></iframe>
+</div>
+
+## NuWro wiki v2
+
+---
+
+<div width=100% height=600>
+<iframe src="http://ift.uni.wroc.pl/~tgolan/nuwro-wiki-2" width=100% height=600></iframe>
+</div>
 
 # 
 
