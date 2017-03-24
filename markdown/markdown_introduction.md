@@ -1,4 +1,4 @@
-% Introduction to Markdown
+% Be lazy with Markdown
 % Tomasz Golan
 % Neutrino Division Seminar
 
@@ -14,12 +14,19 @@ Navigate:
 
 ---
 
-* [Markdown basics](#markdown)
-* [Pandoc](#pandoc)
-* [Web page](#web-page-src)
-* [Presentation](#presentation-src)
-* [Publication](#publication-src)
-* [Extras](#markdown-to-slides)
+<br>
+
+1. [Markdown basics](#markdown)
+
+1. [Pandoc](#pandoc)
+
+1. [Web page](#web-page-src)
+
+1. [Presentation](#presentation-src)
+
+1. [Publication](#publication-src)
+
+1. [Extras](#markdown-to-slides)
 
 #
 
@@ -33,7 +40,7 @@ Navigate:
 
 * designed for HTML
 
-* possible to generate many other formats: LaTeX, pdf, beamer...
+* possible to generate many other formats: LaTeX, pdf, Beamer...
 
 ## Markdown - headers
 
@@ -725,3 +732,88 @@ int main(int argc, char *argv[])
 ---
 
 <img src="../img/mdhere2.png" width=75%>
+
+## Code documentation
+
+---
+
+<br>
+
+* GitHub readme/wiki, e.g. [NuWro wiki](https://github.com/nuwro/nuwro/wiki)
+
+* [MkDocs](http://www.mkdocs.org/)
+
+    * site generator that's geared towards building project documentation
+
+    * a single YAML configuration file
+    
+    * documentation source files are written in Markdown
+
+    * deploying gh-pages
+  
+## MkDocs - configuration file
+
+---
+
+Configuration file:
+
+```
+site_name: Hello World
+pages:
+    - Home: index.md
+    - Installation: install.md
+    - More: more.md
+theme: readthedocs
+```
+---
+
+* `mkdocs serve` - local preview at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+* `mkdocs build` - create the web site
+
+## MkDocs - example
+
+---
+
+<div width=100% height=600>
+<iframe src="http://ift.uni.wroc.pl/~tgolan/mkdocs_helloworld" width=100% height=600></iframe>
+</div>
+
+## MkDocs - gh-pages
+
+---
+
+<br>
+
+* What is special about another web site generator?
+
+* Automatic gh-pages deploying:
+
+```
+mkdocs gh-deploy
+```
+
+<br>
+
+[example](https://github.com/tomaszgolan/mkdocs_helloworld)
+
+# 
+
+## Summary
+
+---
+
+* Markdown syntax is trivial, and yet, it provides an easy way to generate:
+
+    * HTML code
+
+    * LaTeX code (including Beamer)
+
+    * PDF (through LaTeX engine)
+
+    * HTML presentations
+
+    * Beamer presentations
+
+    * Documenation
+
+    * ...

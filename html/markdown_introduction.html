@@ -5,9 +5,9 @@
 
   <meta charset="utf-8">
 
-  <title>Introduction to Markdown</title>
+  <title>Be lazy with Markdown</title>
 
-  <meta name="description" content="Introduction to Markdown">
+  <meta name="description" content="Be lazy with Markdown">
 
    <meta name="author" content="Tomasz Golan" /> 
 
@@ -50,7 +50,7 @@
     <div class="slides">
 
       <section>
-        <h1>Introduction to Markdown</h1>
+        <h1>Be lazy with Markdown</h1>
          <h3>Tomasz Golan</h3> 
         <p>
           <h4>Neutrino Division Seminar</h4>
@@ -65,14 +65,15 @@
 <section id="outline" class="level2">
 <h2>Outline</h2>
 <hr />
-<ul>
-<li><a href="#markdown">Markdown basics</a></li>
-<li><a href="#pandoc">Pandoc</a></li>
-<li><a href="#web-page-src">Web page</a></li>
-<li><a href="#presentation-src">Presentation</a></li>
-<li><a href="#publication-src">Publication</a></li>
-<li><a href="#markdown-to-slides">Extras</a></li>
-</ul>
+<p><br></p>
+<ol type="1">
+<li><p><a href="#markdown">Markdown basics</a></p></li>
+<li><p><a href="#pandoc">Pandoc</a></p></li>
+<li><p><a href="#web-page-src">Web page</a></p></li>
+<li><p><a href="#presentation-src">Presentation</a></p></li>
+<li><p><a href="#publication-src">Publication</a></p></li>
+<li><p><a href="#markdown-to-slides">Extras</a></p></li>
+</ol>
 </section>
 </section>
 <section id="section-1" class="level1">
@@ -84,7 +85,7 @@
 <ul>
 <li><p>lightweight markup language</p></li>
 <li><p>designed for HTML</p></li>
-<li><p>possible to generate many other formats: LaTeX, pdf, beamer...</p></li>
+<li><p>possible to generate many other formats: LaTeX, pdf, Beamer...</p></li>
 </ul>
 </section>
 <section id="markdown---headers" class="level2">
@@ -669,6 +670,76 @@ int main(int argc, char *argv[])
 <h2>Markdown Here</h2>
 <hr />
 <p><img src="../img/mdhere2.png" width=75%></p>
+</section>
+<section id="code-documentation" class="level2">
+<h2>Code documentation</h2>
+<hr />
+<p><br></p>
+<ul>
+<li><p>GitHub readme/wiki, e.g. <a href="https://github.com/nuwro/nuwro/wiki">NuWro wiki</a></p></li>
+<li><p><a href="http://www.mkdocs.org/">MkDocs</a></p>
+<ul>
+<li><p>site generator that's geared towards building project documentation</p></li>
+<li><p>a single YAML configuration file</p></li>
+<li><p>documentation source files are written in Markdown</p></li>
+<li><p>deploying gh-pages</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="mkdocs---configuration-file" class="level2">
+<h2>MkDocs - configuration file</h2>
+<hr />
+<p>Configuration file:</p>
+<pre><code>site_name: Hello World
+pages:
+    - Home: index.md
+    - Installation: install.md
+    - More: more.md
+theme: readthedocs</code></pre>
+<hr />
+<ul>
+<li><code>mkdocs serve</code> - local preview at <a href="http://127.0.0.1:8000/" class="uri">http://127.0.0.1:8000/</a></li>
+<li><code>mkdocs build</code> - create the web site</li>
+</ul>
+</section>
+<section id="mkdocs---example" class="level2">
+<h2>MkDocs - example</h2>
+<hr />
+<div width="100%" height="600">
+<iframe src="http://ift.uni.wroc.pl/~tgolan/mkdocs_helloworld" width="100%" height="600">
+</iframe>
+</div>
+</section>
+<section id="mkdocs---gh-pages" class="level2">
+<h2>MkDocs - gh-pages</h2>
+<hr />
+<p><br></p>
+<ul>
+<li><p>What is special about another web site generator?</p></li>
+<li><p>Automatic gh-pages deploying:</p></li>
+</ul>
+<pre><code>mkdocs gh-deploy</code></pre>
+<p><br></p>
+<p><a href="https://github.com/tomaszgolan/mkdocs_helloworld">example</a></p>
+</section>
+</section>
+<section id="section-7" class="level1">
+<h1></h1>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<hr />
+<ul>
+<li><p>Markdown syntax is trivial, and yet, it provides an easy way to generate:</p>
+<ul>
+<li><p>HTML code</p></li>
+<li><p>LaTeX code (including Beamer)</p></li>
+<li><p>PDF (through LaTeX engine)</p></li>
+<li><p>HTML presentations</p></li>
+<li><p>Beamer presentations</p></li>
+<li><p>Documenation</p></li>
+<li><p>...</p></li>
+</ul></li>
+</ul>
 </section>
 </section>
     </div>
