@@ -57,7 +57,10 @@
         </p>
       </section>
 
-       <section id="section" class="level1">
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="section" class="level1">
 <h1></h1>
 <section id="outline" class="level2">
 <h2>Outline</h2>
@@ -139,7 +142,9 @@ HTML tags can be used directly.
 * it really does not matter</code></pre>
 </div>
 <div class="right">
-<p>Bullet list:</p>
+<p style="text-align:left; text-indent: 50px;">
+Bullet list:
+</p>
 <ul>
 <li>one can use stars</li>
 <li>or dash</li>
@@ -159,7 +164,9 @@ HTML tags can be used directly.
 4. the list will be well ordered</code></pre>
 </div>
 <div class="right">
-<p>Numbered list:</p>
+<p style="text-align:left; text-indent: 20px;">
+Numbered list:
+</p>
 <ol type="1">
 <li>one can use any number</li>
 <li>it really does not matter</li>
@@ -293,25 +300,25 @@ int main() {
 <section id="pandoc---examples" class="level2">
 <h2>Pandoc - examples</h2>
 <hr />
-<ul>
-<li>Standalone HTML:</li>
-</ul>
+<p style="text-align:left; text-indent: 20px;">
+<strong>Standalone HTML:</strong>
+</p>
 <pre><code>pandoc -s input.md -o output.html</code></pre>
-<ul>
-<li>PDF:</li>
-</ul>
+<p style="text-align:left; text-indent: 20px;">
+<strong>PDF:</strong>
+</p>
 <pre><code>pandoc input.md -o output.pdf</code></pre>
-<ul>
-<li>Beamer:</li>
-</ul>
+<p style="text-align:left; text-indent: 20px;">
+<strong>Beamer:</strong>
+</p>
 <pre><code>pandoc -t beamer input.md -o output.pdf</code></pre>
-<ul>
-<li>Beamer with template:</li>
-</ul>
+<p style="text-align:left; text-indent: 20px;">
+<strong>Beamer with template:</strong>
+</p>
 <pre><code>pandoc -t beamer -H template.tex input.md -o output.pdf</code></pre>
-<ul>
-<li>LaTeX:</li>
-</ul>
+<p style="text-align:left; text-indent: 20px;">
+<strong>LaTeX:</strong>
+</p>
 <pre><code>pandoc -s input.md -o output.tex</code></pre>
 </section>
 </section>
@@ -414,24 +421,24 @@ $$x_2 = -0.6180339887498949$$
 <hr />
 <p><img src="../img/md_preview_pres.png" width=100%></p>
 </section>
-<section id="presentation---template" class="level2">
-<h2>Presentation - template</h2>
+<section id="presentation---pdf" class="level2">
+<h2>Presentation - PDF</h2>
 <hr />
-<ul>
-<li>Use <code>-t beamer</code> option to get the PDF presentation</li>
-</ul>
+<p><br></p>
+<p style="text-align:left; text-indent: 20px;">
+Use <em>-t beamer</em> option to get the PDF presentation
+</p>
 <pre><code>pandoc -t beamer example.md -o example.pdf</code></pre>
-<ul>
-<li>One can include custom options, e.g. <em>header.tex</em>:</li>
-</ul>
+<p style="text-align:left; text-indent: 20px;">
+One can include custom options, e.g. <em>header.tex</em>:
+</p>
 <pre><code>\setbeamertemplate{footline}[frame number]</code></pre>
-<ul>
-<li>Use <code>-H [tex file]</code> to include the file:</li>
-</ul>
+<p style="text-align:left; text-indent: 20px;">
+Use <em>-H [tex file]</em> to include the file:
+</p>
 <pre><code>pandoc -t beamer -H header.tex example.md -o example.pdf</code></pre>
-<ul>
-<li>The output PDF file: <a href="http://www.ift.uni.wroc.pl/~tgolan/talks/example.pdf">result</a></li>
-</ul>
+<p><br></p>
+<p>The output PDF file: <a href="http://www.ift.uni.wroc.pl/~tgolan/talks/example.pdf">result</a></p>
 </section>
 <section id="presentation---latex-src" class="level2">
 <h2>Presentation - LaTeX src</h2>
@@ -548,34 +555,36 @@ Donec et consectetur mauris. Cras pulvinar arcu quis lobortis congue. Phasellus 
 <section id="publication---output" class="level2">
 <h2>Publication - output</h2>
 <hr />
-<ul>
-<li>one can get PDF directly (useful during work on draft):</li>
-</ul>
+<p><br></p>
+<p style="text-align:left; text-indent: 20px;">
+One can get PDF directly:
+</p>
 <pre><code>pandoc example_pub.md -o example_pub.pdf</code></pre>
 <p><a href="http://www.ift.uni.wroc.pl/~tgolan/talks/example_pub.pdf">result</a></p>
-<ul>
-<li>or one can get LaTeX source (to format document properly):</li>
-</ul>
+<p style="text-align:left; text-indent: 20px;">
+Or one can get LaTeX source:
+</p>
 <pre><code>pandoc -s example_pub.md -o example_pub.tex</code></pre>
 </section>
 <section id="references" class="level2">
 <h2>References</h2>
 <hr />
-<pre><code>pandoc --filter=pandoc-citeproc --biblio=example.bib --csl example.csl \
-       example_ref.md -o example_ref.pdf</code></pre>
 <div class="left">
+<p><em>example_ref.md</em></p>
 <pre><code>Nobody @my_ref says nothing.
 
 # References</code></pre>
 </div>
 <div class="right">
+<p><em>example.bib</em></p>
 <pre><code>@article{my_ref,
 author=&quot;Nobody&quot;,
 title=&quot;Nothing&quot;,
-year=&quot;2017&quot;,
-publisher=&quot;None&quot;
-}</code></pre>
+year=&quot;2017&quot;}</code></pre>
 </div>
+<hr />
+<pre><code>pandoc --filter=pandoc-citeproc --biblio=example.bib --csl example.csl \
+       example_ref.md -o example_ref.pdf</code></pre>
 <p><img src="../img/nothing.png"></p>
 </section>
 </section>

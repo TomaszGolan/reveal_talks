@@ -2,6 +2,12 @@
 % Tomasz Golan
 % Neutrino Division Seminar
 
+<div class='footer'>
+Navigate:
+<br> &emsp; PgDn / PgUp - next / previous slide
+<br> &emsp; Esc - expo mode
+</div>
+
 # 
 
 ## Outline
@@ -113,7 +119,7 @@ Bullet list:
 </div>
 <div class=right>
 
-Bullet list:
+<p style="text-align:left; text-indent: 50px;">Bullet list:</p>
 
 * one can use stars
 - or dash
@@ -138,7 +144,7 @@ Numbered list:
 </div>
 <div class=right>
 
-Numbered list:
+<p style="text-align:left; text-indent: 20px;">Numbered list:</p>
 
 1. one can use any number
 9. it really does not matter
@@ -284,31 +290,31 @@ Horizontal rule
 
 ---
 
-* Standalone HTML: 
+<p style="text-align:left; text-indent: 20px;">__Standalone HTML:__</p>
 
 ```
 pandoc -s input.md -o output.html
 ```
 
-* PDF: 
+<p style="text-align:left; text-indent: 20px;">__PDF:__</p>
 
 ```
 pandoc input.md -o output.pdf
 ```
 
-* Beamer:
+<p style="text-align:left; text-indent: 20px;">__Beamer:__</p>
 
 ```
 pandoc -t beamer input.md -o output.pdf
 ```
 
-* Beamer with template:
+<p style="text-align:left; text-indent: 20px;">__Beamer with template:__</p>
 
 ```
 pandoc -t beamer -H template.tex input.md -o output.pdf
 ```
 
-* LaTeX:
+<p style="text-align:left; text-indent: 20px;">__LaTeX:__</p>
 
 ```
 pandoc -s input.md -o output.tex
@@ -427,29 +433,33 @@ $$x_2 = -0.6180339887498949$$
 
 <img src="../img/md_preview_pres.png" width=100%>
 
-## Presentation - template
+## Presentation - PDF
 
 ---
 
-* Use `-t beamer` option to get the PDF presentation
+<br>
+
+<p style="text-align:left; text-indent: 20px;">Use *-t beamer* option to get the PDF presentation</p>
 
 ```
 pandoc -t beamer example.md -o example.pdf
 ```
 
-* One can include custom options, e.g. *header.tex*:
+<p style="text-align:left; text-indent: 20px;">One can include custom options, e.g. *header.tex*:</p>
 
 ```
 \setbeamertemplate{footline}[frame number]
 ```
 
-* Use `-H [tex file]` to include the file: 
+<p style="text-align:left; text-indent: 20px;">Use *-H [tex file]* to include the file:</p>
 
 ```
 pandoc -t beamer -H header.tex example.md -o example.pdf
 ```
 
-* The output PDF file: [result](http://www.ift.uni.wroc.pl/~tgolan/talks/example.pdf)
+<br>
+
+The output PDF file: [result](http://www.ift.uni.wroc.pl/~tgolan/talks/example.pdf)
 
 ## Presentation - LaTeX src
 
@@ -575,7 +585,9 @@ Donec et consectetur mauris. Cras pulvinar arcu quis lobortis congue. Phasellus 
 
 ---
 
-* one can get PDF directly (useful during work on draft):
+<br>
+
+<p style="text-align:left; text-indent: 20px;">One can get PDF directly:</p>
 
 ```
 pandoc example_pub.md -o example_pub.pdf
@@ -583,7 +595,7 @@ pandoc example_pub.md -o example_pub.pdf
 
 [result](http://www.ift.uni.wroc.pl/~tgolan/talks/example_pub.pdf)
 
-* or one can get LaTeX source (to format document properly):
+<p style="text-align:left; text-indent: 20px;">Or one can get LaTeX source:</p>
 
 ```
 pandoc -s example_pub.md -o example_pub.tex
@@ -593,12 +605,9 @@ pandoc -s example_pub.md -o example_pub.tex
 
 ---
 
-```
-pandoc --filter=pandoc-citeproc --biblio=example.bib --csl example.csl \
-       example_ref.md -o example_ref.pdf
-```
-
 <div class=left>
+
+*example_ref.md*
 
 ```
 Nobody @my_ref says nothing.
@@ -608,16 +617,23 @@ Nobody @my_ref says nothing.
 </div>
 <div class=right>
 
+*example.bib*
+
 ```
 @article{my_ref,
 author="Nobody",
 title="Nothing",
-year="2017",
-publisher="None"
-}
+year="2017"}
 ```
 
 </div>
+
+---
+
+```
+pandoc --filter=pandoc-citeproc --biblio=example.bib --csl example.csl \
+       example_ref.md -o example_ref.pdf
+```
 
 <img src="../img/nothing.png">
 
