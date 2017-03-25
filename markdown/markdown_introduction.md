@@ -788,25 +788,23 @@ theme: readthedocs
 
 * Automatic gh-pages deploying: *mkdocs gh-deploy*
 
-* [Example 1: Hello World](https://github.com/tomaszgolan/mkdocs_helloworld)
+* Example: [Hello World](https://github.com/tomaszgolan/mkdocs_helloworld)
 
-* [Example 2: Python Lectures](https://tomaszgolan.github.io/js-python/)
-
-## NuWro wiki
+## MkDocs - nuwro-wiki
 
 ---
 
-<div width=100% height=600>
-<iframe src="http://ift.uni.wroc.pl/~tgolan/nuwro-wiki" width=100% height=600></iframe>
-</div>
+<br>
 
-## NuWro wiki v2
+* the same amount of work as for GitHub wiki
 
----
+* better organization / structure
 
-<div width=100% height=600>
-<iframe src="http://ift.uni.wroc.pl/~tgolan/nuwro-wiki-2" width=100% height=600></iframe>
-</div>
+* pictures / plots within the same repository (w/o polluting NuWro repository)
+
+* suggested address: [https://nuwro.github.io/wiki](https://nuwro.github.io/wiki)
+
+* Test@my account: [NuWro - wiki](https://tomaszgolan.github.io/nuwro-wiki)
 
 # 
 
