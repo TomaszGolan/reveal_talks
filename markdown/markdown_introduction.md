@@ -786,15 +786,11 @@ theme: readthedocs
 
 * What is special about another web site generator?
 
-* Automatic gh-pages deploying:
+* Automatic gh-pages deploying: *mkdocs gh-deploy*
 
-```
-mkdocs gh-deploy
-```
+* [Example 1: Hello World](https://github.com/tomaszgolan/mkdocs_helloworld)
 
-<br>
-
-[example](https://github.com/tomaszgolan/mkdocs_helloworld)
+* [Example 2: Python Lectures](https://tomaszgolan.github.io/js-python/)
 
 ## NuWro wiki
 
