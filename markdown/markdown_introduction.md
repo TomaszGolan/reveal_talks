@@ -826,4 +826,14 @@ theme: readthedocs
 
     * Documenation
 
-    * ...
+    * and... wait for it
+    
+## Terminal presentations using Markdown
+
+---
+
+> Yes, really. Not sure why you would want that, though.
+
+<img src="../img/mdp.gif" width=50%>
+
+[src](https://github.com/visit1985/mdp)
