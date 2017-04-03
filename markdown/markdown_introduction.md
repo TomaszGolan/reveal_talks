@@ -802,7 +802,7 @@ theme: readthedocs
 
 * pictures / plots within the same repository (w/o polluting NuWro repository)
 
-* suggested address: [https://nuwro.github.io/wiki](https://nuwro.github.io/wiki)
+* suggested address: [https://nuwro.github.io/user-guide](https://nuwro.github.io/user-guide)
 
 * Test@my account: [NuWro - wiki](https://tomaszgolan.github.io/nuwro-wiki)
 
