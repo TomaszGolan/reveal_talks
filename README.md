@@ -11,7 +11,7 @@
 - [Powtórka z Pythona cz. I](http://tomaszgolan.github.io/reveal_talks/html/js-python_w13.html)
 - [Powtórka z Pythona cz. II](http://tomaszgolan.github.io/reveal_talks/html/js-python_w14.html)
 - [NuWro: announcement](http://tomaszgolan.github.io/reveal_talks/html/nuwro_new_repo.html)
-- [Markdown, pandoc, and other tools for lazy people](http://tomaszgolan.github.io/reveal_talks/html//markdown_introduction.html)
+- [Markdown, pandoc, and other tools for lazy people](http://tomaszgolan.github.io/reveal_talks/html/markdown_introduction.html)
 
 # Use these links to print as pdf
 
@@ -26,5 +26,5 @@
 - [Powtórka z Pythona cz. I](http://tomaszgolan.github.io/reveal_talks/html/js-python_w13.html?print-pdf)
 - [Powtórka z Pythona cz. II](http://tomaszgolan.github.io/reveal_talks/html/js-python_w14.html?print-pdf)
 - [NuWro: announcement](http://tomaszgolan.github.io/reveal_talks/html/nuwro_new_repo.html?print-pdf)
-- [Markdown, pandoc, and other tools for lazy people](http://tomaszgolan.github.io/reveal_talks/html//markdown_introduction.html?print-pdf)
+- [Markdown, pandoc, and other tools for lazy people](http://tomaszgolan.github.io/reveal_talks/html/markdown_introduction.html?print-pdf)
 
