@@ -9,7 +9,7 @@
 
 * Stworzyć użyteczny program w języku C++
 
-* ECTS = 4, czyli 120h pracy
+* ECTS = 5 (130h pracy)
 
 * 2h laboratorium + 6h w domu / tydzień
 
