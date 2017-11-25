@@ -325,7 +325,6 @@ until there are nucleons in nucleus
 
     * off-shell propagation
     * reweighting
-    * others?
 
 * Kaon cascade?
 
