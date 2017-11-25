@@ -305,7 +305,7 @@ until there are nucleons in nucleus
 
 * with $a_i$ being extracted from [SAID](http://gwdac.phys.gwu.edu/) model
 
-* separately for each channel ($ii$, $ij$, $0$, and *CEX*)
+* separately for each channel (*ii*, *ij*, *0*, and *CEX*)
 
 ## Pion-Carbon scattering
 
@@ -314,3 +314,19 @@ until there are nucleons in nucleus
 <div style="height: 600px; overflow: auto">
 <img src="../img/cascade/pion_carbon.png" width=60%/>
 </div>
+
+#
+
+## Summary
+
+---
+
+* Improvements in progress / planned:
+
+    * off-shell propagation
+    * reweighting
+    * others?
+
+* Kaon cascade?
+
+* Alternatives to intranuclear cascade?
