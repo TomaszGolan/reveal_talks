@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>The implementation of intranuclear cascade</title>
+
+  <meta name="description" content="The implementation of intranuclear cascade">
+
+   <meta name="author" content="Tomasz Golan (on behalf of NuWro Collaboration)" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="../template/snap.svg-min.js"></script>
+  <script src="../template/plotly-latest.min.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>The implementation of intranuclear cascade</h1>
+         <h3>Tomasz Golan (on behalf of NuWro Collaboration)</h3> 
+        <p>
+          <h4>03-05.12.2017, NuWro Workshop 2017</h4>
+        </p>
+      </section>
+
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Space / Shift+Space - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="section" class="level1">
+<h1></h1>
+<section id="cascade-by-metropolis" class="level2">
+<h2>Cascade by Metropolis</h2>
+</section>
+<section id="intranuclear-cascade" class="level2">
+<h2>Intranuclear cascade</h2>
+<hr />
+<div style="float: left">
+<ul>
+<li>Script: N. Metropolis</li>
+<li>Director: J. Sobczyk</li>
+<li>Cast: C. Juszczak, T. Golan, K. Niewczas</li>
+</ul>
+</div>
+<embed src="../img/cascade/cascade.swf" wmode="transparent" quality="high" width="750" height="750" style="margin-top: -150px" scale="default"/>
+</section>
+<section id="total-cross-section" class="level2">
+<h2>Total cross section</h2>
+<hr />
+<p><em>src: N. Metropolis et al., Phys. Rev. 110 (1958) 204</em></p>
+<div class="left">
+<ul>
+<li><p>Nucleons</p>
+<ul>
+<li><span class="math inline">\(\sigma_{ii}\)</span> - same isospin</li>
+<li><span class="math inline">\(\sigma_{ij}\)</span> - different isospin</li>
+</ul></li>
+<li><p>Pions</p>
+<ul>
+<li><span class="math inline">\(\sigma_{ii}\)</span> - <span class="math inline">\(\pi^+p\)</span> or <span class="math inline">\(\pi^-n\)</span></li>
+<li><span class="math inline">\(\sigma_{ij}\)</span> - <span class="math inline">\(\pi^-p\)</span> or <span class="math inline">\(\pi^+n\)</span></li>
+</ul></li>
+</ul>
+</div>
+<p><br><img src="../img/cascade/metro_tab1.png" class="right"/></p>
+</section>
+<section id="total-cross-section-low-energies" class="level2">
+<h2>Total cross section (low energies)</h2>
+<hr />
+<div class="left">
+<p><em>Nucleons below <span class="math inline">\(335\)</span> MeV</em></p>
+<p><img src="../img/cascade/metro_nucl_eq.png" width=75%/></p>
+<ul>
+<li><span class="math inline">\(\beta\)</span> - velocity of incoming nucleon</li>
+</ul>
+</div>
+<div class="right">
+<p><em>Pions below <span class="math inline">\(51\)</span> MeV</em></p>
+<p><img src="../img/cascade/metro_pion_eq.png" width=75%/></p>
+<ul>
+<li><p><span class="math inline">\(\gamma\)</span> - total energy in <span class="math inline">\(m_{\pi^0c^2}\)</span></p></li>
+<li><p><span class="math inline">\(\eta\)</span> - momentum in <span class="math inline">\(m_{\pi^0c}\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="interaction-parameters-nucleons" class="level2">
+<h2>Interaction parameters (nucleons)</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p><span class="math inline">\(f_{inel}\)</span> - the fraction of pion production</p></li>
+<li><p><span class="math inline">\(f_{\pi}\)</span> - the fraction of single pion production</p></li>
+<li><p>angular distribution in CMS</p></li>
+</ul>
+<p><span class="math display">\[\frac{d\sigma}{d\Omega} = A\cos^4\theta + B\cos^3\theta + 1\]</span></p>
+</div>
+<p><img src="../img/cascade/metro_nucl_tab.png" class="right"/></p>
+</section>
+<section id="interaction-parameters-pions" class="level2">
+<h2>Interaction parameters (pions)</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p><span class="math inline">\(f_{inel}\)</span> - the fraction of pion production</p></li>
+<li><p><span class="math inline">\(f_{\pi}\)</span> - the fraction of single pion production</p></li>
+<li><p>angular distribution in CMS</p></li>
+</ul>
+<p><span class="math display">\[\frac{d\sigma}{d\Omega} = A\cos^4\theta + B\cos^3\theta + 1\]</span></p>
+<ul>
+<li><span class="math inline">\(f_{CE}\)</span> - the fraction (of inelastic events) that is charge exchange</li>
+</ul>
+</div>
+<p><img src="../img/cascade/metro_pion_tab.png" style="float: right" width=40%/></p>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="cascade-algorithm" class="level2">
+<h2>Cascade algorithm</h2>
+</section>
+<section id="the-main-loop" class="level2">
+<h2>The main loop</h2>
+<hr />
+<div class="left">
+<p>General idea</p>
+<pre><code class='nohighlight'>
+until there are particles to propagate
+until there are nucleons in nucleus
+
+    take a particle from the queue
+    calculate free path
+    move particle
+
+    if there is no interaction
+        put the particle back to the queue
+    otherwise 
+        generate interaction
+        put all created particles
+        into the queue
+</code></pre>
+</div>
+<div class="right" style="height: 600px; overflow: auto">
+<p><img src="../img/cascade/main_loop.png"/></p>
+</div>
+</section>
+<section id="free-path" class="level2">
+<h2>Free path</h2>
+<hr />
+<ul>
+<li>The probability of passing <span class="math inline">\(\lambda\)</span> without any interactions <br><br> <span class="math display">\[ P(\lambda) = e^{-\lambda / \tilde\lambda}\]</span> <br></li>
+<li>Mean free path <br><br> <span class="math display">\[\tilde\lambda = \left[\sigma_p\rho_p(r) + \sigma_n\rho_n(r)\right]^{-1}\]</span> <br></li>
+<li>Free path (an interaction happens if <span class="math inline">\(\lambda &lt; 0.2\)</span> fm) <br><br> <span class="math display">\[\lambda = - \tilde\lambda\cdot\ln(\text{rand[0,1]})\]</span> <br></li>
+</ul>
+</section>
+<section id="n-n-interactions" class="level2">
+<h2>N-N interactions</h2>
+<hr />
+<div style="height: 600px; overflow: auto">
+<p><img src="../img/cascade/nucl_loop.png" width=60%/></p>
+</div>
+</section>
+<section id="pi-n-interactions" class="level2">
+<h2><span class="math inline">\(\pi\)</span>-N interactions</h2>
+<hr />
+<div style="height: 600px; overflow: auto">
+<p><img src="../img/cascade/pion_loop.png" width=60%/></p>
+</div>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="improvements-of-cascade-model-in-nuwro-nucleons" class="level2">
+<h2>Improvements of cascade model in NuWro (nucleons)</h2>
+<p><em>all changes are done in a way to keep the structure the same</em></p>
+</section>
+<section id="n-n-inelastic" class="level2">
+<h2>N-N inelastic</h2>
+<hr />
+<p><img src="../img/cascade/metro_nucl_inel.png" width=60%/></p>
+<p><em>based on experimental data</em></p>
+</section>
+<section id="proton-carbon-scattering" class="level2">
+<h2>proton-Carbon scattering</h2>
+<hr />
+<p><img src="../img/cascade/metro_nucl_plot.png" width=80%/></p>
+</section>
+<section id="n-n-nuclear-correction" class="level2">
+<h2>N-N nuclear correction</h2>
+<hr />
+<p><em>src: V.R. Pandharipande and S.C. Pieper, PRC45 (1992) 791</em></p>
+<div class="left">
+<p><img src="../img/cascade/nucl_medium_eq.png"/></p>
+<ul>
+<li>effective mass calculated using potential form <em>R.B. Wiringa, PRC38 (1988) 2967</em></li>
+</ul>
+</div>
+<div class="right" style="height: 500px; overflow: auto">
+<p><img src="../img/cascade/nucl_medium.png"/></p>
+</div>
+</section>
+<section id="argoneut-data" class="level2">
+<h2>ArgoNeut data</h2>
+<hr />
+<p><img src="../img/cascade/argoneut.png" width=50%></p>
+<p><em>src: K. Partyka, “Exclusive 1mu+np topologies in ArgoNeuT”, NuInt12, 2012 <br> O. Palamara, “QE or not QE, that is the question”, INT workshop, Seattle, 2013</em></p>
+</section>
+<section id="binding-energy" class="level2">
+<h2>Binding energy</h2>
+<hr />
+<ul>
+<li><p>binding energy is subtracted from nucleon energy in the primary vertex</p></li>
+<li><p>the value is stored and use later in the cascade</p></li>
+<li><p>nuclear potential is defined as <br><br> <span class="math display">\[V(r) = E_F(r) + E_B\]</span> <br></p></li>
+<li><p>nucleon is jailed in a nucleus if <br><br> <span class="math display">\[T_k &lt; V(r)\]</span> <br></p></li>
+</ul>
+</section>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="improvements-of-cascade-model-in-nuwro-pions" class="level2">
+<h2>Improvements of cascade model in NuWro (pions)</h2>
+<p><em>all changes are done in a way to keep the structure the same</em></p>
+</section>
+<section id="low-energy-pions" class="level2">
+<h2>Low-energy pions</h2>
+<hr />
+<ul>
+<li><p>for low-energy pions (<span class="math inline">\(T_k &lt; 350\)</span> MeV) E. Oset et al (<em>Phys. Lett. B165 (1985) 13–18</em>) is used</p></li>
+<li><p><span class="math inline">\(\Delta\)</span> width modification in nuclear matter <br><br> <span class="math display">\[\frac{1}{2}\tilde\Gamma \rightarrow \frac{1}{2}\tilde\Gamma - \text{Im}\Sigma_\Delta\]</span> <br></p>
+<ul>
+<li><span class="math inline">\(\tilde\Gamma\)</span> - reduced <span class="math inline">\(\Delta\)</span> width (due to Pauli blocking)</li>
+<li><span class="math inline">\(\Sigma_\Delta\)</span> - <span class="math inline">\(\Delta\)</span> self-energy</li>
+</ul></li>
+</ul>
+</section>
+<section id="delta-self-energy" class="level2">
+<h2><span class="math inline">\(\Delta\)</span> self-energy</h2>
+<hr />
+<ul>
+<li><p>the parametrization of <span class="math inline">\(\Delta\)</span> self-energy is taken from <em>E. Oset et al., Nucl. Phys. A468 (1987) 631–652</em> <br><br> <span class="math display">\[\text{Im}\Sigma_\Delta(E_\pi) = -\left[C_Q(\rho/\rho_0)^\alpha + C_{A2}(\rho/\rho_0)^\beta + C_{A3}(\rho/\rho_0)^\gamma\right]\]</span> <br></p></li>
+<li><p><span class="math inline">\(C_Q\)</span>, <span class="math inline">\(C_{A2}\)</span>, <span class="math inline">\(C_{A3}\)</span>, <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span> - functions of pion energy</p></li>
+<li><p><span class="math inline">\(C_{A}\)</span> - pion absorption</p></li>
+<li><p>implementation: cross sections 2D tables (<span class="math inline">\(T_k\)</span> and <span class="math inline">\(\rho\)</span>)</p></li>
+</ul>
+</section>
+<section id="comparison-with-oset-et-al." class="level2">
+<h2>Comparison with Oset et al.</h2>
+<hr />
+<p><img src="../img/cascade/oset_comp.png" width=60%/></p>
+</section>
+<section id="comparison-with-oset-et-al.-1" class="level2">
+<h2>Comparison with Oset et al.</h2>
+<hr />
+<p><img src="../img/cascade/oset_comp_2.png" width=60%/></p>
+</section>
+<section id="high-energy-pions" class="level2">
+<h2>High-energy pions</h2>
+<hr />
+<div class="left">
+<p><br><br></p>
+<ul>
+<li><p>Metropolis-like tables based on data</p></li>
+<li><p>new parameter <span class="math inline">\(f_{2\pi}\)</span> gives the fraction of double pion production among all non-single pion production processes</p></li>
+</ul>
+</div>
+<div class="right" style="height: 600px; overflow: auto">
+<p><img src="../img/cascade/pion_he_tab.png"/></p>
+</div>
+</section>
+<section id="charge-fragmentation" class="level2">
+<h2>Charge fragmentation</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>for single pion production see a table on the right</p></li>
+<li><p>for double pion production <span class="math inline">\(ii\)</span>: half is assumed to be with neutal pion</p></li>
+<li><p>all other cases - equally likely</p></li>
+</ul>
+</div>
+<div class="right" style="height: 600px; overflow: auto">
+<p><img src="../img/cascade/pion_charge_fragm.png"/></p>
+</div>
+</section>
+<section id="angular-distributions" class="level2">
+<h2>Angular distributions</h2>
+<hr />
+<ul>
+<li><p>for QEL and CEX <span class="math inline">\(\pi\)</span>-N scattering (in CMS) <br><br> <span class="math display">\[\frac{d\sigma}{d\Omega} \sim \sum\limits_{i=0}^{7}a_i\cos^i\theta\]</span> <br></p></li>
+<li><p>with <span class="math inline">\(a_i\)</span> being extracted from <a href="http://gwdac.phys.gwu.edu/">SAID</a> model</p></li>
+<li><p>separately for each channel (<span class="math inline">\(ii\)</span>, <span class="math inline">\(ij\)</span>, <span class="math inline">\(0\)</span>, and <em>CEX</em>)</p></li>
+</ul>
+</section>
+<section id="pion-carbon-scattering" class="level2">
+<h2>Pion-Carbon scattering</h2>
+<hr />
+<div style="height: 600px; overflow: auto">
+<p><img src="../img/cascade/pion_carbon.png" width=60%/></p>
+</div>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
