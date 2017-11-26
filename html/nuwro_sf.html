@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Spectral function in NuWro</title>
+
+  <meta name="description" content="Spectral function in NuWro">
+
+   <meta name="author" content="Tomasz Golan (on behalf of NuWro Collaboration)" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="../template/snap.svg-min.js"></script>
+  <script src="../template/plotly-latest.min.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Spectral function in NuWro</h1>
+         <h3>Tomasz Golan (on behalf of NuWro Collaboration)</h3> 
+        <p>
+          <h4>03-05.12.2017, NuWro Workshop 2017</h4>
+        </p>
+      </section>
+
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Space / Shift+Space - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="section" class="level1">
+<h1></h1>
+<section id="spectral-function-begins" class="level2">
+<h2>Spectral Function Begins</h2>
+<hr />
+<ul>
+<li><p>Artur Ankowski PhD Thesis (<a href="http://neutrino.ift.uni.wroc.pl/files/Ankowski_PhD.pdf">in Polish</a>)</p></li>
+<li><p>in NuWro spectral function for:</p>
+<ul>
+<li>carbon</li>
+<li>oxygen</li>
+<li>iron</li>
+<li>(approximated) calcium</li>
+<li>(approximated) argon</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-1" class="level2">
+<h2></h2>
+<p><img src="../img/sf/sf_momenta.png" width=75%/></p>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="implementation" class="level2">
+<h2>Implementation</h2>
+</section>
+<section id="starting-point" class="level2">
+<h2>Starting point</h2>
+<hr />
+<ul>
+<li><p>differential cross section (in impulse approximation) <br><br> <span class="math display">\[d\sigma = x \int dE d^3p P(\vec p, E) \int d^3k&#39; \delta(E_{k&#39;} + E_{p&#39;} - y)\frac{L_{\mu\nu}H^{\mu\nu}}{E_p E_{k&#39;} E_{p&#39;}}\]</span> <br></p>
+<ul>
+<li><span class="math inline">\(x = \frac{G_F^2\cos^2\theta_C}{8\pi^2E_k}\)</span></li>
+<li><span class="math inline">\(y = E_k + M - E\)</span> (constant for fixed <span class="math inline">\(E\)</span> and <span class="math inline">\(\vec p\)</span>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="momentum-and-removal-energy" class="level2">
+<h2>Momentum and removal energy</h2>
+<hr />
+<div class="left">
+<p><br><br></p>
+<ul>
+<li><p>momentum (<span class="math inline">\(\vec p\)</span>) and removal energy (<span class="math inline">\(E\)</span>) are chosen randomly according to <span class="math inline">\(P(\vec p, E)\)</span></p></li>
+<li><p>integral over <span class="math inline">\(d^3k&#39;\)</span> is performed for fixed <span class="math inline">\(\vec p\)</span> and <span class="math inline">\(E\)</span></p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/sf/artur_sf_oxygen.png"/> <em>src: A. Ankowski thesis</em></p>
+</div>
+</section>
+<section id="integral-over-final-lepton-kinematics" class="level2">
+<h2>Integral over final lepton kinematics</h2>
+<hr />
+<ul>
+<li><p>having <span class="math inline">\(\vec p\)</span> and <span class="math inline">\(E\)</span> fixed final lepton kinematics is calculated in CMS frame</p></li>
+<li><p>this approach is much faster than the original implementation</p></li>
+<li><p>with good numerical stability</p></li>
+<li><p>and the result are the same</p></li>
+</ul>
+</section>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="spectator" class="level2">
+<h2>Spectator</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>if an interaction happens on correlated nucleon we assume a spectator to have momentum <span class="math inline">\(-\vec p\)</span></p></li>
+<li><p><em>educated guess</em> method is used to determine if this is a case</p></li>
+</ul>
+</div>
+<p><img src="../img/sf/spectator.png" style="float: right" width=35%/></p>
+</section>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<section id="coulomb-corrections" class="level2">
+<h2>Coulomb corrections</h2>
+</section>
+<section id="coulomb-correction-to-sf" class="level2">
+<h2>Coulomb correction to SF</h2>
+<hr />
+<ul>
+<li><p>protons repel each other (smaller binding energy)</p></li>
+<li><p>protons <strong>energy levels</strong> are measured</p></li>
+<li><p>for <strong>neutrons</strong> one need to apply Coulomb correction <br><br> <span class="math display">\[P_{hole}^n (\vec p, E) = P_{hole}^{p}(\vec p, E - \Delta)\]</span> <br></p></li>
+<li><p><span class="math inline">\(\Delta = 2.8\)</span> MeV (for Carbon, <em>src: A. Ankowski, PRC86 (2012) 024616</em>)</p></li>
+<li><p>affects <em>NC</em> and neutrino <em>CC</em></p></li>
+</ul>
+</section>
+<section id="charged-lepton-and-coulomb-potential" class="level2">
+<h2>Charged lepton and Coulomb potential</h2>
+<hr />
+<ul>
+<li><p>Coulomb potential decrease (increase) energy of negative (positive) charged particles (leaving nucleus)</p></li>
+<li><p>assuming constant shift <span class="math inline">\(\Delta = 3.5\)</span> MeV (for Carbon, <em>src: A. Ankowski et al., PRD91 (2015) 03305</em>)</p></li>
+<li><p>affects <em>CC</em> (opposite sign for neutrino and anti-neutrino)</p></li>
+</ul>
+</section>
+</section>
+<section id="section-5" class="level1">
+<h1></h1>
+<section id="final-state-interactions" class="level2">
+<h2>Final state interactions</h2>
+</section>
+<section id="from-ia-to-fsi" class="level2">
+<h2>From IA to FSI</h2>
+<hr />
+<ul>
+<li><p>knock-out nucleon interacts with spectators, which modifies energy transfer <br><br> <span class="math display">\[\frac{d\sigma^{FSI}}{d\omega d\Omega} = \int d\omega&#39; f_{\vec q}(\omega - \omega&#39;) \frac{d\sigma^{IA}}{d\omega&#39; d\Omega}\]</span> <br></p></li>
+<li><p>note: fixed angle</p></li>
+<li><p><span class="math inline">\(f_{\vec q}\)</span> - folding function</p></li>
+</ul>
+</section>
+<section id="folding-function" class="level2">
+<h2>Folding function</h2>
+<hr />
+<p><br><br> <span class="math display">\[f_{\vec q} (\omega) = \delta(\omega)\sqrt{T_A} + (1 - \sqrt{T_A})F_{\vec q}(\omega)\]</span> <br></p>
+<ul>
+<li><span class="math inline">\(T_A\)</span> - nuclear transparency</li>
+<li><span class="math inline">\(F_{\vec q}(\omega) = \frac{1}{\pi}\frac{U_W}{U_W^2 + \omega^2}\)</span></li>
+<li><span class="math inline">\(U_W\)</span> is the imaginary part of the potential (<span class="math inline">\(U = U_V + iU_W\)</span>)</li>
+<li>Real part of the potential shifts the energy transfer</li>
+</ul>
+<p><span class="math display">\[f_{\vec q}(\omega - \omega&#39;) \rightarrow f_{\vec q}(\omega - \omega&#39; - U_V)\]</span></p>
+</section>
+<section id="nuclear-transparency" class="level2">
+<h2>Nuclear transparency</h2>
+<hr />
+<div class="left">
+<p><br><br></p>
+<ul>
+<li><p>note: <span class="math inline">\(\sqrt{T_A} &gt; 0.75\)</span> <br><br> <span class="math display">\[f_{\vec q} (\omega) = \delta(\omega)\sqrt{T_A} + (1 - \sqrt{T_A})F_{\vec q}(\omega)\]</span> <br></p></li>
+<li><p>imaginary part of the potential does not have much impact</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/sf/trans.png"/></p>
+<p><em>O. Benhar et al., PRD72 (2005) 053005</em></p>
+</div>
+</section>
+<section id="folding-function-1" class="level2">
+<h2>Folding function</h2>
+<hr />
+<div class="left">
+<p><br><br></p>
+<ul>
+<li><p>calculated for fixed <span class="math inline">\(\vec q = 1\)</span> GeV</p></li>
+<li><p>it smears energy transfer distribution</p></li>
+<li><p>in NuWro implementation Gauss fit is used</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/sf/folding.png"/></p>
+<p><em>O. Benhar, PRC87 (2013) 024606</em></p>
+</div>
+</section>
+<section id="real-part-of-the-potential" class="level2">
+<h2>Real part of the potential</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p><span class="math inline">\(U_V\)</span> shifts the energy transfer distribution</p></li>
+<li><p><span class="math inline">\(U_W\)</span> smears the energy transfer distribution with the probability <span class="math inline">\((1 - \sqrt{T_A})\)</span></p></li>
+<li><p>both <span class="math inline">\(U_V\)</span> and <span class="math inline">\(T\)</span> depends on the final nucleon kinetic energy</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/sf/realv.png"/></p>
+<p><em>A. Ankowski et al., PRD91 (2015) 033005</em></p>
+</div>
+</section>
+<section id="final-nucleon-energy" class="level2">
+<h2>Final nucleon energy</h2>
+<hr />
+<p><br><br> <span class="math display">\[\frac{d\sigma^{FSI}}{d\omega d\Omega} = \int d\omega&#39; f_{\vec q}(\omega - \omega&#39;) \frac{d\sigma^{IA}}{d\omega&#39; d\Omega}\]</span> <br></p>
+<ul>
+<li>to calculate this integral for fixed scattering angle the following approximation is used for final nucleon kinetic energy</li>
+</ul>
+<p><span class="math display">\[T_k = \frac{E_k^2 \cdot (1 - \cos\theta)}{M + E_k \cdot (1 - \cos\theta)}\]</span></p>
+</section>
+<section id="mc-procedure" class="level2">
+<h2>MC Procedure</h2>
+<hr />
+<p><br> <span class="math display">\[\frac{d\sigma^{FSI}}{d\omega d\Omega} = \int d\omega&#39; f_{\vec q}(\omega - \omega&#39;) \frac{d\sigma^{IA}}{d\omega&#39; d\Omega}\]</span> <br></p>
+<ul>
+<li><p>calculate <span class="math inline">\(\frac{d\sigma^{IA}}{d\omega&#39; d\Omega}\)</span></p></li>
+<li><p>calculate <span class="math inline">\(T_k\)</span> of final nucleon, and then <span class="math inline">\(U_V\)</span> and <span class="math inline">\(T_A\)</span></p></li>
+<li><p>if <code>rand[0,1]</code> &gt; <span class="math inline">\(\sqrt{T_A}\)</span>: <span class="math inline">\(\omega = \omega&#39; + U_V\)</span></p></li>
+<li><p>else <span class="math inline">\(\omega = \omega&#39; + U_V + x\)</span>, where <span class="math inline">\(x\)</span> is random from <span class="math inline">\(F_{\vec q}(\omega)\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="section-6" class="level1">
+<h1></h1>
+<section id="reconstructed-energy" class="level2">
+<h2>Reconstructed energy</h2>
+</section>
+<section id="procedure" class="level2">
+<h2>Procedure</h2>
+<hr />
+<ul>
+<li><p>original results from <em>A. Ankowski et al., PRD91 (2015) 033005</em> (include FSI and Coulomb corrections)</p></li>
+<li><p>reconstructed energy formula (nucleon at rest) <br><br> <span class="math display">\[E_\nu = \frac{2E_l\tilde M - m^2 + \tilde M^2 - M^2}{2(\tilde M - E_l + |\vec k_l|\cos\theta)}\]</span> <br></p></li>
+<li><p><span class="math inline">\(\tilde M = M - \varepsilon\)</span></p></li>
+<li><p><span class="math inline">\(\varepsilon = 19\)</span> MeV for neutrino, <span class="math inline">\(\varepsilon = 6\)</span> MeV for anti-neutrino</p></li>
+</ul>
+</section>
+<section id="comparison" class="level2">
+<h2>Comparison</h2>
+<hr />
+<p><img src="../img/sf/aa_reco_nu.png" class="left"/> <img src="../img/sf/aa_reco_nubar.png" class="right"/></p>
+</section>
+<section id="coulomb-onoff" class="level2">
+<h2>Coulomb on/off</h2>
+<hr />
+<p><img src="../img/sf/reco_coul_nu.png" class="left"/> <img src="../img/sf/reco_coul_nubar.png" class="right"/></p>
+</section>
+</section>
+<section id="section-7" class="level1">
+<h1></h1>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<hr />
+<ul>
+<li><p>The implementation of spectral function in NuWro</p>
+<ul>
+<li><p>is super fast</p></li>
+<li><p>includes spectator knock-out</p></li>
+<li><p>includes Coulomb correction (for Carbon)</p></li>
+<li><p>includes FSI effects (for Carbon)</p></li>
+</ul></li>
+<li><p>Approximated SF for Argon can be used (before the real one becomes available)</p></li>
+</ul>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
