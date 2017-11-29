@@ -224,6 +224,14 @@ until there are nucleons in nucleus
 
 * nucleon is jailed in a nucleus if <br><br> $$T_k < V(r)$$ <br>
 
+## Neutron / Proton
+
+---
+
+* At this point protons and neutrons are treat the same way
+
+* Work in progress
+
 #
 
 ## Improvements of cascade model in NuWro (pions)
@@ -234,7 +242,7 @@ until there are nucleons in nucleus
 
 ---
 
-* for low-energy pions ($T_k < 350$ MeV) E. Oset et al (*Phys. Lett. B165 (1985) 13–18*) is used
+* for low-energy pions ($T_k < 350$ MeV) E. Oset et al (*Phys. Lett. B165 (1985) 13–18*) is used (as in NEUT)
 
 * $\Delta$ width modification in nuclear matter <br><br> $$\frac{1}{2}\tilde\Gamma \rightarrow \frac{1}{2}\tilde\Gamma - \text{Im}\Sigma_\Delta$$ <br>
 
@@ -306,6 +314,18 @@ until there are nucleons in nucleus
 * with $a_i$ being extracted from [SAID](http://gwdac.phys.gwu.edu/) model
 
 * separately for each channel (*ii*, *ij*, *0*, and *CEX*)
+
+## Pion-Carbon scattering
+
+---
+
+<img src="../img/cascade/pC.png" width=60%/>
+
+$$\sigma = \frac{N_i}{N}\pi R^2$$
+
+$R$ - density $10^5$ smaller than in the center
+
+*no elastic hadron-nucleus!*
 
 ## Pion-Carbon scattering
 
