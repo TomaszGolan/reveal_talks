@@ -337,6 +337,44 @@ $R$ - density $10^5$ smaller than in the center
 
 #
 
+## Formation time and $\Delta$ lifetime
+
+## Formation time
+
+---
+
+<div class="left"><br>
+
+* formation time for DIS (Ranft) <br><br>$$t_f = \tau_0\frac{E\cdot M}{\mu_T^2}$$<br>
+
+* $E$, $M$ - hadron energy and mass
+
+* $\mu_T^2 = M^2 + p_T^2$ - transverse mass
+
+
+</div>
+<div class="right">
+
+<img src="../img/cascade/fz.png" width=80%/>
+
+</div>
+
+## 
+
+<img src="../img/cascade/nomad.png" width=60%/>
+
+## $\Delta$ lifetime
+
+---
+
+* in primary vertex $\Delta$ decays instantly
+
+* its lifetime is included in cascade <br><br>$$t_\Delta = \frac{E_\Delta}{M\Gamma}$$<br>
+
+* $\Gamma = 120$ MeV
+
+#
+
 ## Summary
 
 ---
