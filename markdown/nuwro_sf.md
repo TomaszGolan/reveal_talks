@@ -11,11 +11,32 @@ Navigate:
 
 #
 
+## Spectral Function
+
+---
+
+<div class="left"><br>
+
+*The probability of removing a nucleon with momentum $\vec p$ and leaving residual nucleus with excitation energy $E$.*
+
+\begin{eqnarray}
+& & P(\vec p, E) = \\
+& & \sum\limits_n \left|\left<\psi_n^{A-1}|a_p|\psi_0^A\right>\right|^2\delta(E + E_0 - E_n)
+\end{eqnarray}
+
+
+</div>
+<div class="right">
+<img src="../img/sf/sfe.png" width=80%/>
+
+*O. Benhar et al. PRD72 (2005) 053005*
+</div>
+
 ## Spectral Function Begins
 
 ---
 
-* Artur Ankowski PhD Thesis ([in Polish](http://neutrino.ift.uni.wroc.pl/files/Ankowski_PhD.pdf))
+* Artur Ankowski PhD Thesis ([in Polish](http://neutrino.ift.uni.wroc.pl/files/Ankowski_PhD.pdf)) - collaboration with O. Benhar
 
 * in NuWro spectral function for:
 
@@ -272,4 +293,4 @@ $$T_k = \frac{E_k^2 \cdot (1 - \cos\theta)}{M + E_k \cdot (1 - \cos\theta)}$$
 
     * includes FSI effects (for Carbon)
 
-* Approximated SF for Argon can be used (before the real one becomes available)
+* Approximated SF for Argon can be used (before the "real one" becomes available)
