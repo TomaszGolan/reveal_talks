@@ -203,6 +203,15 @@ until there are nucleons in nucleus
 <img src="../img/cascade/nucl_medium.png"/>
 </div>
 
+## N-N nuclear correction on/off
+
+---
+
+<img src="../img/cascade/pp_nofi.png" class="left"/>
+<img src="../img/cascade/pp_nofp.png" class="left"/>
+
+*proton (E = 1 GeV) on Carbon*
+
 ## ArgoNeut data
 
 ---
