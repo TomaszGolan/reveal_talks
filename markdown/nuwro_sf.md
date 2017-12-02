@@ -107,6 +107,33 @@ Navigate:
 
 <img src="../img/sf/spectator.png" style="float: right" width=35%/>
 
+# 
+
+## Pauli blocking
+
+---
+
+<div class="left">
+
+* **PB1**: using avg. Fermi momentum $\tilde p_F$ <br><br> $$P(\vec p, E) \rightarrow P(\vec p, E)\cdot\Theta(\tilde p_F - |\vec p_{final}|)$$ <br>
+
+</div>
+<div class="right">
+
+* **PB2**: using local Fermi momentum $\tilde p_F$ <br><br> $$P(\vec p, E) \rightarrow P(\vec p, E)\cdot\Theta(p_F(r) - |\vec p_{final}|)$$ <br>
+
+</div>
+
+<br>
+
+* **PB3**: using momentum distribution $n(\vec p$) = \int dE P(\vec p, E)$ given by spectral function: <br><br> $$P(\vec p, E) \rightarrow P(\vec p, E)\cdot\Theta(n(\vec p_{final}) - \text{random[0,1]})$$ <br>
+
+## Pauli blocking
+
+---
+
+<img src="../img/sf/pb.png" width=70%/>
+
 #
 
 ## Coulomb corrections
