@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Make your scientific software portable</title>
+
+  <meta name="description" content="Make your scientific software portable">
+
+   <meta name="author" content="with Singularity containers" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="../template/snap.svg-min.js"></script>
+  <script src="../template/plotly-latest.min.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Make your scientific software portable</h1>
+         <h3>with Singularity containers</h3> 
+        <p>
+          <h4>Tomasz Golan, ZFN</h4>
+        </p>
+      </section>
+
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Space / Shift+Space - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="section" class="level1">
+<h1></h1>
+<section id="what-is-a-container" class="level2">
+<h2>What is a container</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>A container is a stand-alone executable package</p>
+<ul>
+<li><p>operating system</p></li>
+<li><p>libraries</p></li>
+<li><p>software</p></li>
+<li><p>data</p></li>
+</ul></li>
+<li><p>It can be run on any OS</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/singularity/docker.png" style="background: #222222; border: none;"/> src: <a href="https://www.docker.com/what-container">docker.com</a></p>
+</div>
+</section>
+<section id="os-in-a-container" class="level2">
+<h2>OS in a container</h2>
+<hr />
+<p><img src="../img/singularity/os.svg" style="background: #222222; border: none;"/></p>
+</section>
+<section id="containers-vs-virtual-machines" class="level2">
+<h2>Containers vs Virtual Machines</h2>
+<hr />
+<p>src: <a href="https://www.docker.com/what-container">docker.com</a></p>
+<div class="left">
+<p><img src="../img/singularity/container.png" width=75% style="background: #222222; border: none;"/></p>
+</div>
+<div class="right">
+<p><img src="../img/singularity/vm.png" width=75% style="background: #222222; border: none;"/></p>
+</div>
+</section>
+<section id="why-to-use-containers" class="level2">
+<h2>Why to use containers</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>one can encapsulate software with all dependencies (libraries, data, ...) in a single executable package</p></li>
+<li><p>easy to share with others</p></li>
+<li><p>easy to run on clusters</p></li>
+<li><p>easy to reproduce previous results</p></li>
+</ul>
+</div>
+<p><img src="../img/singularity/nuwro.png" width=40% style="float:right; background: #222222; border: none;"/></p>
+</section>
+<section id="singularity" class="level2">
+<h2>Singularity</h2>
+<hr />
+<p><img src="../img/singularity/singularity-2.4-flow.png" style="background: #ffffff"/></p>
+<p>src: <a href="http://singularity.lbl.gov/">singularity.lbl.gov</a></p>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="basic-usage" class="level2">
+<h2>Basic usage</h2>
+</section>
+<section id="hello-world---get-an-image" class="level2">
+<h2>Hello World - get an image</h2>
+<hr />
+<ul>
+<li>grab Ubuntu 17.10 from Docker Hub (more tags: <a href="https://hub.docker.com/_/ubuntu/">link</a>)</li>
+</ul>
+<pre><code class="bash">$ singularity pull docker://ubuntu:17.10</code></pre>
+<pre><code class="bash">$ ls -lh
+razem 37M
+-rwxr-xr-x 1 goran goran 37M gru  6 12:15 ubuntu-17.10.img
+</code></pre>
+</section>
+<section id="hello-world---execute" class="level2">
+<h2>Hello World - execute</h2>
+<hr />
+<ul>
+<li>to execute [command] from [img file]</li>
+</ul>
+<pre><code class="bash">singularity exec [img file] [command]</code></pre>
+<pre><code class="bash">$ singularity exec ubuntu-17.10.img ls --version
+ls (GNU coreutils) 8.26
+
+$ ls --version
+ls (GNU coreutils) 8.25
+</code></pre>
+</section>
+<section id="hello-world---kernel-user" class="level2">
+<h2>Hello World - kernel / user</h2>
+<hr />
+<ul>
+<li>the same kernel</li>
+</ul>
+<pre><code class="bash">$ uname -a
+Linux ux306-ift 4.10.0-40-generic #44~16.04.1-Ubuntu SMP Thu Nov 9 15:37:44 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+
+$ singularity exec ubuntu-17.10.img uname -a
+Linux ux306-ift 4.10.0-40-generic #44~16.04.1-Ubuntu SMP Thu Nov 9 15:37:44 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre>
+<ul>
+<li>the same user</li>
+</ul>
+<pre><code class="bash">$ whoami
+goran
+
+$ singularity exec ubuntu-17.10.img whoami
+goran
+</code></pre>
+</section>
+<section id="hello-world---home" class="level2">
+<h2>Hello World - HOME</h2>
+<hr />
+<ul>
+<li>different content</li>
+</ul>
+<pre><code class="bash">$ ls /opt/
+eZuceSRN google skypeforlinux zoom Zotero_linux-x86_64
+
+$ singularity exec ubuntu-17.10.img ls /opt/
+
+</code></pre>
+<ul>
+<li>but <code>$HOME</code> the same</li>
+</ul>
+<pre><code class="bash">goran@ux306-ift:~/singularity$ ls ~
+git  nuwro 2017  Pobrane  Pulpit  singularity
+
+goran@ux306-ift:~/singularity$ singularity exec ubuntu-17.10.img ls ~
+Pobrane  Pulpit  git  nuwro 2017  singularity
+</code></pre>
+</section>
+<section id="hello-world---shell" class="level2">
+<h2>Hello World - shell</h2>
+<hr />
+<ul>
+<li>interactive shell within a container</li>
+</ul>
+<pre><code class="bash">$ singularity shell ubuntu-17.10.img 
+Singularity: Invoking an interactive shell within container...
+
+Singularity ubuntu-17.10.img:~/singularity> ls -w 80 /bin/
+bash   dmesg          gzip      mount          run-parts   true          zegrep
+cat    dnsdomainname  hostname  mountpoint     sed         umount        zfgrep
+chgrp  domainname     kill      mv             sh          uname         zforce
+chmod  echo           ln        nisdomainname  sh.distrib  uncompress    zgrep
+chown  egrep          login     pidof          sleep       vdir          zless
+cp     false          ls        ps             stty        wdctl         zmore
+dash   fgrep          lsblk     pwd            su          which         znew
+date   findmnt        mkdir     rbash          sync        ypdomainname
+dd     grep           mknod     readlink       tar         zcat
+df     gunzip         mktemp    rm             tempfile    zcmp
+dir    gzexe          more      rmdir          touch       zdiff
+Singularity ubuntu-17.10.img:~/singularity> 
+</code></pre>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
