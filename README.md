@@ -14,6 +14,7 @@
 - [Markdown, pandoc, and other tools for lazy people](http://tomaszgolan.github.io/reveal_talks/html/markdown_introduction.html)
 - [NuWro Cascade](http://tomaszgolan.github.io/reveal_talks/html/nuwro_cascade.html)
 - [SF in NuWro](http://tomaszgolan.github.io/reveal_talks/html/nuwro_sf.html)
+- [Singularity](http://tomaszgolan.github.io/reveal_talks/html/singularity.html)
 
 # Use these links to print as pdf
 
@@ -31,4 +32,5 @@
 - [Markdown, pandoc, and other tools for lazy people](http://tomaszgolan.github.io/reveal_talks/html/markdown_introduction.html?print-pdf)
 - [NuWro Cascade](http://tomaszgolan.github.io/reveal_talks/html/nuwro_cascade.html?print-pdf)
 - [SF in NuWro](http://tomaszgolan.github.io/reveal_talks/html/nuwro_sf.html?print-pdf)
+- [Singularity](http://tomaszgolan.github.io/reveal_talks/html/singularity.html?print-pdf)
 
