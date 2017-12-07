@@ -661,3 +661,75 @@ Singularity: Invoking an interactive shell within container...
 Singularity NuWro-builds-master-1709.simg:~/singularity> ls /opt/
 nuwro  root
 </code></pre>
+
+# 
+
+## Singularity Hub
+
+## Singularity Hub
+
+---
+
+* [Singularity Hub](https://singularity-hub.org/)
+
+* collections of containers
+
+* integration with GitHub for build automation
+
+## NuWro Collection
+
+---
+
+[NuWro Containers](https://singularity-hub.org/collections/265)
+
+<img src="../img/singularity/nuwro_containers.png" style="border: none;"/>
+
+## Singularity Hub - getting a container
+
+---
+
+<pre><code class="bash"># singularity pull shub://[username]/[repo]:[tag]
+$ singularity pull shub://NuWro/builds:1709
+
+$ ls -lh
+-rwxrwxr-x  1 goran goran 732M gru  7 11:36 NuWro-builds-master-1709.simg
+</code></pre>
+
+## Corresponding GitHub repo
+
+---
+
+[NuWro Builds Repository](https://github.com/NuWro/builds)
+
+<img src="../img/singularity/nuwro_repo.png" style="border: none;"/>
+
+## Connect GitHub with shub
+
+---
+
+<div class="left"><br>
+
+* log in to Singularity Hub with your GitHub account
+
+* select which repositories should be tracked
+
+* any push will update containers (if necessary)
+
+<pre><code class="nohighlight">Singularity.[tag]</code></pre>
+
+</div>
+<img src="../img/singularity/hub.png" style="border: none; float: right; width: 35%;"/>
+
+# 
+
+## Summary
+
+---
+
+* portable software with Singularity Containers
+
+    * for users
+    * for developers
+    * no need to worry about dependecies (and versions)
+
+* Singularity Hub + GitHub = automated builds

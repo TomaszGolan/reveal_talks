@@ -672,6 +672,73 @@ nuwro  root
 </code></pre>
 </section>
 </section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="singularity-hub" class="level2">
+<h2>Singularity Hub</h2>
+</section>
+<section id="singularity-hub-1" class="level2">
+<h2>Singularity Hub</h2>
+<hr />
+<ul>
+<li><p><a href="https://singularity-hub.org/">Singularity Hub</a></p></li>
+<li><p>collections of containers</p></li>
+<li><p>integration with GitHub for build automation</p></li>
+</ul>
+</section>
+<section id="nuwro-collection" class="level2">
+<h2>NuWro Collection</h2>
+<hr />
+<p><a href="https://singularity-hub.org/collections/265">NuWro Containers</a></p>
+<p><img src="../img/singularity/nuwro_containers.png" style="border: none;"/></p>
+</section>
+<section id="singularity-hub---getting-a-container" class="level2">
+<h2>Singularity Hub - getting a container</h2>
+<hr />
+<pre><code class="bash"># singularity pull shub://[username]/[repo]:[tag]
+$ singularity pull shub://NuWro/builds:1709
+
+$ ls -lh
+-rwxrwxr-x  1 goran goran 732M gru  7 11:36 NuWro-builds-master-1709.simg
+</code></pre>
+</section>
+<section id="corresponding-github-repo" class="level2">
+<h2>Corresponding GitHub repo</h2>
+<hr />
+<p><a href="https://github.com/NuWro/builds">NuWro Builds Repository</a></p>
+<p><img src="../img/singularity/nuwro_repo.png" style="border: none;"/></p>
+</section>
+<section id="connect-github-with-shub" class="level2">
+<h2>Connect GitHub with shub</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>log in to Singularity Hub with your GitHub account</p></li>
+<li><p>select which repositories should be tracked</p></li>
+<li><p>any push will update containers (if necessary)</p></li>
+</ul>
+<pre><code class="nohighlight">Singularity.[tag]</code></pre>
+</div>
+<p><img src="../img/singularity/hub.png" style="border: none; float: right; width: 35%;"/></p>
+</section>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<hr />
+<ul>
+<li><p>portable software with Singularity Containers</p>
+<ul>
+<li>for users</li>
+<li>for developers</li>
+<li>no need to worry about dependecies (and versions)</li>
+</ul></li>
+<li><p>Singularity Hub + GitHub = automated builds</p></li>
+</ul>
+</section>
+</section>
     </div>
 
     <script src="../reveal.js/lib/js/head.min.js"></script>
