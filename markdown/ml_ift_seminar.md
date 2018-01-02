@@ -1,6 +1,6 @@
 % Machine Learning for MINERvA Physics Reconstruction
 % Tomasz Golan
-% IFT seminar, XX.XX.2017
+% IFT seminar, 05.01.2018
 
 ## Outline
 

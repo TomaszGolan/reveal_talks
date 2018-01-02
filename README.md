@@ -15,6 +15,7 @@
 - [NuWro Cascade](http://tomaszgolan.github.io/reveal_talks/html/nuwro_cascade.html)
 - [SF in NuWro](http://tomaszgolan.github.io/reveal_talks/html/nuwro_sf.html)
 - [Singularity](http://tomaszgolan.github.io/reveal_talks/html/singularity.html)
+- [MLMPR](http://tomaszgolan.github.io/reveal_talks/html/ml_ift_seminar.html)
 
 # Use these links to print as pdf
 
@@ -33,4 +34,5 @@
 - [NuWro Cascade](http://tomaszgolan.github.io/reveal_talks/html/nuwro_cascade.html?print-pdf)
 - [SF in NuWro](http://tomaszgolan.github.io/reveal_talks/html/nuwro_sf.html?print-pdf)
 - [Singularity](http://tomaszgolan.github.io/reveal_talks/html/singularity.html?print-pdf)
+- [MLMPR](http://tomaszgolan.github.io/reveal_talks/html/ml_ift_seminar.html?print-pdf)
 
