@@ -17,6 +17,7 @@
 - [Singularity](http://tomaszgolan.github.io/reveal_talks/html/singularity.html)
 - [MLMPR](http://tomaszgolan.github.io/reveal_talks/html/ml_ift_seminar.html)
 - [NuWro: Singularity](http://tomaszgolan.github.io/reveal_talks/html/nuwro_singularity.html)
+- [NuWro: Reweighting](http://tomaszgolan.github.io/reveal_talks/html/nuwro_reweighting.html)
 
 # Use these links to print as pdf
 
@@ -37,4 +38,5 @@
 - [Singularity](http://tomaszgolan.github.io/reveal_talks/html/singularity.html?print-pdf)
 - [MLMPR](http://tomaszgolan.github.io/reveal_talks/html/ml_ift_seminar.html?print-pdf)
 - [NuWro: Singularity](http://tomaszgolan.github.io/reveal_talks/html/nuwro_singularity.html?print-pdf)
+- [NuWro: Reweighting](http://tomaszgolan.github.io/reveal_talks/html/nuwro_reweighting.html?print-pdf)
 

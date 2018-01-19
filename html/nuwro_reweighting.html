@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>NuWro Reweighting</title>
+
+  <meta name="description" content="NuWro Reweighting">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="../template/snap.svg-min.js"></script>
+  <script src="../template/plotly-latest.min.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>NuWro Reweighting</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4>SPGN, Styczeń 2018</h4>
+        </p>
+      </section>
+
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Space / Shift+Space - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="basics" class="level2">
+<h2>Basics</h2>
+<hr />
+<ul>
+<li><p>ongoing project</p></li>
+<li><p>based on Luke Pickering and Patrick Stowell work</p></li>
+<li><p>reweighting framework created by Cezary Juszczak</p></li>
+<li><p>QEL is done (CJ)</p></li>
+<li><p>RES in progress (TG)</p></li>
+<li><p>available in reweighting branch</p></li>
+</ul>
+</section>
+<section id="usage-and-output" class="level2">
+<h2>Usage and output</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>There are two output files:</p>
+<ul>
+<li>ROOT file with events tree with new weights</li>
+<li>ROOT file with weights only</li>
+</ul></li>
+<li><p>One can disable unwanted output</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<pre><code>reweight_to &lt;nuwro_output.root&gt; \
+            -p param1 val1 \
+            -p param2 val2 \
+            -p param3 val3 \
+            ...
+            [-o &lt;weighted_events.root&gt;] \
+            [--no_weights] [--no_events] </code></pre>
+</div>
+</section>
+<section id="qel-knobs" class="level2">
+<h2>QEL knobs</h2>
+<hr />
+<p>For quasi-elastic scattering the following knobs are available:</p>
+<ul>
+<li><p><code>qel_cc_axial_mass</code></p></li>
+<li><p><code>qel_nc_axial_mass</code></p></li>
+<li><p><code>qel_s_axial_mass</code></p></li>
+<li><p><code>delta_s</code></p></li>
+</ul>
+</section>
+<section id="qel-test" class="level2">
+<h2>QEL Test</h2>
+<hr />
+<div class="left">
+<p>Symulacja A:</p>
+<pre><code>-p &quot;qel_cc_axial_mass = 1000&quot; \
+-p &quot;qel_nc_axial_mass = 1000&quot; \
+-p &quot;qel_s_axial_mass = 1000&quot; \
+-p &quot;delta_s = 0&quot;</code></pre>
+<p>Symulacja B:</p>
+<pre><code>-p &quot;qel_cc_axial_mass = 1200&quot; \
+-p &quot;qel_nc_axial_mass = 1200&quot; \
+-p &quot;qel_s_axial_mass = 1200&quot; \
+-p &quot;delta_s = -0.2&quot;</code></pre>
+</div>
+<p><img src="../img/nuwro/rew/qel_q2.png" class="right"></p>
+</section>
+<section id="qel-test-ii" class="level2">
+<h2>QEL Test II</h2>
+<hr />
+<p><img src="../img/nuwro/rew/qel_tk.png" class="left"> <img src="../img/nuwro/rew/qel_ang.png" class="right"></p>
+</section>
+<section id="res-knobs" class="level2">
+<h2>RES Knobs</h2>
+<hr />
+<p>For resonance pion production the following knobs are available:</p>
+<ul>
+<li><p><code>pion_axial_mass</code></p></li>
+<li><p><code>pion_C5A</code></p></li>
+</ul>
+</section>
+<section id="res-preliminary-test" class="level2">
+<h2>RES Preliminary Test</h2>
+<hr />
+<div class="left">
+<p><br></p>
+<p>Simulations done for:</p>
+<ul>
+<li>muon neutrino 0-10 GeV</li>
+<li>NC on Carbon</li>
+<li>500k events</li>
+<li>vary pion_C5A only</li>
+</ul>
+</div>
+<p><img src="../img/nuwro/rew/preliminary_res_pip.png" class="right"></p>
+</section>
+<section id="res-preliminary-test-ii" class="level2">
+<h2>RES Preliminary Test II</h2>
+<hr />
+<p><img src="../img/nuwro/rew/preliminary_res_pi0.png" class="left"> <img src="../img/nuwro/rew/preliminary_res_pim.png" class="right"></p>
+</section>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<hr />
+<ul>
+<li><p>Finishing of reweighting is one of our priorities</p></li>
+<li><p>QEL - done, RES - almost done</p></li>
+<li><p>Next seps:</p>
+<ul>
+<li><p>add more parameters</p></li>
+<li><p>add reweighting for FSI</p></li>
+</ul></li>
+</ul>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
