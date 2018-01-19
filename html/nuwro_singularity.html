@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Singularity containers for NuWro</title>
+
+  <meta name="description" content="Singularity containers for NuWro">
+
+   <meta name="author" content="Tomasz Golan" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="../template/snap.svg-min.js"></script>
+  <script src="../template/plotly-latest.min.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Singularity containers for NuWro</h1>
+         <h3>Tomasz Golan</h3> 
+        <p>
+          <h4>SPGN, Styczeń 2018</h4>
+        </p>
+      </section>
+
+       <div class="footer">
+<p>Navigate: <br>   PgDn / PgUp - next / previous slide <br>   Space / Shift+Space - next / previous slide <br>   Esc - expo mode</p>
+</div>
+<section id="section" class="level1">
+<h1></h1>
+<section id="what-is-a-container" class="level2">
+<h2>What is a container</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>A container is a stand-alone executable package</p>
+<ul>
+<li><p>operating system</p></li>
+<li><p>libraries</p></li>
+<li><p>software</p></li>
+<li><p>data</p></li>
+</ul></li>
+<li><p>It can be run on any OS</p></li>
+</ul>
+</div>
+<div class="right">
+<p><img src="../img/singularity/docker.png" style="background: #222222; border: none;"/> src: <a href="https://www.docker.com/what-container">docker.com</a></p>
+</div>
+</section>
+<section id="os-in-a-container" class="level2">
+<h2>OS in a container</h2>
+<hr />
+<p><img src="../img/singularity/os.svg" style="background: #222222; border: none;"/></p>
+</section>
+<section id="containers-vs-virtual-machines" class="level2">
+<h2>Containers vs Virtual Machines</h2>
+<hr />
+<p>src: <a href="https://www.docker.com/what-container">docker.com</a></p>
+<div class="left">
+<p><img src="../img/singularity/container.png" width=75% style="background: #222222; border: none;"/></p>
+</div>
+<div class="right">
+<p><img src="../img/singularity/vm.png" width=75% style="background: #222222; border: none;"/></p>
+</div>
+</section>
+<section id="why-to-use-containers" class="level2">
+<h2>Why to use containers</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>one can encapsulate software with all dependencies (libraries, data, ...) in a single executable package</p></li>
+<li><p>easy to share with others</p></li>
+<li><p>easy to run on clusters</p></li>
+<li><p>easy to reproduce previous results</p></li>
+</ul>
+</div>
+<p><img src="../img/singularity/nuwro.png" width=40% style="float:right; background: #222222; border: none;"/></p>
+</section>
+<section id="singularity" class="level2">
+<h2>Singularity</h2>
+<hr />
+<p><img src="../img/singularity/singularity-2.4-flow.png" style="background: #ffffff"/></p>
+<p>src: <a href="http://singularity.lbl.gov/">singularity.lbl.gov</a></p>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="nuwro-containers" class="level2">
+<h2>NuWro containers</h2>
+</section>
+<section id="useful-links" class="level2">
+<h2>Useful links</h2>
+<hr />
+<ul>
+<li><p><a href="https://nuwro.github.io/user-guide/singularity/">NuWro User Guide / Singularity</a></p></li>
+<li><p><a href="http://tomaszgolan.github.io/reveal_talks/html/singularity.html">My last talk on Singularity</a></p></li>
+<li><p><a href="https://singularity-hub.org/collections/265">Singularity Hub with NuWro builds</a></p></li>
+<li><p><a href="https://github.com/NuWro/builds">Singularity recipes for NuWro</a></p></li>
+</ul>
+</section>
+<section id="get-a-container" class="level2">
+<h2>Get a container</h2>
+<hr />
+<div class="left">
+<ul>
+<li>One can easily get a Singularity container using:</li>
+</ul>
+<pre><code>$ singularity pull shub://NuWro/builds:[tag]</code></pre>
+<p><br></p>
+<p><em>Default image name:</em></p>
+<pre><code>[user]-[repo]-[branch]-[tag].simg</code></pre>
+</div>
+<p><img src="../img/singularity/sing-get.gif" style="border: none;" class="right"></p>
+</section>
+<section id="running-nuwro-from-container-i" class="level2">
+<h2>Running NuWro from container I</h2>
+<hr />
+<div class="left">
+<ul>
+<li>To run NuWro simply use</li>
+</ul>
+<pre><code>$ singularity run [img file]</code></pre>
+<p><br></p>
+<p><em>Command line arguments may be passed as usual:</em></p>
+<pre><code>$ singularity run [img] -p &quot;param = value&quot;</code></pre>
+</div>
+<p><img src="../img/singularity/sing1.gif" style="border: none;" class="right"></p>
+</section>
+<section id="running-nuwro-from-container-ii" class="level2">
+<h2>Running NuWro from container II</h2>
+<hr />
+<div class="left">
+<ul>
+<li>Containers may be run as regular executable</li>
+</ul>
+<pre><code>$ ./[img file]</code></pre>
+<p><br></p>
+<p><em>Command line arguments may be passed as usual:</em></p>
+<pre><code>$ ./nuwro.simg -p &quot;param = value&quot;</code></pre>
+</div>
+<p><img src="../img/singularity/sing2.gif" style="border: none;" class="right"></p>
+</section>
+<section id="running-nuwro-from-container-iiia" class="level2">
+<h2>Running NuWro from container IIIa</h2>
+<hr />
+<div class="left">
+<ul>
+<li>Containers may be run in an interactive mode</li>
+</ul>
+<pre><code>$ singularity shell [img file]</code></pre>
+<p><br></p>
+<p><em>User has access to any application from a container and a local $HOME.</em></p>
+</div>
+<p><img src="../img/singularity/sing3.gif" style="border: none;" class="right"></p>
+</section>
+<section id="running-nuwro-from-container-iiib" class="level2">
+<h2>Running NuWro from container IIIb</h2>
+<hr />
+<div class="left">
+<ul>
+<li><p>ROOT and NuWro are installed in /opt/ folder</p></li>
+<li><p>One can run NuWro or myroot from a container</p></li>
+<li><p>One can use only ROOT installation to compile local copy of NuWro</p></li>
+</ul>
+</div>
+<p><img src="../img/singularity/sing4.gif" style="border: none;" class="right"></p>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<hr />
+<ul>
+<li><p>Easy access to every NuWro release since 17.09</p></li>
+<li><p>No need to install ROOT with Pythia6 and all dependencies</p></li>
+<li><p>Running containers on a grid are possible without root permissions</p></li>
+<li><p>There is also a container with ROOT only, which can be used to compile local copy of NuWro</p></li>
+</ul>
+</section>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
