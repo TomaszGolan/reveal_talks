@@ -71,7 +71,7 @@ For quasi-elastic scattering the following knobs are available:
 
 <div class="left">
 
-Symulacja A:
+Simulation A:
 
 ```
 -p "qel_cc_axial_mass = 1000" \
@@ -80,7 +80,7 @@ Symulacja A:
 -p "delta_s = 0"
 ```
 
-Symulacja B:
+Simulation B:
 
 ```
 -p "qel_cc_axial_mass = 1200" \
@@ -109,28 +109,19 @@ For resonance pion production the following knobs are available:
 
 * `pion_C5A`
 
-## RES Preliminary Test
+## RES Test C5A
 
 ---
 
-<div class="left"><br>
+<img src="../img/nuwro/rew/res_c5a_pip.png" class="left">
+<img src="../img/nuwro/rew/res_c5a_pi0.png" class="right">
 
-Simulations done for:
-
-* muon neutrino 0-10 GeV
-* NC on Carbon
-* 500k events
-* vary pion_C5A only
-
-</div>
-<img src="../img/nuwro/rew/preliminary_res_pip.png" class="right">
-
-## RES Preliminary Test II
+## RES Test Axial Mass
 
 ---
 
-<img src="../img/nuwro/rew/preliminary_res_pi0.png" class="left">
-<img src="../img/nuwro/rew/preliminary_res_pim.png" class="right">
+<img src="../img/nuwro/rew/res_ma_pi0.png" class="left">
+<img src="../img/nuwro/rew/res_ma_pim.png" class="right">
 
 ## Summary
 
