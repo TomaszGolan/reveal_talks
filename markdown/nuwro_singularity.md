@@ -1,6 +1,6 @@
 % Singularity containers for NuWro
 % Tomasz Golan
-% SPGN, Styczeń 2018
+% NIWG, 06.02.18
 
 <div class='footer'>
 Navigate:
