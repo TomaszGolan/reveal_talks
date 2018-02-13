@@ -18,6 +18,7 @@
 - [MLMPR](http://tomaszgolan.github.io/reveal_talks/html/ml_ift_seminar.html)
 - [NuWro: Singularity](http://tomaszgolan.github.io/reveal_talks/html/nuwro_singularity.html)
 - [NuWro: Reweighting](http://tomaszgolan.github.io/reveal_talks/html/nuwro_reweighting.html)
+- [Projekt w języku skryptowym 2018](http://tomaszgolan.github.io/reveal_talks/html/projekt_python2018.html)
 
 # Use these links to print as pdf
 
@@ -39,4 +40,5 @@
 - [MLMPR](http://tomaszgolan.github.io/reveal_talks/html/ml_ift_seminar.html?print-pdf)
 - [NuWro: Singularity](http://tomaszgolan.github.io/reveal_talks/html/nuwro_singularity.html?print-pdf)
 - [NuWro: Reweighting](http://tomaszgolan.github.io/reveal_talks/html/nuwro_reweighting.html?print-pdf)
+- [Projekt w języku skryptowym 2018](http://tomaszgolan.github.io/reveal_talks/html/projekt_python2018.html?print-pdf)
 

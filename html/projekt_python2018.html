@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Projekt w języku skryptowym</title>
+
+  <meta name="description" content="Projekt w języku skryptowym">
+
+   <meta name="author" content="T. Golan, M. Lewicki, M. Naskręt" /> 
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+
+      <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  
+      <link rel="stylesheet" href="../template/monokai_mod.css">
+  
+  <link rel="stylesheet" href="../template/extra.css">
+
+  <script>
+    document.write('<link rel="stylesheet" href="../reveal.js/css/print/' +
+      (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="../template/snap.svg-min.js"></script>
+  <script src="../template/plotly-latest.min.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+</head>
+
+<body>
+
+  
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <section>
+        <h1>Projekt w języku skryptowym</h1>
+         <h3>T. Golan, M. Lewicki, M. Naskręt</h3> 
+        <p>
+          <h4></h4>
+        </p>
+      </section>
+
+       <section id="cel" class="level3">
+<h3>Cel</h3>
+<hr />
+<p><br></p>
+<ul>
+<li><p>Stworzyć użyteczny program w języku skryptowym</p></li>
+<li><p>ECTS = 4 (120h pracy)</p></li>
+<li><p>2h laboratorium + 6h w domu / tydzień</p></li>
+<li><p>Praca samodzielna</p></li>
+</ul>
+</section>
+<section id="zasady-oceniania" class="level3">
+<h3>Zasady oceniania</h3>
+<hr />
+<div class="left">
+<p><br></p>
+<ul>
+<li><p>Projekt końcowy - 4 pkt</p></li>
+<li><p>Prezentacja - 2 pkt</p></li>
+<li><p>Prototyp - 1 pkt</p></li>
+<li><p>Raporty - 3 pkt</p></li>
+</ul>
+</div>
+<div class="right">
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">PUNKTY</th>
+<th style="text-align: center;">OCENA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">9-10</td>
+<td style="text-align: center;">bdb</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">db+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">db</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">dst+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">dst</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="harmonogram" class="level3">
+<h3>Harmonogram</h3>
+<hr />
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Wprowadzenie</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Raport I (plan projektu)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">Raport II (stan projektu)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">Prototyp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">Raport III (aktualizacja prototypu)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">Oddanie projektu</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">Prezentacje projektu</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="raport-i---plan-projektu-1-pkt" class="level3">
+<h3>Raport I - plan projektu (1 pkt)</h3>
+<hr />
+<ul>
+<li><p>termin oddania: 4. zajęcia</p></li>
+<li><p>założenie repozytorium</p></li>
+<li><p>opis projektu w README</p>
+<ul>
+<li>co chcę zrobić</li>
+<li>jakie funkcjonalności planuję</li>
+<li>jak chcę to zrobić</li>
+<li>jakich bibliotek użyję</li>
+<li>...</li>
+</ul></li>
+</ul>
+</section>
+<section id="raport-ii---stan-projektu-1-pkt" class="level3">
+<h3>Raport II - stan projektu (1 pkt)</h3>
+<hr />
+<ul>
+<li><p>termin oddania: 8. zajęcia</p></li>
+<li><p>planowane vs zrobione</p></li>
+<li><p>co dalej</p></li>
+</ul>
+</section>
+<section id="prototyp-1-pkt" class="level3">
+<h3>Prototyp (1 pkt)</h3>
+<hr />
+<ul>
+<li><p>termin oddania: 11. zajęcia</p></li>
+<li><p>działający program</p></li>
+<li><p>możliwe bugi</p></li>
+<li><p>brakujące funkcjonalności</p></li>
+<li><p>ale coś musi działać</p></li>
+</ul>
+</section>
+<section id="raport-iii---ostateczne-poprawki-1-pkt" class="level3">
+<h3>Raport III - ostateczne poprawki (1 pkt)</h3>
+<hr />
+<ul>
+<li><p>termin oddania: 13. zajęcia</p></li>
+<li><p>opis zmian prototyp -&gt; wersja końcowa</p></li>
+</ul>
+</section>
+<section id="końcowy-projektu-4-pkt" class="level3">
+<h3>Końcowy projektu (4 pkt)</h3>
+<hr />
+<ul>
+<li><p>termin oddania: 14. zajęcia</p></li>
+<li><p>2 pkt za wywiązanie się z założeń</p></li>
+<li><p>2 pkt za</p>
+<ul>
+<li>stopień zaawansowania projektu</li>
+<li>użyte technologie</li>
+<li>jakość kodu</li>
+<li>systematyczność (na podstawie repozytorium)</li>
+</ul></li>
+</ul>
+</section>
+<section id="prezentacja-projektu-2-pkt" class="level3">
+<h3>Prezentacja projektu (2 pkt)</h3>
+<hr />
+<ul>
+<li><p>termin: 15. zajęcia</p></li>
+<li><p>sprzedaj swój produkt</p></li>
+</ul>
+</section>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        slideNumber: true,
+        width: 1280,
+        height: 720,
+
+                  theme: Reveal.getQueryHash().theme || 'black',
+        
+                  transition: Reveal.getQueryHash().transition || 'convex',
+        
+                  transitionSpeed: Reveal.getQueryHash().transitionSpeed || 'fast',
+        
+        dependencies: [{
+            src: '../reveal.js/lib/js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/showdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }, {
+            src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }, {
+            src: '../reveal.js/plugin/math/math.js',
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+    <script>
+    // displayed upon load, hides when slide changes
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.reveal .footer').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+</html>
