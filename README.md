@@ -19,6 +19,7 @@
 - [NuWro: Singularity](http://tomaszgolan.github.io/reveal_talks/html/nuwro_singularity.html)
 - [NuWro: Reweighting](http://tomaszgolan.github.io/reveal_talks/html/nuwro_reweighting.html)
 - [Projekt w języku skryptowym 2018](http://tomaszgolan.github.io/reveal_talks/html/projekt_python2018.html)
+- [Projekt programistyczny 2018](http://tomaszgolan.github.io/reveal_talks/html/projekt2018.html)
 
 # Use these links to print as pdf
 
@@ -41,4 +42,4 @@
 - [NuWro: Singularity](http://tomaszgolan.github.io/reveal_talks/html/nuwro_singularity.html?print-pdf)
 - [NuWro: Reweighting](http://tomaszgolan.github.io/reveal_talks/html/nuwro_reweighting.html?print-pdf)
 - [Projekt w języku skryptowym 2018](http://tomaszgolan.github.io/reveal_talks/html/projekt_python2018.html?print-pdf)
-
+- [Projekt programistyczny 2018](http://tomaszgolan.github.io/reveal_talks/html/projekt2018.html?print-pdf)
